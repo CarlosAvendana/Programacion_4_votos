@@ -9,10 +9,12 @@
 
 package Modelo;
 
+import java.io.Serializable;
 
-public class Usuario {
 
-    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String clave, String obervaciones, boolean esAdmin, String usuario) {
+public class Usuario  implements Serializable {
+
+    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String clave, String obervaciones, boolean esAdmin, String user) {
         this.id= cedula;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -20,7 +22,7 @@ public class Usuario {
         this.clave = clave;
         this.obervaciones = obervaciones;
         this.esAdmin = esAdmin;
-        this.usuario = usuario;
+        this.user = user;
     }
 
     
@@ -33,9 +35,18 @@ public class Usuario {
         this.apellido2 = apellido2;
         this.clave = clave;
         this.obervaciones = obervaciones;
+        this.esAdmin = false;
+        this.user= null;
     }
     
-    
+    @Override
+    public String toString(){
+    String s=  String.format("Id:%s , %s %s %s , ", getId(), getNombre(), getApellido1(), getApellido2());
+    if (isEsAdmin()){
+    s+= String.format(" usuario; ", getUser());
+    }
+    return s;
+    }
 
     public String getId() {
         return id;
@@ -93,12 +104,12 @@ public class Usuario {
         this.esAdmin = esAdmin;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUser() {
+        return user;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String user) {
+        this.user = user;
     }
     
     public boolean idIgualContrasenna(){ 
@@ -113,7 +124,7 @@ public class Usuario {
     private String clave;
     private String obervaciones;
     private boolean esAdmin;
-    private String usuario;
+    private String user; // utilizado en el caso de los admin para login
     
     
     

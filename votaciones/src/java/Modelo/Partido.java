@@ -8,17 +8,35 @@
 //  Carlos Obando Avendaña
 package Modelo;
 
+import java.io.Serializable;
 
-public class Partido {
 
-    public Partido(String nombre, String Abreviatura, String Observaciones, Usuario postulante) {
+public class Partido implements Serializable  {
+    
+    
+    public Partido(String nombre, String Abreviatura, String Observaciones, Usuario postulante, String idImagenPartido, String idImagenPostulante) {
         this.nombre = nombre;
         this.Abreviatura = Abreviatura;
         this.Observaciones = Observaciones;
         this.postulante = postulante;
+        this.idImagenPartido = idImagenPartido;
+        this.idImagenPostulante = idImagenPostulante;
+    }
+    public String getIdImagenPartido() {
+        return idImagenPartido;
     }
 
-    
+    public void setIdImagenPartido(String idImagenPartido) {
+        this.idImagenPartido = idImagenPartido;
+    }
+
+    public String getIdImagenPostulante() {
+        return idImagenPostulante;
+    }
+
+    public void setIdImagenPostulante(String idImagenPostulante) {
+        this.idImagenPostulante = idImagenPostulante;
+    }   
     
     public String getNombre() {
         return nombre;
@@ -28,6 +46,7 @@ public class Partido {
         this.nombre = nombre;
     }
 
+    
     public String getAbreviatura() {
         return Abreviatura;
     }
@@ -51,10 +70,16 @@ public class Partido {
     public void setPostulante(Usuario postulante) {
         this.postulante = postulante;
     }
+
+   
+    
+    
     
     private String nombre;
     private String Abreviatura;
     private String Observaciones;
     private Usuario postulante;
+    private String idImagenPartido;
+    private String idImagenPostulante;
     
 }

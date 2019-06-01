@@ -12,16 +12,29 @@ import java.io.Serializable;
 
 
 public class Partido implements Serializable  {
-    
-    
-    public Partido(String nombre, String Abreviatura, String Observaciones, Usuario postulante, String idImagenPartido, String idImagenPostulante) {
+
+    public Partido(String nombre, String Abreviatura, String Observaciones, Usuario postulante, String idImagenPartido, String idImagenPostulante, int cantVotos) {
         this.nombre = nombre;
         this.Abreviatura = Abreviatura;
         this.Observaciones = Observaciones;
         this.postulante = postulante;
         this.idImagenPartido = idImagenPartido;
         this.idImagenPostulante = idImagenPostulante;
+        this.cantVotos = cantVotos;
     }
+
+
+    
+    
+        public int getCantVotos() {
+        return cantVotos;
+    }
+
+    public void setCantVotos(int votos) {
+        this.cantVotos = votos;
+    }
+    
+    
     public String getIdImagenPartido() {
         return idImagenPartido;
     }
@@ -71,8 +84,6 @@ public class Partido implements Serializable  {
         this.postulante = postulante;
     }
 
-   
-    
     
     
     private String nombre;
@@ -81,5 +92,6 @@ public class Partido implements Serializable  {
     private Usuario postulante;
     private String idImagenPartido;
     private String idImagenPostulante;
+    private int cantVotos;
     
 }

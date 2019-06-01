@@ -1,6 +1,6 @@
 <%-- 
 //  changePassword.jsp
-//  EIF209 - Programacion 4 -Proeycto #1
+//  EIF209 - Programacion 4 -Proeycto #2
 //  Abril 2019
 //
 //  Autores:

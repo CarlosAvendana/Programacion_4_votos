@@ -13,39 +13,48 @@ import java.io.Serializable;
 
 
 public class Usuario  implements Serializable {
+    
+    private String cedula;
+    private String nombre;
+    private String apellido1;
+    private String apellido2;
+    private String contraseña;
+    private int voto; // dice si true = ya emitío el voto, false = aun no ha botado
 
    
-    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String clave, String observaciones) {
-        this.id= cedula;
+    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña,int voto) {
+        this.cedula= cedula;
         this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
-        this.clave = clave;
-        this.observaciones = observaciones;
-        
+        this.apellido1=apellido1;
+        this.apellido2=apellido2;
+        this.contraseña = contraseña;
+        this.voto=voto;
     }
-
-     public boolean isVoto() {
+    
+    public Usuario() {
+        this(null, null, null, null, null, 0);
+    }
+   
+    public int getVoto() {
         return voto;
     }
 
-    public void setVoto(boolean voto) {
+    public void setVoto(int voto) {
         this.voto = voto;
     }
 
-
     @Override
     public String toString(){
-    return  String.format("Id:%s , %s %s %s , voto: %b, Observaciones: %s ",
-            getId(), getNombre(), getApellido1(), getApellido2(), isVoto(), getObservaciones());
-     }
-
-    public String getId() {
-        return id;
+    return String.format("Id:%s , %s %s %s , voto: %d ",
+        getCedula(), getNombre(), getApellido1(), getApellido2(), getVoto());
     }
 
-    public void setId(String cedula) {
-        this.id = cedula;
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -71,35 +80,16 @@ public class Usuario  implements Serializable {
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
-
-    public String getClave() {
-        return clave;
+    
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
-
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObervaciones(String obervaciones) {
-        this.observaciones = obervaciones;
-    }
-
-        public boolean idIgualContrasenna(){ 
     
-        return (clave == null ?id  == null : clave.equals(id));
-    }        
-    
-    private String id;
-    private String nombre;
-    private String apellido1;
-    private String apellido2;
-    private String clave;
-    private String observaciones;
-     private boolean voto; // dice si true = ya emitío el voto, false = aun no ha botado
-    
-    
+    public boolean idIgualContrasenna(){ 
+        return (getContraseña() == null ?cedula  == null : getContraseña().equals(cedula));
+    }         
 }

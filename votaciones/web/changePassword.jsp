@@ -9,7 +9,7 @@
 //  Carlos Obando Avendaña
 --%>
 
-<%@page import="Modelos.Validacion"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

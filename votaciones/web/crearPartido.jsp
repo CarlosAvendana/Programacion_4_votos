@@ -19,6 +19,6 @@
         <title>Creando partido político</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Crear Partido entramos</h1>
     </body>
 </html>

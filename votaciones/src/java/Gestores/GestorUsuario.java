@@ -2,7 +2,9 @@
 package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
+import Modelo.Credenciales;
 import Modelo.Usuario;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -13,17 +15,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestorUsuario {
+public class GestorUsuario implements Serializable{
     private static GestorUsuario instancia = null;
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT id,nombre,apellido,clave,ultimo_acceso,estado,activo,grupo_id "
-            + "FROM estudiante WHERE id=? ";
+            = "SELECT cedula,nombre,apellido1,apellido2,contraseña,voto "
+            + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
-            = "SELECT id FROM estudiante "
-            + "WHERE id=? AND clave=? ";
+            = "SELECT cedula FROM usuario "
+            + "WHERE cedula=? AND contraseña=? ";
 
     private static final String CMD_LISTAR
             = "SELECT id,nombre,apellido,clave,ultimo_acceso,estado,activo,grupo_id "
@@ -42,7 +44,7 @@ public class GestorUsuario {
             + "where e.grupo_id = g_id and g.id = ?; ";
 
     private static final String CONEXION
-            = "jdbc:mysql://localhost/gruposdb";
+            = "jdbc:mysql://localhost/votosdb";
     private static final String USUARIO = "root";
     private static final String CLAVE = "root";
 
@@ -65,5 +67,51 @@ public class GestorUsuario {
         return instancia;
     }
 
+    public Usuario recuperar(String codigo) {
+        Usuario r = null;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR)) {
+                stm.clearParameters();
+                stm.setString(1, codigo);
+                try (ResultSet rs = stm.executeQuery()) {
+                    if (rs.next()) {
+                        r = new Usuario(
+                                rs.getString("cedula"),
+                                rs.getString("nombre"),
+                                rs.getString("apellido1"),
+                                rs.getString("apellido2"),
+                                rs.getString("contraseña"),
+                                rs.getInt("voto")   
+                        );
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return r;
+    }
+    
+    public boolean verificarUsuario(String cedula, String contraseña) {
+        boolean encontrado = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
+                stm.clearParameters();
+                stm.setString(1, cedula);
+                stm.setString(2, contraseña);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return encontrado;
+    }
+    
+    
    
 }

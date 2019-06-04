@@ -1,0 +1,3 @@
+SELECT cedula,nombre,apellido1,apellido2,contraseña,voto FROM usuario WHERE cedula=116810263
+
+"SELECT cedula FROM usuario WHERE cedula=116810263 AND contraseña=116810263

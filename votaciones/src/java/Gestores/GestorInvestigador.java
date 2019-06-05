@@ -1,49 +1,37 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
-import Modelo.Usuario;
+import Modelo.Investigador;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GestorUsuario implements Serializable{
-    private static GestorUsuario instancia = null;
+/**
+ *
+ * @author PC
+ */
+public class GestorInvestigador implements Serializable {
+
+    private static GestorInvestigador instancia = null;
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT cedula,nombre,apellido1,apellido2,contraseña,voto "
-            + "FROM usuario WHERE cedula=? ";
+            = "SELECT cedula,nombre,apellido1,apellido2,nombreUsuario,contraseña,observaciones "
+            + "FROM investigador WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
-            = "SELECT cedula FROM usuario "
-            + "WHERE cedula=? AND contraseña=? ";
-
-    private static final String CMD_LISTAR
-            = "SELECT id,nombre,apellido,clave,ultimo_acceso,estado,activo,grupo_id "
-            + "FROM estudiante ORDER BY nombre; ";
-
-    private static final String CMD_ACTUALIZAR
-            = "UPDATE gruposdb.estudiante "
-            + "SET id=?,nombre=?,apellido=?,clave=?,ultimo_acceso=?,estado=?,activo=?,grupo_id=? ";
-
-    private static final String CMD_AGREGAR = "INSERT INTO estudiante "
-            + "(id, nombre, apellido, clave, ultimo_acceso, estado,activo, grupo_id) "
-            + "VALUES(?, ?, ?, ?, ?, ?,?, ?); ";
-
-    private static final String CMD_LISTAR_ESTUXGRUP = "select g.nombre, e.nombre, e.apellido "
-            + "from grupo g, estudiante e "
-            + "where e.grupo_id = g_id and g.id = ?; ";
-
-    private static final String CONEXION
-            = "jdbc:mysql://localhost/votosdb";
-    private static final String USUARIO = "root";
-    private static final String CLAVE = "root";
-
-    private GestorUsuario() throws
+            = "SELECT nombreusuario FROM investigador "
+            + "WHERE nombreusuario=? AND contraseña=? ";
+    
+    private GestorInvestigador() throws
             InstantiationException,
             ClassNotFoundException,
             IllegalAccessException {
@@ -52,18 +40,19 @@ public class GestorUsuario implements Serializable{
                 GestorBaseDeDatos.SERVIDOR_POR_DEFECTO);
     }
 
-    public static GestorUsuario obtenerInstancia() throws
+    public static GestorInvestigador obtenerInstancia() throws
             InstantiationException,
             ClassNotFoundException,
             IllegalAccessException {
         if (instancia == null) {
-            instancia = new GestorUsuario();
+            instancia = new GestorInvestigador();
         }
         return instancia;
     }
+    
 
-    public Usuario recuperar(String codigo) {
-        Usuario r = null;
+    public Investigador recuperar(String codigo) {
+        Investigador r = null;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR)) {
@@ -71,13 +60,14 @@ public class GestorUsuario implements Serializable{
                 stm.setString(1, codigo);
                 try (ResultSet rs = stm.executeQuery()) {
                     if (rs.next()) {
-                        r = new Usuario(
+                        r = new Investigador(
                                 rs.getString("cedula"),
                                 rs.getString("nombre"),
                                 rs.getString("apellido1"),
                                 rs.getString("apellido2"),
                                 rs.getString("contraseña"),
-                                rs.getInt("voto")   
+                                rs.getString("voto"),
+                                rs.getString("observaciones")
                         );
                     }
                 }
@@ -88,15 +78,15 @@ public class GestorUsuario implements Serializable{
         }
         return r;
     }
-    
-    public boolean verificarUsuario(String cedula, String contraseña) {
+
+    public boolean verificarInvestigador(String userName, String clave) {
         boolean encontrado = false;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
                 stm.clearParameters();
-                stm.setString(1, cedula);
-                stm.setString(2, contraseña);
+                stm.setString(1, userName);
+                stm.setString(2, clave);
                 ResultSet rs = stm.executeQuery();
                 encontrado = rs.next();
             }
@@ -106,7 +96,4 @@ public class GestorUsuario implements Serializable{
         }
         return encontrado;
     }
-    
-    
-   
 }

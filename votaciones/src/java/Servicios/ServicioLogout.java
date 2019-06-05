@@ -1,5 +1,5 @@
 
-//  ServicioLogin.java
+//  ServicioLogout.java
 //  EIF209 - Programacion 4 -Proeycto #2
 //  junio 2019
 //
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class ServicioLogin extends HttpServlet {
+public class ServicioLogout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

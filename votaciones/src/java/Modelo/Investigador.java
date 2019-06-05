@@ -1,5 +1,5 @@
 
-//  Administrador.java
+//  Investigador.java
 //  EIF209 - Programacion 4 -Proeycto #2
 //  junio 2019
 //
@@ -13,9 +13,9 @@ package Modelo;
 
 import java.io.Serializable;
 
-public class Administrador implements Serializable {
+public class Investigador implements Serializable {
 
-    public Administrador(String id, String nombre, String apellido1, String apellido2, String clave, String observaciones, String user) {
+    public Investigador(String id, String nombre, String apellido1, String apellido2, String clave, String observaciones, String user) {
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -23,6 +23,10 @@ public class Administrador implements Serializable {
         this.clave = clave;
         this.observaciones = observaciones;
         this.user = user;
+    }
+    
+    public Investigador() {
+        this(null, null, null, null, null, null, null);
     }
 
     

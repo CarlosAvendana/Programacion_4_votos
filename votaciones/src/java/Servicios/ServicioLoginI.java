@@ -5,12 +5,17 @@
  */
 package Servicios;
 
+import Gestores.GestorInvestigador;
+import Modelo.Investigador;
+import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +36,37 @@ public class ServicioLoginI extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           response.sendRedirect("crearPartido.jsp");
+            
+             GestorInvestigador gI = GestorInvestigador.obtenerInstancia();
+
+            boolean investigadorValido = false;
+
+            String usuario = request.getParameter("usuario");
+            String password = request.getParameter("password");
+
+            if (usuario != null && password != null) {
+                investigadorValido = gI.verificarInvestigador(usuario, password);
+            }
+            if (investigadorValido) {
+                if ((usuario.equals(password))) {
+                    response.sendRedirect("changePassword.jsp");
+                } else {
+                    Investigador i = gI.recuperar(usuario);
+                    HttpSession sesion = request.getSession(true);
+                    sesion.setAttribute("usuario", i);
+
+                    sesion.setMaxInactiveInterval(60 * 3);
+                    Cookie ck = new Cookie("username", usuario);
+                    response.addCookie(ck);
+                    response.sendRedirect("crearPartido.jsp");
+                }
+            } else {
+                response.sendRedirect("loginError.jsp");
+            }
+        }catch (InstantiationException
+                | ClassNotFoundException
+                | IllegalAccessException ex) {
+            System.err.printf("Error: %s", ex.getMessage());
         }
     }
 

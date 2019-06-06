@@ -18,6 +18,8 @@
         <title>Votacion</title>
     </head>
     <body>
+        
+     
         <p>Votacion entramos</p>
     </body>
 </html>

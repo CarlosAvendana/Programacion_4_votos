@@ -20,6 +20,9 @@
     </head>
     <body>
         <div id="wrapper">
+             <a href=index.jsp>
+                 <img id="atras" src="css/imagenes/atras.png"> 
+             </a>
             <section class ="container">
                 <section class="comentario"> 
                    <h1> Bienvenido al Sistema de votacion</h1>

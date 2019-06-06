@@ -19,7 +19,7 @@ public class Usuario  implements Serializable {
     private String apellido1;
     private String apellido2;
     private String clave;
-    private int activo; 
+    private int voto; 
 
    
     public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña,int voto) {
@@ -28,25 +28,25 @@ public class Usuario  implements Serializable {
         this.apellido1=apellido1;
         this.apellido2=apellido2;
         this.clave = contraseña;
-        this.activo=voto;
+        this.voto=voto;
     }
     
     public Usuario() {
         this(null, null, null, null, null, 0);
     }
    
-    public int getActivo() {
-        return activo;
+    public int getVoto() {
+        return voto;
     }
 
-    public void setActivo(int activo) {
-        this.activo = activo;
+    public void setVoto(int activo) {
+        this.voto = activo;
     }
 
     @Override
     public String toString(){
     return String.format("Id:%s , %s %s %s , voto: %d ",
-        getId(), getNombre(), getApellido1(), getApellido2(), getActivo());
+        getId(), getNombre(), getApellido1(), getApellido2(), getVoto());
     }
 
     public String getId() {

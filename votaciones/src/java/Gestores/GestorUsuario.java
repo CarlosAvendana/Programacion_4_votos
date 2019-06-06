@@ -15,15 +15,15 @@ public class GestorUsuario implements Serializable{
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT cedula,apellido1,apellido2,nombre,clave,activo "
+            = "SELECT cedula,apellido1,apellido2,nombre,clave,voto "
             + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
-            = "SELECT cedula FROM usuario "
+            = "SELECT cedula FROM Usuario "
             + "WHERE cedula=? AND clave=? ";
 
     private static final String CMD_LISTAR
-            = "SELECT id,nombre,apellido,clave,ultimo_acceso,estado,activo,grupo_id "
+            = "SELECT id,nombre,apellido,,ultimo_acceso,estado,activo,grupo_id "
             + "FROM estudiante ORDER BY nombre; ";
 
     private static final String CMD_ACTUALIZAR

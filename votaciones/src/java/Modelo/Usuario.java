@@ -14,47 +14,47 @@ import java.io.Serializable;
 
 public class Usuario  implements Serializable {
     
-    private String cedula;
+    private String id;
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private String contraseña;
-    private int voto; // dice si true = ya emitío el voto, false = aun no ha botado
+    private String clave;
+    private int activo; 
 
    
     public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña,int voto) {
-        this.cedula= cedula;
+        this.id= cedula;
         this.nombre = nombre;
         this.apellido1=apellido1;
         this.apellido2=apellido2;
-        this.contraseña = contraseña;
-        this.voto=voto;
+        this.clave = contraseña;
+        this.activo=voto;
     }
     
     public Usuario() {
         this(null, null, null, null, null, 0);
     }
    
-    public int getVoto() {
-        return voto;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setVoto(int voto) {
-        this.voto = voto;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
     @Override
     public String toString(){
     return String.format("Id:%s , %s %s %s , voto: %d ",
-        getCedula(), getNombre(), getApellido1(), getApellido2(), getVoto());
+        getId(), getNombre(), getApellido1(), getApellido2(), getActivo());
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getId() {
+        return id;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -81,15 +81,15 @@ public class Usuario  implements Serializable {
         this.apellido2 = apellido2;
     }
     
-    public String getContraseña() {
-        return contraseña;
+    public String getClave() {
+        return clave;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
     
     public boolean idIgualContrasenna(){ 
-        return (getContraseña() == null ?cedula  == null : getContraseña().equals(cedula));
+        return (getClave() == null ?id  == null : getClave().equals(id));
     }         
 }

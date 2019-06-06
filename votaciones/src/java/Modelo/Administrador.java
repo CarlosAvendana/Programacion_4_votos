@@ -1,5 +1,5 @@
 
-//  Investigador.java
+//  Administrador.java
 //  EIF209 - Programacion 4 -Proeycto #2
 //  junio 2019
 //
@@ -13,20 +13,19 @@ package Modelo;
 
 import java.io.Serializable;
 
-public class Investigador implements Serializable {
+public class Administrador implements Serializable {
 
-    public Investigador(String id, String nombre, String apellido1, String apellido2, String clave, String observaciones, String user) {
+    public Administrador(String id, String apellido1, String apellido2, String nombre, String usuario, String clave) {
         this.id = id;
-        this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
+        this.nombre = nombre;
+        this.usuario = usuario;
         this.clave = clave;
-        this.observaciones = observaciones;
-        this.user = user;
     }
     
-    public Investigador() {
-        this(null, null, null, null, null, null, null);
+    public Administrador() {
+        this(null, null, null, null, null, null);
     }
 
     
@@ -70,34 +69,26 @@ public class Investigador implements Serializable {
         this.clave = clave;
     }
 
-    public String getObservaciones() {
-        return observaciones;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setObservaciones(String obervaciones) {
-        this.observaciones = obervaciones;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     
     @Override
     public String toString (){
-    return String.format("Id:%s , %s %s %s , user: %s, Observaciones: %s ",
-            getId(), getNombre(), getApellido1(), getApellido2(),getUser(),getObservaciones());
+    return String.format("Id:%s , %s %s %s , user: %s ",
+            getId(), getNombre(), getApellido1(), getApellido2(),getUsuario());
     }
     
      private String id;
      private String nombre;
      private String apellido1;
      private String apellido2;
+     private String usuario;
      private String clave;
-     private String observaciones;
-     private String user;
+     
     
 }

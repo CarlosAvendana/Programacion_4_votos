@@ -5,8 +5,8 @@
  */
 package Servicios;
 
-import Gestores.GestorInvestigador;
-import Modelo.Investigador;
+import Gestores.GestorAdministrador;
+import Modelo.Administrador;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author PC
  */
-public class ServicioLoginI extends HttpServlet {
+public class ServicioLoginA extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +37,21 @@ public class ServicioLoginI extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-             GestorInvestigador gI = GestorInvestigador.obtenerInstancia();
+             GestorAdministrador gI = GestorAdministrador.obtenerInstancia();
 
-            boolean investigadorValido = false;
+            boolean administradorValido = false;
 
             String usuario = request.getParameter("usuario");
             String password = request.getParameter("password");
 
             if (usuario != null && password != null) {
-                investigadorValido = gI.verificarInvestigador(usuario, password);
+                administradorValido = gI.verificarAdministrador(usuario, password);
             }
-            if (investigadorValido) {
+            if (administradorValido) {
                 if ((usuario.equals(password))) {
                     response.sendRedirect("changePassword.jsp");
                 } else {
-                    Investigador i = gI.recuperar(usuario);
+                    Administrador i = gI.recuperar(usuario);
                     HttpSession sesion = request.getSession(true);
                     sesion.setAttribute("usuario", i);
 

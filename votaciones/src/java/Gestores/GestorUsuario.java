@@ -15,12 +15,12 @@ public class GestorUsuario implements Serializable{
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT cedula,nombre,apellido1,apellido2,contraseña,voto "
+            = "SELECT cedula,apellido1,apellido2,nombre,clave,activo "
             + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
             = "SELECT cedula FROM usuario "
-            + "WHERE cedula=? AND contraseña=? ";
+            + "WHERE cedula=? AND clave=? ";
 
     private static final String CMD_LISTAR
             = "SELECT id,nombre,apellido,clave,ultimo_acceso,estado,activo,grupo_id "
@@ -73,11 +73,11 @@ public class GestorUsuario implements Serializable{
                     if (rs.next()) {
                         r = new Usuario(
                                 rs.getString("cedula"),
-                                rs.getString("nombre"),
                                 rs.getString("apellido1"),
                                 rs.getString("apellido2"),
-                                rs.getString("contraseña"),
-                                rs.getInt("voto")   
+                                rs.getString("nombre"),
+                                rs.getString("clave"),
+                                rs.getInt("activo")   
                         );
                     }
                 }
@@ -89,14 +89,14 @@ public class GestorUsuario implements Serializable{
         return r;
     }
     
-    public boolean verificarUsuario(String cedula, String contraseña) {
+    public boolean verificarUsuario(String cedula, String clave) {
         boolean encontrado = false;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
                 stm.clearParameters();
                 stm.setString(1, cedula);
-                stm.setString(2, contraseña);
+                stm.setString(2, clave);
                 ResultSet rs = stm.executeQuery();
                 encontrado = rs.next();
             }

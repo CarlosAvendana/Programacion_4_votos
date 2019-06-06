@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `bd_votaciones`.`partido` (
   `siglas` VARCHAR(12) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `observaciones` TEXT NULL,
+  `bandera` MEDIUMBLOB NULL,
   PRIMARY KEY (`siglas`))
 ENGINE = InnoDB;
 

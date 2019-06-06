@@ -9,47 +9,17 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 
 public class Partido implements Serializable  {
 
-    public Partido(String nombre, String Abreviatura, String Observaciones, Usuario postulante, String idImagenPartido, String idImagenPostulante, int cantVotos) {
+    public Partido(String nombre, String siglas, String Observaciones,Blob bandera) {
         this.nombre = nombre;
-        this.Abreviatura = Abreviatura;
+        this.siglas = siglas;
         this.Observaciones = Observaciones;
-        this.postulante = postulante;
-        this.idImagenPartido = idImagenPartido;
-        this.idImagenPostulante = idImagenPostulante;
-        this.cantVotos = cantVotos;
+        this.bandera=bandera;
     }
-
-
-    
-    
-        public int getCantVotos() {
-        return cantVotos;
-    }
-
-    public void setCantVotos(int votos) {
-        this.cantVotos = votos;
-    }
-    
-    
-    public String getIdImagenPartido() {
-        return idImagenPartido;
-    }
-
-    public void setIdImagenPartido(String idImagenPartido) {
-        this.idImagenPartido = idImagenPartido;
-    }
-
-    public String getIdImagenPostulante() {
-        return idImagenPostulante;
-    }
-
-    public void setIdImagenPostulante(String idImagenPostulante) {
-        this.idImagenPostulante = idImagenPostulante;
-    }   
     
     public String getNombre() {
         return nombre;
@@ -59,13 +29,12 @@ public class Partido implements Serializable  {
         this.nombre = nombre;
     }
 
-    
-    public String getAbreviatura() {
-        return Abreviatura;
+    public String getSiglas() {
+        return siglas;
     }
 
-    public void setAbreviatura(String Abreviatura) {
-        this.Abreviatura = Abreviatura;
+    public void setSiglas(String siglas) {
+        this.siglas = siglas;
     }
 
     public String getObservaciones() {
@@ -76,22 +45,17 @@ public class Partido implements Serializable  {
         this.Observaciones = Observaciones;
     }
 
-    public Usuario getPostulante() {
-        return postulante;
+    public Blob getBandera() {
+        return bandera;
     }
 
-    public void setPostulante(Usuario postulante) {
-        this.postulante = postulante;
+    public void setBandera(Blob bandera) {
+        this.bandera = bandera;
     }
-
     
-    
+    private String siglas;
     private String nombre;
-    private String Abreviatura;
     private String Observaciones;
-    private Usuario postulante;
-    private String idImagenPartido;
-    private String idImagenPostulante;
-    private int cantVotos;
+    private Blob bandera;
     
 }

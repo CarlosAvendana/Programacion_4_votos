@@ -7,7 +7,7 @@ package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
-import Modelo.Investigador;
+import Modelo.Administrador;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,20 +18,20 @@ import java.sql.SQLException;
  *
  * @author PC
  */
-public class GestorInvestigador implements Serializable {
+public class GestorAdministrador implements Serializable {
 
-    private static GestorInvestigador instancia = null;
+    private static GestorAdministrador instancia = null;
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT cedula,nombre,apellido1,apellido2,nombreUsuario,contraseña,observaciones "
-            + "FROM investigador WHERE cedula=? ";
+            = "SELECT cedula,apellido1,apellido2,nombre,usuario,clave "
+            + "FROM administrador WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
-            = "SELECT nombreusuario FROM investigador "
-            + "WHERE nombreusuario=? AND contraseña=? ";
+            = "SELECT usuario FROM administrador "
+            + "WHERE usuario=? AND clave=? ";
     
-    private GestorInvestigador() throws
+    private GestorAdministrador() throws
             InstantiationException,
             ClassNotFoundException,
             IllegalAccessException {
@@ -40,19 +40,19 @@ public class GestorInvestigador implements Serializable {
                 GestorBaseDeDatos.SERVIDOR_POR_DEFECTO);
     }
 
-    public static GestorInvestigador obtenerInstancia() throws
+    public static GestorAdministrador obtenerInstancia() throws
             InstantiationException,
             ClassNotFoundException,
             IllegalAccessException {
         if (instancia == null) {
-            instancia = new GestorInvestigador();
+            instancia = new GestorAdministrador();
         }
         return instancia;
     }
     
 
-    public Investigador recuperar(String codigo) {
-        Investigador r = null;
+    public Administrador recuperar(String codigo) {
+        Administrador r = null;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR)) {
@@ -60,14 +60,13 @@ public class GestorInvestigador implements Serializable {
                 stm.setString(1, codigo);
                 try (ResultSet rs = stm.executeQuery()) {
                     if (rs.next()) {
-                        r = new Investigador(
+                        r = new Administrador(
                                 rs.getString("cedula"),
-                                rs.getString("nombre"),
                                 rs.getString("apellido1"),
                                 rs.getString("apellido2"),
-                                rs.getString("contraseña"),
-                                rs.getString("voto"),
-                                rs.getString("observaciones")
+                                rs.getString("nombre"),
+                                rs.getString("usuario"),
+                                rs.getString("clave")
                         );
                     }
                 }
@@ -79,13 +78,13 @@ public class GestorInvestigador implements Serializable {
         return r;
     }
 
-    public boolean verificarInvestigador(String userName, String clave) {
+    public boolean verificarAdministrador(String usuario, String clave) {
         boolean encontrado = false;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
                 stm.clearParameters();
-                stm.setString(1, userName);
+                stm.setString(1, usuario);
                 stm.setString(2, clave);
                 ResultSet rs = stm.executeQuery();
                 encontrado = rs.next();

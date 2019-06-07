@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 
@@ -17,10 +13,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-/**
- *
- * @author Juan Carlos
- */
+
 public class xmlReader implements Serializable{
 
     private List<Usuario> cargarDatos() {

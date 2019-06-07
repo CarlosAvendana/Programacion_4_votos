@@ -6,7 +6,6 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 /**
  *
@@ -17,10 +16,10 @@ public class VotacionPartido implements Serializable{
     private Votacion votId;
     private Partido partSiglas;
     private Usuario cedCandidato;
-    private Blob fotoCandidato;
+    private String fotoCandidato;
     private int votosObtenidos;
 
-    public VotacionPartido(Votacion votId, Partido partSiglas, Usuario cedCandidato, Blob fotoCandidato, int votosObtenidos) {
+    public VotacionPartido(Votacion votId, Partido partSiglas, Usuario cedCandidato, String fotoCandidato, int votosObtenidos) {
         this.votId = votId;
         this.partSiglas = partSiglas;
         this.cedCandidato = cedCandidato;
@@ -69,12 +68,12 @@ public class VotacionPartido implements Serializable{
     }
 
     
-    public Blob getFotoCandidato() {
+    public String getFotoCandidato() {
         return fotoCandidato;
     }
 
     
-    public void setFotoCandidato(Blob fotoCandidato) {
+    public void setFotoCandidato(String fotoCandidato) {
         this.fotoCandidato = fotoCandidato;
     }
 

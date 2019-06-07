@@ -9,12 +9,11 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 
 public class Partido implements Serializable  {
 
-    public Partido(String nombre, String siglas, String Observaciones,Blob bandera) {
+    public Partido(String nombre, String siglas, String Observaciones,String bandera) {
         this.nombre = nombre;
         this.siglas = siglas;
         this.Observaciones = Observaciones;
@@ -45,17 +44,17 @@ public class Partido implements Serializable  {
         this.Observaciones = Observaciones;
     }
 
-    public Blob getBandera() {
+    public String getBandera() {
         return bandera;
     }
 
-    public void setBandera(Blob bandera) {
+    public void setBandera(String bandera) {
         this.bandera = bandera;
     }
     
     private String siglas;
     private String nombre;
     private String Observaciones;
-    private Blob bandera;
+    private String bandera;
     
 }

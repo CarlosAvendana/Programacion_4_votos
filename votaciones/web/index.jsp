@@ -33,7 +33,7 @@
                     </p>
                 </section>
                 <section class ="loging">
-                        <h1>Seleccione si desea acceder como investigador o como usuario</h1>
+                        <h1>Seleccione si desea acceder como Administrador o como Usuario</h1>
                         <table width="65%" cellpadding="8">
                             <tr>
                                 <td>

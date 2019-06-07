@@ -62,7 +62,7 @@ public class GestorPartido implements Serializable {
                                 rs.getString("siglas"),
                                 rs.getString("nombre"),
                                 rs.getString("observaciones"),
-                                rs.getBlob("bandera")
+                                rs.getString("bandera")
                         );
                     }
                 }

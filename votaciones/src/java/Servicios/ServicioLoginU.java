@@ -35,6 +35,7 @@ public class ServicioLoginU extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
+     
         try (PrintWriter out = response.getWriter()) {
             
              GestorUsuario gU = GestorUsuario.obtenerInstancia();

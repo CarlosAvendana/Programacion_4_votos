@@ -14,7 +14,11 @@ package Servicios;
 import Gestores.GestorUsuario;
 import Modelo.Usuario;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,9 +37,22 @@ public class ServicioLogout extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        
+            throws ServletException, IOException, InstantiationException, ClassNotFoundException, IllegalAccessException {
+             response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
+            try (PrintWriter out = response.getWriter()) {
+            HttpSession sesion = request.getSession(true);
+            GestorUsuario gU =GestorUsuario.obtenerInstancia();
+            Usuario u = (Usuario) sesion.getAttribute("usuario");
+            u.setActivo(0);
+            gU.actualizar(u);
+            Cookie ck=new Cookie("username","usuario");  
+            ck.setMaxAge(0);  
+            response.addCookie(ck); 
+            sesion.removeAttribute("usuario");
+            sesion.invalidate();
+            response.sendRedirect("index.jsp");
+            }
  
     }
 
@@ -51,7 +68,15 @@ public class ServicioLogout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ServicioLogout.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServicioLogout.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ServicioLogout.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -65,7 +90,15 @@ public class ServicioLogout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ServicioLogout.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServicioLogout.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ServicioLogout.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

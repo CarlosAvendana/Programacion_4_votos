@@ -6,6 +6,7 @@ import Modelo.Credenciales;
 import Modelo.Usuario;
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,27 +20,23 @@ public class GestorUsuario implements Serializable{
             + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
-            = "SELECT cedula FROM usuario "
+            = "SELECT cedula FROM Usuario "
             + "WHERE cedula=? AND clave=? ";
 
     private static final String CMD_LISTAR
-            = "SELECT id,nombre,apellido,clave,ultimo_acceso,estado,activo,grupo_id "
-            + "FROM estudiante ORDER BY nombre; ";
+            = "SELECT cedula, apellido1 ,apellido2, nombre, clave ,activo "
+            + "FROM estudiante ORDER BY apellido1; ";
 
     private static final String CMD_ACTUALIZAR
-            = "UPDATE gruposdb.estudiante "
-            + "SET id=?,nombre=?,apellido=?,clave=?,ultimo_acceso=?,estado=?,activo=?,grupo_id=? ";
+            = "UPDATE bd_votaciones.usuario "
+            + "SET cedula=?,apellido1=?,apellido2=?, nombre=?,clave=?, activo=? ";
 
-    private static final String CMD_AGREGAR = "INSERT INTO estudiante "
-            + "(id, nombre, apellido, clave, ultimo_acceso, estado,activo, grupo_id) "
-            + "VALUES(?, ?, ?, ?, ?, ?,?, ?); ";
-
-    private static final String CMD_LISTAR_ESTUXGRUP = "select g.nombre, e.nombre, e.apellido "
-            + "from grupo g, estudiante e "
-            + "where e.grupo_id = g_id and g.id = ?; ";
+    private static final String CMD_AGREGAR = "INSERT INTO usuario "
+            + "(cedula, apellido1, apellido2, nombre, clave,activo) "
+            + "VALUES(?, ?, ?, ?, ?, ?); ";
 
     private static final String CONEXION
-            = "jdbc:mysql://localhost/votosdb";
+            = "jdbc:mysql://localhost/bd_votaciones";
     private static final String USUARIO = "root";
     private static final String CLAVE = "root";
 
@@ -108,5 +105,30 @@ public class GestorUsuario implements Serializable{
     }
     
     
+    public boolean actualizar(Usuario u){
+         boolean exito = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.usuario SET cedula=?,apellido1=?, apellido2=?, nombre=? ,clave=?, activo =? Where cedula='" + u.getCedula() + "'");
+                stm.clearParameters();
+                stm.setString(1, u.getCedula());
+                stm.setString(2, u.getApellido1());
+                stm.setString(3, u.getApellido2());
+                stm.setString(4, u.getNombre());
+                stm.setString(5, u.getClave());
+                stm.setInt(6, u.getActivo());
+                int r;
+                r = stm.executeUpdate();
+                if (r == 1) {
+                    exito = true;
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return exito;
+        
+    }    
    
 }

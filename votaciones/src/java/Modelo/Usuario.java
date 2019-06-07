@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 public class Usuario  implements Serializable {
     
-    private String id;
+    private String cedula;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -22,13 +22,13 @@ public class Usuario  implements Serializable {
     private int activo; 
 
    
-    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña,int voto) {
-        this.id= cedula;
+    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña,int activo) {
+        this.cedula= cedula;
         this.nombre = nombre;
         this.apellido1=apellido1;
         this.apellido2=apellido2;
         this.clave = contraseña;
-        this.activo=voto;
+        this.activo=activo;
     }
     
     public Usuario() {
@@ -46,15 +46,15 @@ public class Usuario  implements Serializable {
     @Override
     public String toString(){
     return String.format("Id:%s , %s %s %s , voto: %d ",
-        getId(), getNombre(), getApellido1(), getApellido2(), getActivo());
+        getCedula(), getNombre(), getApellido1(), getApellido2(), getActivo());
     }
 
-    public String getId() {
-        return id;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCedula(String id) {
+        this.cedula = id;
     }
 
     public String getNombre() {
@@ -90,6 +90,6 @@ public class Usuario  implements Serializable {
     }
     
     public boolean idIgualContrasenna(){ 
-        return (getClave() == null ?id  == null : getClave().equals(id));
+        return (getClave() == null ?cedula  == null : getClave().equals(cedula));
     }         
 }

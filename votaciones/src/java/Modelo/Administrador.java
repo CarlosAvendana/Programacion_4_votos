@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class Administrador implements Serializable {
 
     public Administrador(String id, String apellido1, String apellido2, String nombre, String usuario, String clave) {
-        this.id = id;
+        this.cedula = id;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.nombre = nombre;
@@ -29,12 +29,12 @@ public class Administrador implements Serializable {
     }
 
     
-    public String getId() {
-        return id;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCedula(String id) {
+        this.cedula = id;
     }
 
     public String getNombre() {
@@ -80,10 +80,10 @@ public class Administrador implements Serializable {
     @Override
     public String toString (){
     return String.format("Id:%s , %s %s %s , user: %s ",
-            getId(), getNombre(), getApellido1(), getApellido2(),getUsuario());
+            getCedula(), getNombre(), getApellido1(), getApellido2(),getUsuario());
     }
     
-     private String id;
+     private String cedula;
      private String nombre;
      private String apellido1;
      private String apellido2;

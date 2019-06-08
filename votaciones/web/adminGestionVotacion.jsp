@@ -1,11 +1,19 @@
-
+<%-- 
+//  adminGestionVotacion.jsp
+//  EIF209 - Programacion 4 -Proeycto #2
+//  Abril 2019
+//
+//  Autores:
+//  Djenane Hernandez Rodriguez
+//  Diego Monterrey Benavides
+//  Carlos Obando Avendaña
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
-        <link href="css/varios.css" rel="stylesheet" type="text/css"/>
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
         <title>Cargar Usuarios</title>

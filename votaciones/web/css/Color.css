@@ -162,3 +162,34 @@ div{
     width: 50%;
 }
 
+.bnt{
+    color: #FF9713;
+    background: transparent;
+    border: 2px solid #FF9713;
+    border-radius: 6px;
+}
+
+.bnt:hover{
+    background-color: #FF9713;
+    color: white;
+
+}
+
+.bntDisable{
+    color: white;
+    border: 2px solid lightgray;
+    border-radius: 6px;
+
+}
+
+.bntDisable:hover{
+    background-color: lightgray;
+    color: white;
+
+}
+
+#botones{
+    padding-top: 3%;
+
+}
+

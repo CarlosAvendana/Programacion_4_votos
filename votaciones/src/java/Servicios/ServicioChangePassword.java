@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//  seirvicioChangePassword.java
+//  EIF209 - Programacion 4 -Proeycto #1
+//  Abril 2019
+//
+//  Autores:
+//  Djenane Hernandez Rodriguez
+//  Diego Monterrey Benavides
+//Carlos Obando Avendaña
+
 package Servicios;
+
 
 import Gestores.GestorUsuario;
 import Modelo.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +22,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author PC
+ * @author djnane
  */
-public class ServicioLoginU extends HttpServlet {
+@WebServlet(name = "ServicioChangePassword", urlPatterns = {"/ServicioChangePassword"})
+public class ServicioChangePassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,44 +39,36 @@ public class ServicioLoginU extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
-     
-        try (PrintWriter out = response.getWriter()) {
-            
-             GestorUsuario gU = GestorUsuario.obtenerInstancia();
+        try {
+            GestorUsuario gE = GestorUsuario.obtenerInstancia();
 
-            boolean usuarioValido = false;
+            String oldPassword = request.getParameter("oldPassword");
+            String newPassword = request.getParameter("newPassword");
 
-            String usuario = request.getParameter("usuario");
-            String password = request.getParameter("password");
-
-            if (usuario != null && password != null) {
-                usuarioValido = gU.verificarUsuario(usuario, password);
-            }
-            if (usuarioValido) {
-                if (!(usuario.equals(password))) {
-                    response.sendRedirect("changePassword.jsp");
-                } else {
-                    Usuario u = gU.recuperar(usuario);
+            if (oldPassword != null && newPassword != null) {
+                if (!oldPassword.equals(newPassword)) {
+                    Usuario e = gE.recuperar(oldPassword);
                     HttpSession sesion = request.getSession(true);
-                    sesion.setAttribute("usuario", u);
+                    if (e != null) {
+                        e.setClave(newPassword);
+                        gE.actualizar(e);
+                        sesion.setAttribute("oldPassword", e);
 
-                    sesion.setMaxInactiveInterval(60 * 3);
-                    Cookie ck = new Cookie("username", usuario);
-                    
+                        sesion.setMaxInactiveInterval(60 * 3);
 
-                    response.addCookie(ck);
-                    response.sendRedirect("datosPersonales.jsp");
+                        response.sendRedirect("index.jsp");
+                    }
                 }
             } else {
                 response.sendRedirect("loginError.jsp");
             }
-            
-        }catch (InstantiationException
+
+        } catch (InstantiationException
                 | ClassNotFoundException
                 | IllegalAccessException ex) {
             System.err.printf("Error: %s", ex.getMessage());
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

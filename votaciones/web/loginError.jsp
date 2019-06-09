@@ -17,7 +17,7 @@
         <link rel="shortcut icon" href="iconG.ico" type="image/x-icon" />
         <title>Error de ingreso</title>
         <meta charset="UTF-8" />
-        <link href="css/varios.css" rel="stylesheet" type="text/css"/>
+        <link href="css/Color.css" rel="stylesheet" type="text/css"/>
         <script src="js/scripts.js" type="text/javascript"></script>
     </head>
     <body>

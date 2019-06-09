@@ -50,11 +50,11 @@ public class xmlReader implements Serializable{
         return null;
     }
     
-    public void guardarBD(){
-        List<Usuario> list = cargarDatos();
-        GestorBD ges = GestorBD.obtenerInstancia();
-        for(int i = 0; i < list.size(); i++){
-            ges.anadirUsuario(list.get(i));
-        }        
-    }
+//    public void guardarBD(){
+//        List<Usuario> list = cargarDatos();
+//        GestorBD ges = GestorBD.obtenerInstancia();
+//        for(int i = 0; i < list.size(); i++){
+//            ges.anadirUsuario(list.get(i));
+//        }        
+//    }
 }

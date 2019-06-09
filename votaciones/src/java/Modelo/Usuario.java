@@ -10,6 +10,9 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Usuario  implements Serializable {
@@ -91,5 +94,44 @@ public class Usuario  implements Serializable {
     
     public boolean idIgualContrasenna(){ 
         return (getClave() == null ?cedula  == null : getClave().equals(cedula));
-    }         
+    }     
+    //-.-.-.- Edicion para beans
+    
+    public static Usuario fromArray(ArrayList<String> datos) throws ParseException {
+        String i = datos.get(0);
+        String ap1 = datos.get(1);
+        String ap2 = datos.get(2);
+        String n = datos.get(3);
+        String cl   = datos.get(4);
+        String ac = datos.get(5);
+        int a = Integer.parseInt(ac);
+        return new Usuario(i, ap1, ap2, n, cl, a );
+    }
+
+    public List<Object> toArray() {
+        List<Object> r = new ArrayList<>();
+        r.add(getCedula());
+        r.add(getApellido1());
+        r.add(getApellido2());
+        r.add(getNombre());
+        r.add(getClave());
+        r.add(getActivo());
+        return r;
+    }
+
+    public String toStringHTML() {
+        StringBuilder r = new StringBuilder();
+        r.append("<tr>");
+        r.append("<th>ID: &nbsp </th>");
+        r.append(String.format("<td>%s</td>", this.cedula));
+        r.append("</tr>");
+
+        r.append("<tr>");
+        r.append("<th>Nombre  Completo: &nbsp </th>");
+        r.append(String.format("<td>%s</td><td>%s</td><td>%s</td>", this.nombre, this.apellido1, this.apellido2));
+        r.append("</tr>");
+        return r.toString();
+
+    }
+    
 }

@@ -49,7 +49,7 @@ public class ServicioLoginU extends HttpServlet {
                 usuarioValido = gU.verificarUsuario(usuario, password);
             }
             if (usuarioValido) {
-                if (!(usuario.equals(password))) {
+                if (usuario.equals(password)) {
                     response.sendRedirect("changePassword.jsp");
                 } else {
                     Usuario u = gU.recuperar(usuario);

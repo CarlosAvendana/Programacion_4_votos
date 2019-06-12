@@ -48,18 +48,14 @@ public class ServicioLoginA extends HttpServlet {
                 administradorValido = gI.verificarAdministrador(usuario, password);
             }
             if (administradorValido) {
-                if ((usuario.equals(password))) {
-                    response.sendRedirect("changePassword.jsp");
-                } else {
-                    Administrador i = gI.recuperar(usuario);
-                    HttpSession sesion = request.getSession(true);
-                    sesion.setAttribute("usuario", i);
+                Administrador i = gI.recuperar(usuario);
+                HttpSession sesion = request.getSession(true);
+                sesion.setAttribute("usuario", i);
 
-                    sesion.setMaxInactiveInterval(60 * 3);
-                    Cookie ck = new Cookie("username", usuario);
-                    response.addCookie(ck);
-                    response.sendRedirect("crearPartido.jsp");
-                }
+                sesion.setMaxInactiveInterval(60 * 3);
+                Cookie ck = new Cookie("username", usuario);
+                response.addCookie(ck);
+                response.sendRedirect("adminGeneral.jsp");
             } else {
                 response.sendRedirect("loginError.jsp");
             }

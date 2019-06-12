@@ -9,10 +9,17 @@
 
 package Servicios;
 
+<<<<<<< HEAD
+import Gestores.GestorUsuario;
+import Modelo.Usuario;
+import java.io.IOException;
+import java.io.PrintWriter;
+=======
 
 import Gestores.GestorUsuario;
 import Modelo.Usuario;
 import java.io.IOException;
+>>>>>>> 1320654be9276e73eae04355405fb6869708ddf0
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,12 +58,20 @@ public class ServicioChangePassword extends HttpServlet {
                     HttpSession sesion = request.getSession(true);
                     if (e != null) {
                         e.setClave(newPassword);
+<<<<<<< HEAD
+//                        gE.actalizar(e);
+=======
                         gE.actualizar(e);
+>>>>>>> 1320654be9276e73eae04355405fb6869708ddf0
                         sesion.setAttribute("oldPassword", e);
 
                         sesion.setMaxInactiveInterval(60 * 3);
 
+<<<<<<< HEAD
+                        response.sendRedirect("loginU.jsp");
+=======
                         response.sendRedirect("index.jsp");
+>>>>>>> 1320654be9276e73eae04355405fb6869708ddf0
                     }
                 }
             } else {

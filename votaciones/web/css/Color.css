@@ -193,3 +193,7 @@ div{
 
 }
 
+#tablaFormulario #cuerpoForm{
+    border: 5px solid black;
+    padding: 10%;
+}

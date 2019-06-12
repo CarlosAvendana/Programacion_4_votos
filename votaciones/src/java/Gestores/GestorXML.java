@@ -48,7 +48,7 @@ public class GestorXML implements Serializable{
                 stm.setString(3, nuevoUsuario.getApellido2());
                 stm.setString(4, nuevoUsuario.getNombre());
                 stm.setString(5, nuevoUsuario.getClave());
-                stm.setInt(5, nuevoUsuario.getActivo());
+                stm.setInt(6, nuevoUsuario.getActivo());
                 int r = stm.executeUpdate();
                 exito = (r==1);
             }
@@ -61,7 +61,7 @@ public class GestorXML implements Serializable{
     private List<Usuario> cargarDatos() {
         List<Usuario> lista = new ArrayList<>();
         try {
-            File inputFile = new File("C:\\Users\\demil\\Desktop\\votos");
+            File inputFile = new File("C:\\Users\\demil\\Documents\\votos\\Usuarios.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
@@ -99,8 +99,6 @@ public class GestorXML implements Serializable{
             d.agregarAlaBD(list.get(i));
         }        
     }
-    
-    
     private GestorXML() throws
             InstantiationException,
             ClassNotFoundException,

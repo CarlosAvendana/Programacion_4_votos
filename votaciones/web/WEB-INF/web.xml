@@ -8,6 +8,18 @@
         <servlet-name>ServicioLoginU</servlet-name>
         <servlet-class>Servicios.ServicioLoginU</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servicioXML</servlet-name>
+        <servlet-class>Servicios.servicioXML</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioLogout</servlet-name>
+        <servlet-class>Servicios.ServicioLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioImagenPartido</servlet-name>
+        <servlet-class>Servicios.ServicioImagenPartido</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
         <url-pattern>/ServicioLoginI</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>ServicioLoginU</servlet-name>
         <url-pattern>/ServicioLoginU</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servicioXML</servlet-name>
+        <url-pattern>/servicioXML</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioLogout</servlet-name>
+        <url-pattern>/ServicioLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioImagenPartido</servlet-name>
+        <url-pattern>/ServicioImagenPartido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

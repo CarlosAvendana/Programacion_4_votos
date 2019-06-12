@@ -37,11 +37,11 @@
                         <table width="65%" cellpadding="8">
                             <tr>
                                 <td>
-                                    <button class='bnt' role="link" onclick="window.location = 'loginU.jsp'">Usuario</button>
+                                   <button class='bnt' role="link" onclick="window.location = 'loginA.jsp'">Administrador</button> 
                                 </td>
                             </tr><tr>
                                 <td>
-                                    <button class='bnt' role="link" onclick="window.location = 'loginA.jsp'">Investigador</button>
+                                    <button class='bnt' role="link" onclick="window.location = 'loginU.jsp'">Usuario</button>
                                 </td>
                             </tr>
                         </table>

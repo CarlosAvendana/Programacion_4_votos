@@ -20,12 +20,12 @@ public class GestorUsuario implements Serializable{
             + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
-            = "SELECT cedula FROM Usuario "
+            = "SELECT cedula FROM usuario "
             + "WHERE cedula=? AND clave=? ";
 
     private static final String CMD_LISTAR
             = "SELECT cedula, apellido1 ,apellido2, nombre, clave ,activo "
-            + "FROM estudiante ORDER BY apellido1; ";
+            + "FROM usuario ORDER BY apellido1; ";
 
     private static final String CMD_ACTUALIZAR
             = "UPDATE bd_votaciones.usuario "

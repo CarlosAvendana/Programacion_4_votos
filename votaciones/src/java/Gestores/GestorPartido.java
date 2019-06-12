@@ -6,9 +6,13 @@ import Modelo.Credenciales;
 import Modelo.Partido;
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GestorPartido implements Serializable {
@@ -74,7 +78,25 @@ public class GestorPartido implements Serializable {
         return r;
     }
     
-    
+        public List<Partido> listarTodos() {
+        List<Partido> r = new ArrayList<>();
+
+        try (Connection cnx = DriverManager.getConnection(
+                Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                Statement stm = cnx.createStatement();
+                ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
+            while (rs.next()) {
+                String siglas = rs.getString("siglas");
+                String nombre = rs.getString("nombre");
+                String observaciones = rs.getString("observaciones");
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+
+        return r;
+    }
+
     
     
 }

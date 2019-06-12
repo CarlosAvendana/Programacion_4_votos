@@ -36,6 +36,6 @@
 
         </div>
      
-        <p>Votacion entramos</p>
+        
     </body>
 </html>

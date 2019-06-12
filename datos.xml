@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lista>
+    <usuario>
+        <cedula>116810263</cedula>
+        <nombre>Diego</nombre>
+        <apellido1>Monterrey</apellido1>
+        <apellido2>Benavides</apellido2>
+        <clave>116810263</clave>
+        <activo>0</activo>
+    </usuario>
+    <usuario>
+        <cedula>402370159</cedula>
+        <nombre>Carlos</nombre>
+        <apellido1>Obando</apellido1>
+        <apellido2>Avendaña</apellido2>
+        <clave>402370159</clave>
+        <activo>0</activo >
+    </usuario>
+    <usuario>
+        <cedula>504210953</cedula>
+        <nombre>Djenane</nombre>
+        <apellido1>Hernandez</apellido1>
+        <apellido2>Rodriguez</apellido2>
+        <clave>504210953</clave>
+        <activo>0</activo>
+    </usuario>
+</lista>

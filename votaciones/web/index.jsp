@@ -41,7 +41,7 @@
                                 </td>
                             </tr><tr>
                                 <td>
-                                    <button class='bnt' role="link" onclick="window.location = 'loginI.jsp'">Investigador</button>
+                                    <button class='bnt' role="link" onclick="window.location = 'loginA.jsp'">Investigador</button>
                                 </td>
                             </tr>
                         </table>

@@ -36,8 +36,8 @@
                                     <button class="bnt">Gestionar Dias Votacion</button>   
                                 </td>
                                 <td>
-                                    <form name='formOut' action='ServicioLogout'method='POST'>
-                                        <input class='btn' type='submit' value='LogOut' name='cerrar' >
+                                    <form name='formOut' action="ServicioLogout" method='POST'>
+                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
                                     </form>
                                 </td>
                             </tr>

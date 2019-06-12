@@ -1,9 +1,5 @@
 USE bd_votaciones;
 
-INSERT INTO `bd_votaciones`.`administrador` (`cedula`, `apellido1`, `apellido2`, `nombre`, `usuario`, `clave`) VALUES ('8', 'RODRIGUEZ', 'HERNANDEZ', 'DJENANE', 'DJ', '123');
-INSERT INTO `bd_votaciones`.`administrador` (`cedula`, `apellido1`, `apellido2`, `nombre`, `usuario`, `clave`) VALUES ('9', 'MONTERREY', 'BENAVIDES', 'DIEGO ', 'DG', '123');
-INSERT INTO `bd_votaciones`.`administrador` (`cedula`, `apellido1`, `apellido2`, `nombre`, `usuario`, `clave`) VALUES ('402370159', 'Obando', 'Avendana', 'Carlos', 'notcharlie', '123');
-INSERT INTO `bd_votaciones`.`administrador` (`cedula`, `apellido1`, `apellido2`, `nombre`, `usuario`, `clave`) VALUES ('1', 'Grande', 'Butera', 'Ariana', 'Ari', '123');
 
 INSERT INTO `bd_votaciones`.`partido` (`siglas`, `nombre`, `observaciones`) VALUES ('PAC', 'Partido Accion Ciudadana', 'Gano Carlitox Alvarado ');
 INSERT INTO `bd_votaciones`.`partido` (`siglas`, `nombre`, `observaciones`) VALUES ('PLN', 'Partido Liberacion Nacional', 'Oscar Arias presidente electo 2 veces');

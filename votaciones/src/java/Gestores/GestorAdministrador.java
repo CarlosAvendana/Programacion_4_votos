@@ -1,27 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
 import Modelo.Administrador;
-import cr.ac.database.managers.DBManager;
-
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ *
+ * @author PC
+ */
 public class GestorAdministrador implements Serializable {
 
     private static GestorAdministrador instancia = null;
     private final GestorBaseDeDatos bd;
-    private final DBManager db = null;
-    
-    private static final String BASE_DATOS = "bd_votaciones";
-    private static final String LOGIN = "root";
-    private static final String PASSWORD = "root";
-    
+
     private static final String CMD_RECUPERAR
             = "SELECT cedula,apellido1,apellido2,nombre,usuario,clave "
             + "FROM administrador WHERE cedula=? ";

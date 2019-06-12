@@ -8,9 +8,9 @@
 //  Diego Monterrey Benavides
 //  Carlos Obando Avendaña
 --%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Gestores.GAdmi2" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,7 +45,9 @@
                     </table>
                 </section>
                 <section>
-                    
+                    <table id="tabla3" class="tablaDatos">
+                        <%=GAdmi2.obtenerInstancia().obtenerDatosHTML(request.getSession(true).getAttribute("usuario"))%>
+                    </table>
                 </section>
             </div>
         </div>

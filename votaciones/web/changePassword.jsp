@@ -18,7 +18,7 @@
         <meta charset="UTF-8" />
         <link href="css/varios.css" rel="stylesheet" type="text/css"/>
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="iconG.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
     </head>
     <body>

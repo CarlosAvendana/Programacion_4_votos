@@ -15,7 +15,7 @@
     <head>
         <meta charset="UTF-8" />
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="iconG.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
         <title>Login</title>
     </head>
     <body>

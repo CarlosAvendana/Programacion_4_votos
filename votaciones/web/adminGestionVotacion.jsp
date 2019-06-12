@@ -44,7 +44,12 @@
                     </table>
                 </section>
                 <section>
-                    
+                    <form>
+                        <table>
+                            <thead><caption>Nueva votacion</caption></thead>
+                       
+                        </table>
+                    </form>
                 </section>
             </div>
         </div>

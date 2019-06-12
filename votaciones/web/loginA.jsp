@@ -15,7 +15,7 @@
     <head>
         <meta charset="UTF-8" />
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="iconG.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
         <title>Login</title>
     </head>
     <body>
@@ -35,17 +35,28 @@
                         Carlos Obando Avendaña
                     </p>
                 </section>
+                <p>
+                    <%
+                        HttpSession sesionActual;
+                        sesionActual = request.getSession(true);
+                        sesionActual.invalidate();
+                        sesionActual = request.getSession(true);
+                    %>
+                </p>
                 <section class ="loging">
-                    <form name="form" action="ServicioLoginI" method="POST">
+                    <form name="form" action="SLA" 
+                          method="POST">
                         <h1>Iniciar Sesión</h1>
                         <table width="65%" cellpadding="8">
                             <tr>
                                 <td>
-                                    <input type="text" autocomplete="off" size="30" id="usuario" name="usuario" placeholder="Nombre de Usuario"/>
+                                    <input type="text" autocomplete="off" size="30" id="usuario" 
+                                           name="usuario" placeholder="Nombre de Usuario"/>
                                 </td>
                             </tr><tr>
                                 <td>
-                                    <input type="password"  size="30" id="password" name="password"  placeholder="Clave"/>
+                                    <input type="password"  size="30" id="password" name="password"  
+                                           placeholder="Clave"/>
                                 </td>
                             </tr><tr>
                                 <td align="center" colspan="2">

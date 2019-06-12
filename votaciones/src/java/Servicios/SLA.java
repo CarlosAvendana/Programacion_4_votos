@@ -1,53 +1,47 @@
-
 package Servicios;
 
-import Gestores.GestorAdministrador;
-import Modelo.Administrador;
+import Gestores.GAdmi;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+public class SLA extends HttpServlet {
 
-public class ServicioLoginA extends HttpServlet {
-
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
+        
             
-             GestorAdministrador gI = GestorAdministrador.obtenerInstancia();
-
-            boolean administradorValido = false;
-
+            GAdmi gAdministradores = new GAdmi(getServletContext().getInitParameter("URL_servidor"));
+            boolean usuarioValido = false;
             String usuario = request.getParameter("usuario");
             String password = request.getParameter("password");
 
             if (usuario != null && password != null) {
-                administradorValido = gI.verificarAdministrador(usuario, password);
+                usuarioValido = gAdministradores.verificarUsuario(
+                        usuario, password);
             }
-            if (administradorValido) {
-                Administrador i = gI.recuperar(usuario);
+
+            if (usuarioValido) {
+
                 HttpSession sesion = request.getSession(true);
-                sesion.setAttribute("usuario", i);
+                sesion.setAttribute("usuario", usuario);
 
                 sesion.setMaxInactiveInterval(60 * 3);
-                Cookie ck = new Cookie("username", usuario);
-                response.addCookie(ck);
+
                 response.sendRedirect("adminGeneral.jsp");
+
             } else {
-                response.sendRedirect("loginError.jsp");
+
+                response.sendRedirect("loginError");
             }
-        }catch (InstantiationException
-                | ClassNotFoundException
-                | IllegalAccessException ex) {
-            System.err.printf("Error: %s", ex.getMessage());
-        }
+
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

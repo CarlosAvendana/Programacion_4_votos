@@ -6,10 +6,12 @@ import Modelo.Credenciales;
 import Modelo.Usuario;
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestorUsuario implements Serializable{
     private static GestorUsuario instancia = null;
@@ -49,6 +51,7 @@ public class GestorUsuario implements Serializable{
                 GestorBaseDeDatos.SERVIDOR_POR_DEFECTO);
     }
 
+    
     public static GestorUsuario obtenerInstancia() throws
             InstantiationException,
             ClassNotFoundException,
@@ -131,4 +134,41 @@ public class GestorUsuario implements Serializable{
         
     }    
    
+    
+    
+    
+    public List<Usuario> obtenerLista() throws SQLException {
+        List<Usuario> r = new ArrayList<>();
+
+        try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
+
+            String id, apellido1, apellido2, nombre, clave2;
+            int activo;
+            while (rs.next()) {
+                id = rs.getString("cedula");
+                apellido1 = rs.getString("apellido1");
+                apellido2 = rs.getString("apellido2");
+                nombre = rs.getString("nombre");
+                clave2 = rs.getString("clave");
+                activo = rs.getInt("activo");
+                r.add(new Usuario(id, apellido1, apellido2, nombre, 
+                        clave2, activo));
+            }
+        }
+        return r;
+    }
+
+    public String obtenerDatosHTML(Object objeto) throws SQLException {
+        String id = (String) objeto;
+        StringBuilder r = new StringBuilder();
+        List<Usuario> registros = obtenerLista();
+        registros.forEach((registro) -> {
+            if (registro.getCedula() == null ? id == null : registro.getCedula().equals(id)) {
+                r.append(registro.toStringHTML());
+            }
+        });
+        return r.toString();
+    }
+    
 }

@@ -61,7 +61,7 @@ public class ServicioLoginU extends HttpServlet {
                     
 
                     response.addCookie(ck);
-                    response.sendRedirect("votacion.jsp");
+                    response.sendRedirect("datosPersonales.jsp");
                 }
             } else {
                 response.sendRedirect("loginError.jsp");

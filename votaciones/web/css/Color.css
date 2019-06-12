@@ -1,3 +1,4 @@
+
 @font-face{
     font-family: fuente_1;
     font-style: normal;
@@ -212,3 +213,118 @@ div{
     border: 1px solid black;
     padding: 4px 16px 4px 16px;
 }
+
+.container .loging{
+    background: white;
+    height: 380px;
+    top:-15px;
+    box-shadow: -20px 0 15px rgba(0,0,0,0.2);
+    padding: 30px;
+}
+.container .loging h1{
+    color:#049BA9;
+    font-size: 20px;
+}
+#user{
+    font-size: 12px;    
+}
+
+.container .loging input{
+    display: block;
+    width: 150%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    font-size: 15px;
+
+}
+.container .loging button{
+    display: block;
+    width: 150%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    font-size: 15px;
+
+}
+.container .loging input:hover,
+.container .loging input:valid{
+    border: 2px solid #00725C;
+}
+
+.container .loging button[type= "submit"]{
+    color: #fff;
+    background-color: #049BA9;
+    font-size:  16px;
+    transition: .5s;
+}
+.container .loging button[type= "submit"]:hover{
+    background: #00725C;
+    border: 2px solid #FF9713;
+}
+
+
+.container .loging a{
+    text-decoration: none;
+    color: #633B00;    
+}
+
+.especial{
+    color: green;
+}
+
+.especial1{
+    color: blue;
+}
+
+.head0{
+    background-color: lightgray;
+}
+
+.foot0{
+    margin: auto;
+    width: 50%;
+}
+
+.bnt{
+    color: #FF9713;
+    background: transparent;
+    border: 2px solid #FF9713;
+    border-radius: 6px;
+}
+
+.bnt:hover{
+    background-color: #FF9713;
+    color: white;
+
+}
+
+.bntDisable{
+    color: white;
+    border: 2px solid lightgray;
+    border-radius: 6px;
+
+}
+
+.bntDisable:hover{
+    background-color: lightgray;
+    color: white;
+
+}
+
+#botones{
+    padding-top: 3%;
+
+}
+
+#tablaFormulario #cuerpoForm{
+    border: 5px solid black;
+    padding: 10%;
+}
+

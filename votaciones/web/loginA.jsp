@@ -33,14 +33,7 @@
                         Carlos Obando Avendaña
                     </p>
                 </section>
-                <p>
-                    <%
-                        HttpSession sesionActual;
-                        sesionActual = request.getSession(true);
-                        sesionActual.invalidate();
-                        sesionActual = request.getSession(true);
-                    %>
-                </p>
+                
                 <section class ="loging">
                     <form name="form" action="SLA" 
                           method="POST">

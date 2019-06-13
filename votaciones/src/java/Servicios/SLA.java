@@ -35,10 +35,10 @@ public class SLA extends HttpServlet {
 
             response.sendRedirect("adminGeneral.jsp");
 
-        } else {
 
-            response.sendRedirect("loginError");
-        }
+                response.sendRedirect("loginError.jsp");
+            }
+
 
     }
 

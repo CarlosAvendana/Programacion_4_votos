@@ -25,6 +25,10 @@
         <servlet-class>Servicios.ServicioImagenPartido</servlet-class>
     </servlet>
     <servlet>
+
+        <servlet-name>ServicioCreaciondePartido</servlet-name>
+        <servlet-class>Servicios.ServicioCreaciondePartido</servlet-class>
+
         <servlet-name>ServicioListarUsuarios</servlet-name>
         <servlet-class>Servicios.ServicioListarUsuarios</servlet-class>
     </servlet>
@@ -65,6 +69,10 @@
         <url-pattern>/ServicioImagenPartido</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
+        <servlet-name>ServicioCreaciondePartido</servlet-name>
+        <url-pattern>/ServicioCreaciondePartido</url-pattern>
+
         <servlet-name>ServicioListarUsuarios</servlet-name>
         <url-pattern>/ServicioListarUsuarios</url-pattern>
     </servlet-mapping>
@@ -79,6 +87,7 @@
     <servlet-mapping>
         <servlet-name>ServicioListarUsuario</servlet-name>
         <url-pattern>/ServicioListarUsuario</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

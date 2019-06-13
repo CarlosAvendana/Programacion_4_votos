@@ -53,21 +53,27 @@
                     </table>
                 </section>
                 <section id="crearP">
-                    <form id="formP">
-                        <table id="tablaFormulario">
+                    <form id="formP"action="ServicioCreaciondePartido" method="POST" enctype="multipart/form-data">
+                        <table id="tablaFormulario" >
                             <caption style="font-size: 20pt"><strong>Creación del Partido</strong></caption>
                             <tbody id="cuerpoForm">
+                                <tr class="r" style="padding-bottom: 10%;">
+                                    <td class="c1"><strong>Bandera</strong>:&nbsp;</td>
+                                    <td class="c2">
+                                        <input type="file" id="archivo" name="archivo" />
+                                    </td>
+                                </tr>
                                 <tr class="r" style="border: 3px solid black; border-collapse: collapse">
                                     <td class="c1"><strong>Nombre del Partido</strong>:&nbsp;</td>
                                     <td class="c2">
-                                        <input type="text" id="campo1" name="campo1" 
+                                        <input type="text" id="campo1" name="nombre" 
                                                size="30" autocomplete="off"/>
                                     </td>
                                 </tr>
                                 <tr class="r" style="border: 3px solid black;">
                                     <td class="c1"><strong>Siglas del Partido</strong>:&nbsp;</td>
                                     <td class="c2">
-                                        <input type="text" id="campo1" name="campo1" 
+                                        <input type="text" id="campo1" name="siglas" 
                                                size="10" autocomplete="off"/>
                                     </td>
                                 </tr>
@@ -77,10 +83,9 @@
                                         <textarea  name="observaciones"  style="resize: none" rows="5" cols="40"></textarea>
                                     </td>
                                 </tr>
-                                <tr class="r" style="padding-bottom: 10%;">
-                                    <td class="c1"><strong>Bandera</strong>:&nbsp;</td>
-                                    <td class="c2">
-                                        <input type="file" id="archivo" name="archivo" />
+                                <tr>                               
+                                    <td td alinf="center" >
+                                        <button type="submit">Crear</button>
                                     </td>
                                 </tr>
                             </tbody>

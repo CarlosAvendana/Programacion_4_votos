@@ -38,7 +38,7 @@ public class SLA extends HttpServlet {
 
             } else {
 
-                response.sendRedirect("loginError");
+                response.sendRedirect("loginError.jsp");
             }
 
         

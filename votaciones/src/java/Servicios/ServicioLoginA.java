@@ -21,7 +21,7 @@ public class ServicioLoginA extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-             GestorAdministrador gI = GestorAdministrador.obtenerInstancia();
+            GestorAdministrador gI = GestorAdministrador.obtenerInstancia();
 
             boolean administradorValido = false;
 

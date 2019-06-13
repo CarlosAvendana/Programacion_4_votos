@@ -43,9 +43,9 @@
                                         <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
                                     </form>  
                                 </td>
-                                <td>
+                                <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
-                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
+                                        <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
                             </tr>

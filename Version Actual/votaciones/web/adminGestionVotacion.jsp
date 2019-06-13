@@ -42,20 +42,83 @@
                                         <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
                                     </form>  
                                 </td>
-                                <td>
+                                <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
-                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
+                                        <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
                             </tr>
                         </thead>
                     </table>
                 </section>
-                <section>
-                    <form>
-                        <table>
-                            <thead><caption>Nueva votacion</caption></thead>
+                <section id="secGestionVotacion">
+                    <form id="formNuevaVotacion">
+                        <table  class="tablaDatos">
+                            <caption style='color: white; background-color: lightseagreen;'>
+                                <strong>
+                                    Nueva votacion
+                                </strong>
+                            </caption> 
+                            <tbody id="cuerpoForm">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Fecha de Inicio
+                                        </strong>
 
+                                    </td>
+                                    <td>
+                                        <input id='FechaInicio' type='date' />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Fecha de apertura
+                                        </strong>
+                                    </td>
+                                    <td>         
+                                        <input id='FechaApertura' type='date' />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Fecha Final
+                                        </strong>
+                                    </td>
+                                    <td>         
+                                        <input id='FechaFinal' type='date' />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Fecha de Cierre
+                                        </strong>
+                                    </td>
+                                    <td>         
+                                        <input id='FechaCierre' type='date' />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Activo
+                                        </strong>
+                                    </td>
+                                    <td>          
+                                        <input id='activo' type='checkbox' />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"  align='center'>
+                                        <input class='bnt' type="submit" value='Crear' name='Crear'/>
+                                </tr>
+                            </tbody>
                         </table>
                     </form>
                 </section>

@@ -42,9 +42,9 @@
                                         <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
                                     </form>  
                                 </td>
-                                <td>
+                                <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
-                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
+                                        <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
                             </tr>
@@ -106,7 +106,7 @@
                 </section>
                 <section id="secTU">                    
                     <table id="tablaUsuarios" class="tablaDatos">
-                        <thead>
+                        <thead>                       
                         <caption style='color: white; background-color: lightseagreen;'>
                             Tabla de usuarios
                         </caption>
@@ -122,6 +122,15 @@
                 </section>
                 <section id="secTP">                    
                     <table id="tablaPartidos" class="tablaDatos">
+                        <thead>                       
+                        <caption style='color: white; background-color: lightseagreen;'>
+                            Tabla Partidos
+                        </caption>
+                        <tr>
+                            <th>Siglas</th>
+                            <th>Nombre</th>
+                            <th>Comentarios</th>
+                        </tr>
                     </table>              
                 </section>
             </div>

@@ -1,13 +1,10 @@
-
 package Modelo;
 
 import java.io.Serializable;
 import java.sql.Date;
 
+public class Votacion implements Serializable {
 
-
-public class Votacion implements Serializable{
-    
     private int id;
     private Date fechaInicio;
     private Date fechaApertura;
@@ -25,7 +22,7 @@ public class Votacion implements Serializable{
     }
 
     public Votacion() {
-        this(0,null,null,null,null,0);
+        this(0, null, null, null, null, 0);
     }
 
     @Override
@@ -37,17 +34,14 @@ public class Votacion implements Serializable{
         return id;
     }
 
-    
     public void setId(int id) {
         this.id = id;
     }
 
-   
     public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
@@ -56,7 +50,6 @@ public class Votacion implements Serializable{
         return fechaApertura;
     }
 
-    
     public void setFechaApertura(Date fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
@@ -65,31 +58,24 @@ public class Votacion implements Serializable{
         return fechaCierre;
     }
 
-    
     public void setFechaCierre(Date fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 
-    
     public Date getFechaFinal() {
         return fechaFinal;
     }
 
-    
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 
-    
     public int getEstado() {
         return estado;
     }
 
-    
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
-    
-    
+
 }

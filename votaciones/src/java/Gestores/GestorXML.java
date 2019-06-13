@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
@@ -22,24 +17,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/**
- *
- * @author demil
- */
-public class GestorXML implements Serializable{
-    
+public class GestorXML implements Serializable {
+
     private static GestorXML instancia = null;
     private final GestorBaseDeDatos bd;
-    
+
     private static final String CMD_AGREGAR = "INSERT INTO usuario "
             + "(cedula, apellido1, apellido2, nombre, clave,activo) "
             + "VALUES(?, ?, ?, ?, ?, ?); ";
-    
-    
-    
+
     public boolean agregarAlaBD(Usuario nuevoUsuario) {
         boolean exito = false;
-        try {  
+        try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
                 PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
                 stm.clearParameters();
@@ -50,14 +39,14 @@ public class GestorXML implements Serializable{
                 stm.setString(5, nuevoUsuario.getClave());
                 stm.setInt(6, nuevoUsuario.getActivo());
                 int r = stm.executeUpdate();
-                exito = (r==1);
+                exito = (r == 1);
             }
         } catch (SQLException ex) {
             System.err.printf("Hubo un error al agregar: '%s'%n", ex.getMessage());
         }
-         return exito;
+        return exito;
     }
-    
+
     private List<Usuario> cargarDatos() {
         List<Usuario> lista = new ArrayList<>();
         try {
@@ -80,7 +69,7 @@ public class GestorXML implements Serializable{
                             eElement.getElementsByTagName("apellido1").item(0).getTextContent(),
                             eElement.getElementsByTagName("apellido2").item(0).getTextContent(),
                             eElement.getElementsByTagName("clave").item(0).getTextContent(),
-                            Integer.parseInt(eElement.getElementsByTagName("activo").item(0).getTextContent()) 
+                            Integer.parseInt(eElement.getElementsByTagName("activo").item(0).getTextContent())
                     );
                     lista.add(user);
                 }
@@ -91,14 +80,15 @@ public class GestorXML implements Serializable{
         }
         return null;
     }
-    
-    public void xmlToBD() throws InstantiationException, ClassNotFoundException, IllegalAccessException{
+
+    public void xmlToBD() throws InstantiationException, ClassNotFoundException, IllegalAccessException {
         List<Usuario> list = cargarDatos();
-        GestorXML d=GestorXML.obtenerInstancia();
-        for(int i = 0; i < list.size(); i++){
+        GestorXML d = GestorXML.obtenerInstancia();
+        for (int i = 0; i < list.size(); i++) {
             d.agregarAlaBD(list.get(i));
-        }        
+        }
     }
+
     private GestorXML() throws
             InstantiationException,
             ClassNotFoundException,
@@ -117,5 +107,5 @@ public class GestorXML implements Serializable{
         }
         return instancia;
     }
-    
+
 }

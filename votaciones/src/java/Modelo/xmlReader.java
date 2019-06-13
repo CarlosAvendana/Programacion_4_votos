@@ -1,6 +1,4 @@
-
 package Modelo;
-
 
 import java.io.File;
 import java.io.Serializable;
@@ -13,8 +11,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-
-public class xmlReader implements Serializable{
+public class xmlReader implements Serializable {
 
     private List<Usuario> cargarDatos() {
         List<Usuario> lista = new ArrayList<>();
@@ -38,7 +35,7 @@ public class xmlReader implements Serializable{
                             eElement.getElementsByTagName("apellido1").item(0).getTextContent(),
                             eElement.getElementsByTagName("apellido2").item(0).getTextContent(),
                             eElement.getElementsByTagName("clave").item(0).getTextContent(),
-                            Integer.parseInt(eElement.getElementsByTagName("activo").item(0).getTextContent()) 
+                            Integer.parseInt(eElement.getElementsByTagName("activo").item(0).getTextContent())
                     );
                     lista.add(user);
                 }
@@ -49,7 +46,7 @@ public class xmlReader implements Serializable{
         }
         return null;
     }
-    
+
 //    public void guardarBD(){
 //        List<Usuario> list = cargarDatos();
 //        GestorBD ges = GestorBD.obtenerInstancia();

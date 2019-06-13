@@ -35,10 +35,10 @@ public class ServicioLoginU extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
-     
+
         try (PrintWriter out = response.getWriter()) {
-            
-             GestorUsuario gU = GestorUsuario.obtenerInstancia();
+
+            GestorUsuario gU = GestorUsuario.obtenerInstancia();
 
             boolean usuarioValido = false;
 
@@ -58,7 +58,6 @@ public class ServicioLoginU extends HttpServlet {
 
                     sesion.setMaxInactiveInterval(60 * 3);
                     Cookie ck = new Cookie("username", usuario);
-                    
 
                     response.addCookie(ck);
                     response.sendRedirect("votacion.jsp");
@@ -66,8 +65,8 @@ public class ServicioLoginU extends HttpServlet {
             } else {
                 response.sendRedirect("loginError.jsp");
             }
-            
-        }catch (InstantiationException
+
+        } catch (InstantiationException
                 | ClassNotFoundException
                 | IllegalAccessException ex) {
             System.err.printf("Error: %s", ex.getMessage());

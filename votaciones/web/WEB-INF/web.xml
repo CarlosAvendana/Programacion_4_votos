@@ -25,8 +25,29 @@
         <servlet-class>Servicios.ServicioImagenPartido</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>ServicioVotacionPartido</servlet-name>
         <servlet-class>Servicios.ServicioVotacionPartido</servlet-class>
+=======
+
+        <servlet-name>ServicioCreaciondePartido</servlet-name>
+        <servlet-class>Servicios.ServicioCreaciondePartido</servlet-class>
+
+        <servlet-name>ServicioListarUsuarios</servlet-name>
+        <servlet-class>Servicios.ServicioListarUsuarios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarPartidos</servlet-name>
+        <servlet-class>Servicios.ServicioListarPartidos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioAgregarPostulante</servlet-name>
+        <servlet-class>Servicios.ServicioAgregarPostulante</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarUsuario</servlet-name>
+        <servlet-class>Servicios.ServicioListarUsuario</servlet-class>
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
@@ -53,8 +74,30 @@
         <url-pattern>/ServicioImagenPartido</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>ServicioVotacionPartido</servlet-name>
         <url-pattern>/ServicioVotacionPartido</url-pattern>
+=======
+
+        <servlet-name>ServicioCreaciondePartido</servlet-name>
+        <url-pattern>/ServicioCreaciondePartido</url-pattern>
+
+        <servlet-name>ServicioListarUsuarios</servlet-name>
+        <url-pattern>/ServicioListarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarPartidos</servlet-name>
+        <url-pattern>/ServicioListarPartidos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioAgregarPostulante</servlet-name>
+        <url-pattern>/ServicioAgregarPostulante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarUsuario</servlet-name>
+        <url-pattern>/ServicioListarUsuario</url-pattern>
+
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,45 +1,47 @@
 package Servicios;
 
-import Gestores.GAdmi;
+import Gestores.GestorPartido;
+import Modelo.Partido;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class SLA extends HttpServlet {
+public class ServicioListarPartidos extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
-
-        GAdmi gAdministradores = new GAdmi(getServletContext().getInitParameter("URL_servidor"));
-        boolean usuarioValido = false;
-        String usuario = request.getParameter("usuario");
-        String password = request.getParameter("password");
-
-        if (usuario != null && password != null) {
-            usuarioValido = gAdministradores.verificarUsuario(
-                    usuario, password);
-        }
-
-        if (usuarioValido) {
-
-            HttpSession sesion = request.getSession(true);
-            sesion.setAttribute("usuario", usuario);
-
-            sesion.setMaxInactiveInterval(60 * 3);
-
-            response.sendRedirect("adminGeneral.jsp");
-
-
-                response.sendRedirect("loginError.jsp");
+        response.setContentType("application/json;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            List<Partido> _partidos = null;
+            try {
+                _partidos = GestorPartido.obtenerInstancia().listarTodos();
+            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
+                Logger.getLogger(ServicioListarPartidos.class.getName()).log(Level.SEVERE, null, ex);
             }
+            System.out.println(_partidos);
 
+            JSONObject _partidosFinal = new JSONObject();
+            JSONArray arrayPartidos = new JSONArray();
 
+            for (Partido p : _partidos) {
+                JSONObject objPartido = new JSONObject();
+                objPartido.put("siglas", p.getSiglas());
+                objPartido.put("nombre", p.getNombre());
+                objPartido.put("observaciones", p.getObservaciones());
+
+                arrayPartidos.put(objPartido);
+            }
+            _partidosFinal.put("partidos", arrayPartidos);
+            out.print(_partidosFinal);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

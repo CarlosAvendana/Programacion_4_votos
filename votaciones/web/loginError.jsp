@@ -17,7 +17,7 @@
         <link rel="shortcut icon" href="iconG.ico" type="image/x-icon" />
         <title>Error de ingreso</title>
         <meta charset="UTF-8" />
-       <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
         <script src="js/scripts.js" type="text/javascript"></script>
     </head>
     <body>

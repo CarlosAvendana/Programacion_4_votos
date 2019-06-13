@@ -9,17 +9,36 @@
 package Modelo;
 
 import java.io.Serializable;
+import javax.websocket.Decoder.Binary;
+
+public class Partido implements Serializable {
 
 
 public class Partido implements Serializable  {
 
-    public Partido(String nombre, String siglas, String Observaciones,String bandera) {
+private String siglas;
+    private String nombre;
+
+    private String Observaciones;
+    private Binary bandera;
+
+    private String observaciones;
+    private String bandera;
+
+    public Partido(String nombre, String siglas, String Observaciones,Binary bandera) {
+
         this.nombre = nombre;
         this.siglas = siglas;
-        this.Observaciones = Observaciones;
-        this.bandera=bandera;
+        this.observaciones = Observaciones;
+        this.bandera = bandera;
     }
-    
+
+    public Partido(String siglas, String nombre, String observaciones) {
+        this.siglas = siglas;
+        this.nombre = nombre;
+        this.observaciones = observaciones;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -37,24 +56,22 @@ public class Partido implements Serializable  {
     }
 
     public String getObservaciones() {
-        return Observaciones;
+        return observaciones;
     }
 
-    public void setObservaciones(String Observaciones) {
-        this.Observaciones = Observaciones;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
-    public String getBandera() {
+    public Binary getBandera() {
         return bandera;
     }
 
-    public void setBandera(String bandera) {
+    public void setBandera(Binary bandera) {
         this.bandera = bandera;
     }
+
     
-    private String siglas;
-    private String nombre;
-    private String Observaciones;
-    private String bandera;
-    
+
+
 }

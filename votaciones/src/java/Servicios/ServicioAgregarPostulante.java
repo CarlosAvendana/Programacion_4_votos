@@ -1,45 +1,20 @@
 package Servicios;
 
-import Gestores.GAdmi;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class SLA extends HttpServlet {
+public class ServicioAgregarPostulante extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
+        try (PrintWriter out = response.getWriter()) {
 
-        GAdmi gAdministradores = new GAdmi(getServletContext().getInitParameter("URL_servidor"));
-        boolean usuarioValido = false;
-        String usuario = request.getParameter("usuario");
-        String password = request.getParameter("password");
-
-        if (usuario != null && password != null) {
-            usuarioValido = gAdministradores.verificarUsuario(
-                    usuario, password);
         }
-
-        if (usuarioValido) {
-
-            HttpSession sesion = request.getSession(true);
-            sesion.setAttribute("usuario", usuario);
-
-            sesion.setMaxInactiveInterval(60 * 3);
-
-            response.sendRedirect("adminGeneral.jsp");
-
-
-                response.sendRedirect("loginError.jsp");
-            }
-
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

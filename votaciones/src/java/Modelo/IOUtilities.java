@@ -9,9 +9,9 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
 public class IOUtilities {
-    
+
     public static void copy(InputStream in, OutputStream out, int bufferSize) throws IOException {
-        
+
         try (ReadableByteChannel source = Channels.newChannel(in);
                 WritableByteChannel target = Channels.newChannel(out)) {
             ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
@@ -29,10 +29,10 @@ public class IOUtilities {
             }
         }
     }
-    
+
     public static void copy(InputStream in, OutputStream out) throws IOException {
         copy(in, out, DEFAULT_BUFFER_SIZE);
     }
-    
+
     public static final int DEFAULT_BUFFER_SIZE = 16 * 1024; // 16 Kb
 }

@@ -11,7 +11,6 @@ package GestorSQL;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
 public abstract class GestorBaseDeDatos {
 
     protected GestorBaseDeDatos(String descripcion, String URL_servidor) {

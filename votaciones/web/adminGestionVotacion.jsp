@@ -26,17 +26,25 @@
                         <thead>
                             <tr>
                                 <td>
-                                    <button class="bnt">Generar Reportes</button>   
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
                                 </td>
                                 <td>
-                                    <button class="bnt">Cargar Usuario</button>   
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminAsignaUsuarioAPartido.jsp'">Crear Postulante</button>   
                                 </td>
                                 <td>
-                                    <button class="bnt">Gestionar Dias Votacion</button>   
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminReporte.jsp'">Reportes</button>   
                                 </td>
                                 <td>
-                                    <form name='formOut' action='ServicioLogout'method='POST'>
-                                        <input class='btn' type='submit' value='LogOut' name='cerrar' >
+                                    <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
+                                </td>
+                                <td>
+                                    <form name='formxml' action="servicioXML" method='POST'>
+                                        <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
+                                    </form>  
+                                </td>
+                                <td>
+                                    <form name='formOut' action="ServicioLogout" method='POST'>
+                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
                                     </form>
                                 </td>
                             </tr>
@@ -47,7 +55,7 @@
                     <form>
                         <table>
                             <thead><caption>Nueva votacion</caption></thead>
-                       
+
                         </table>
                     </form>
                 </section>

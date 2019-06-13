@@ -13,8 +13,8 @@ import org.json.JSONObject;
  *
  * @author demil
  */
-public class VotacionPartido implements Serializable{
-    
+public class VotacionPartido implements Serializable {
+
     private Votacion votId;
     private Partido partSiglas;
     private Usuario cedCandidato;
@@ -30,7 +30,7 @@ public class VotacionPartido implements Serializable{
     }
 
     public VotacionPartido() {
-        this(null,null,null,null,0);
+        this(null, null, null, null, 0);
     }
 
 //    @Override
@@ -42,46 +42,55 @@ public class VotacionPartido implements Serializable{
         return votId;
     }
 
+<<<<<<< HEAD
       @XmlElement
+=======
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
     public void setVotId(Votacion votId) {
         this.votId = votId;
     }
 
-    
     public Partido getPartSiglas() {
         return partSiglas;
     }
 
+<<<<<<< HEAD
       @XmlElement
+=======
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
     public void setPartSiglas(Partido partSiglas) {
         this.partSiglas = partSiglas;
     }
 
-    
     public Usuario getCedCandidato() {
         return cedCandidato;
     }
 
+<<<<<<< HEAD
       @XmlElement
+=======
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
     public void setCedCandidato(Usuario cedCandidato) {
         this.cedCandidato = cedCandidato;
     }
 
-    
     public String getFotoCandidato() {
         return fotoCandidato;
     }
 
+<<<<<<< HEAD
       @XmlElement
+=======
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
     public void setFotoCandidato(String fotoCandidato) {
         this.fotoCandidato = fotoCandidato;
     }
 
-    
     public int getVotosObtenidos() {
         return votosObtenidos;
     }
 
+<<<<<<< HEAD
       @XmlElement
     public void setVotosObtenidos(int votosObtenidos) {
         this.votosObtenidos = votosObtenidos;
@@ -103,4 +112,10 @@ public class VotacionPartido implements Serializable{
     }
     
     
+=======
+    public void setVotosObtenidos(int votosObtenidos) {
+        this.votosObtenidos = votosObtenidos;
+    }
+
+>>>>>>> 45e02dddf225f92d95fb9a6a3fce98274f23ed51
 }

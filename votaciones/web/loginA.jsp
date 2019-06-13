@@ -20,12 +20,10 @@
     </head>
     <body>
         <div id="wrapper">
-             <a href=index.jsp>
-                 <img id="atras" src="css/imagenes/atras.png"> 
-             </a>
+           
             <section class ="container">
                 <section class="comentario"> 
-                   <h1> Bienvenido al Sistema de votacion</h1>
+                    <h1> Bienvenido al Sistema de votacion</h1>
                     <p>Sistema en el cual usted va a poder hacer votaciones si es un usuario del sistema y realizar reporte si es un investigador</p>
                     <p>EIF209  Programación 4  Proyecto #2</p>
                     <p>1er ciclo 2019</p>
@@ -35,14 +33,7 @@
                         Carlos Obando Avendaña
                     </p>
                 </section>
-                <p>
-                    <%
-                        HttpSession sesionActual;
-                        sesionActual = request.getSession(true);
-                        sesionActual.invalidate();
-                        sesionActual = request.getSession(true);
-                    %>
-                </p>
+                
                 <section class ="loging">
                     <form name="form" action="SLA" 
                           method="POST">

@@ -1,4 +1,3 @@
-
 package Gestores;
 
 import Modelo.Administrador;
@@ -10,9 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GAdmi2 {
-    
+
     private static GAdmi2 instancia = null;
     private DBManager db = null;
     private static final String BASE_DATOS = "bd_votaciones";
@@ -20,7 +18,7 @@ public class GAdmi2 {
     private static final String PASSWORD = "root";
 
     private static final String CMD_LISTAR
-             = "SELECT cedula,apellido1,apellido2,nombre,usuario FROM administrador;";
+            = "SELECT cedula,apellido1,apellido2,nombre,usuario FROM administrador;";
 
     private GAdmi2() throws InstantiationException, ClassNotFoundException, IllegalAccessException {
         db = DBManager.getDBManager(DBManager.DB_MGR.MYSQL_SERVER);
@@ -39,8 +37,7 @@ public class GAdmi2 {
 
         try (Connection cnx = db.getConnection(BASE_DATOS, LOGIN, PASSWORD);
                 Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
- String cedula, nombre, apellido1, apellido2, usuario;
-            
+            String cedula, nombre, apellido1, apellido2, usuario;
 
             while (rs.next()) {
                 cedula = rs.getString("cedula");
@@ -59,11 +56,11 @@ public class GAdmi2 {
         StringBuilder r = new StringBuilder();
         List<Administrador> registros = obtenerLista();
         registros.forEach((registro) -> {
-            if (registro.getUsuario()== null ? id == null : registro.getUsuario().equals(id)) {
+            if (registro.getUsuario() == null ? id == null : registro.getUsuario().equals(id)) {
                 r.append(registro.toStringHTML());
             }
         });
         return r.toString();
     }
-    
+
 }

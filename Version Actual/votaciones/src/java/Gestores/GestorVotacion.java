@@ -55,13 +55,13 @@ public class GestorVotacion implements Serializable {
         return instancia;
     }
 
-    public Votacion recuperar(String codigo) {
+    public Votacion recuperar(int codigo) {
         Votacion r = null;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR)) {
                 stm.clearParameters();
-                stm.setString(1, codigo);
+                stm.setInt(1, codigo);
                 try (ResultSet rs = stm.executeQuery()) {
                     if (rs.next()) {
                         r = new Votacion(

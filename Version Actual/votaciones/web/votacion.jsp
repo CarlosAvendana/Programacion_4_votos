@@ -19,7 +19,7 @@
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
         <title>Votacion</title>
     </head>
-    <body>
+    <body onload="init2()">
         <div id="wrapper">
             <section class="datos">
                 <h1>Datos Personales</h1>

@@ -34,6 +34,14 @@ public class Usuario  implements Serializable {
     public Usuario() {
         this(null, null, null, null, null, 0);
     }
+
+    public Usuario(String cedula, String apellido1, String apellido2, String nombre) {
+        this.cedula= cedula;
+        this.nombre = nombre;
+        this.apellido1=apellido1;
+        this.apellido2=apellido2;
+       
+    }
    
     public int getActivo() {
         return activo;
@@ -91,5 +99,8 @@ public class Usuario  implements Serializable {
     
     public boolean idIgualContrasenna(){ 
         return (getClave() == null ?cedula  == null : getClave().equals(cedula));
-    }         
+    }
+    
+    
+    
 }

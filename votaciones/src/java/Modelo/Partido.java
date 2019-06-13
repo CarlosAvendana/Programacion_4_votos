@@ -16,8 +16,14 @@ public class Partido implements Serializable  {
     public Partido(String nombre, String siglas, String Observaciones,String bandera) {
         this.nombre = nombre;
         this.siglas = siglas;
-        this.Observaciones = Observaciones;
+        this.observaciones = Observaciones;
         this.bandera=bandera;
+    }
+
+    public Partido(String siglas, String nombre, String observaciones) {
+        this.siglas = siglas;
+        this.nombre = nombre;
+        this.observaciones = observaciones;
     }
     
     public String getNombre() {
@@ -37,11 +43,11 @@ public class Partido implements Serializable  {
     }
 
     public String getObservaciones() {
-        return Observaciones;
+        return observaciones;
     }
 
-    public void setObservaciones(String Observaciones) {
-        this.Observaciones = Observaciones;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public String getBandera() {
@@ -54,7 +60,7 @@ public class Partido implements Serializable  {
     
     private String siglas;
     private String nombre;
-    private String Observaciones;
+    private String observaciones;
     private String bandera;
     
 }

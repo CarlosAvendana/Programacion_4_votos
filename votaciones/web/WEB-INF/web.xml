@@ -9,10 +9,10 @@
         <servlet-class>Servicios.ServicioLoginU</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>SLA</servlet-name>
         <servlet-class>Servicios.SLA</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>servicioXML</servlet-name>
         <servlet-class>Servicios.servicioXML</servlet-class>
     </servlet>
@@ -23,7 +23,22 @@
     <servlet>
         <servlet-name>ServicioImagenPartido</servlet-name>
         <servlet-class>Servicios.ServicioImagenPartido</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarUsuarios</servlet-name>
+        <servlet-class>Servicios.ServicioListarUsuarios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarPartidos</servlet-name>
+        <servlet-class>Servicios.ServicioListarPartidos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioAgregarPostulante</servlet-name>
+        <servlet-class>Servicios.ServicioAgregarPostulante</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarUsuario</servlet-name>
+        <servlet-class>Servicios.ServicioListarUsuario</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
@@ -34,10 +49,10 @@
         <url-pattern>/ServicioLoginU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>SLA</servlet-name>
         <url-pattern>/SLA</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>servicioXML</servlet-name>
         <url-pattern>/servicioXML</url-pattern>
     </servlet-mapping>
@@ -48,7 +63,22 @@
     <servlet-mapping>
         <servlet-name>ServicioImagenPartido</servlet-name>
         <url-pattern>/ServicioImagenPartido</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarUsuarios</servlet-name>
+        <url-pattern>/ServicioListarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarPartidos</servlet-name>
+        <url-pattern>/ServicioListarPartidos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioAgregarPostulante</servlet-name>
+        <url-pattern>/ServicioAgregarPostulante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarUsuario</servlet-name>
+        <url-pattern>/ServicioListarUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

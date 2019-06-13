@@ -7,9 +7,13 @@ import Modelo.Usuario;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestorUsuario implements Serializable{
     private static GestorUsuario instancia = null;
@@ -26,6 +30,9 @@ public class GestorUsuario implements Serializable{
     private static final String CMD_LISTAR
             = "SELECT cedula, apellido1 ,apellido2, nombre, clave ,activo "
             + "FROM usuario ORDER BY apellido1; ";
+    
+private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, nombre "
+        + "FROM usuario ORDER BY apellido1; ";
 
     private static final String CMD_ACTUALIZAR
             = "UPDATE bd_votaciones.usuario "
@@ -58,6 +65,7 @@ public class GestorUsuario implements Serializable{
         }
         return instancia;
     }
+
 
     public Usuario recuperar(String codigo) {
         Usuario r = null;
@@ -103,8 +111,7 @@ public class GestorUsuario implements Serializable{
         }
         return encontrado;
     }
-    
-    
+        
     public boolean actualizar(Usuario u){
          boolean exito = false;
         try {
@@ -131,4 +138,41 @@ public class GestorUsuario implements Serializable{
         
     }    
    
+    public List<Usuario> listarTodos() {
+        List<Usuario> r = new ArrayList<>();
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    Statement stm = cnx.createStatement();
+                    ResultSet rs = stm.executeQuery(CMD_LISTAR2)) {
+                while (rs.next()) {
+                    r.add(new Usuario(
+                            rs.getString("cedula"),
+                            rs.getString("apellido1"),
+                            rs.getString("apellido2"),
+                            rs.getString("nombre")
+                    ));
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return r;
+    }
+    
+//    public String getTablaHTML() {
+//        StringBuilder r = new StringBuilder();
+//        List<Usuario> usuarios = listarTodos();
+//        for (Usuario p : usuarios) {
+//            r.append("<tr>");
+//            r.append(String.format(
+//                    "<td class=\"c1\">%s</td><td class=\"c2\">%s</td><td class=\"c3\">%s</td><td class=\"c4\">%s</td>",
+//                    p.getCedula(), p.getApellido1(),p.getApellido2(),p.getNombre()));
+//            r.append("</tr>");
+//        }
+//        return r.toString();
+//    }
+    
+    
+    
 }

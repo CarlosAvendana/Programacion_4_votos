@@ -93,7 +93,7 @@ public class Administrador implements Serializable {
         return String.format("Id:%s , %s %s %s , user: %s ",
                 getCedula(), getNombre(), getApellido1(), getApellido2(), getUsuario());
     }
-    
+
     public String toStringHTML() {
         StringBuilder r = new StringBuilder();
         r.append("<tr>");

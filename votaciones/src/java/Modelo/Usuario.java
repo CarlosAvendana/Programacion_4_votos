@@ -6,43 +6,40 @@
 //  Djenane Hernandez Rodriguez
 //  Diego Monterrey Benavides
 //  Carlos Obando Avendaña
-
 package Modelo;
 
 import java.io.Serializable;
 
+public class Usuario implements Serializable {
 
-public class Usuario  implements Serializable {
-    
     private String cedula;
     private String nombre;
     private String apellido1;
     private String apellido2;
     private String clave;
-    private int activo; 
+    private int activo;
 
-   
-    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña,int activo) {
-        this.cedula= cedula;
+    public Usuario(String cedula, String nombre, String apellido1, String apellido2, String contraseña, int activo) {
+        this.cedula = cedula;
         this.nombre = nombre;
-        this.apellido1=apellido1;
-        this.apellido2=apellido2;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
         this.clave = contraseña;
-        this.activo=activo;
+        this.activo = activo;
     }
-    
+
     public Usuario() {
         this(null, null, null, null, null, 0);
     }
 
     public Usuario(String cedula, String apellido1, String apellido2, String nombre) {
-        this.cedula= cedula;
+        this.cedula = cedula;
         this.nombre = nombre;
-        this.apellido1=apellido1;
-        this.apellido2=apellido2;
-       
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+
     }
-   
+
     public int getActivo() {
         return activo;
     }
@@ -52,9 +49,9 @@ public class Usuario  implements Serializable {
     }
 
     @Override
-    public String toString(){
-    return String.format("Id:%s , %s %s %s , voto: %d ",
-        getCedula(), getNombre(), getApellido1(), getApellido2(), getActivo());
+    public String toString() {
+        return String.format("Id:%s , %s %s %s , voto: %d ",
+                getCedula(), getNombre(), getApellido1(), getApellido2(), getActivo());
     }
 
     public String getCedula() {
@@ -88,7 +85,7 @@ public class Usuario  implements Serializable {
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
-    
+
     public String getClave() {
         return clave;
     }
@@ -96,11 +93,9 @@ public class Usuario  implements Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
-    public boolean idIgualContrasenna(){ 
-        return (getClave() == null ?cedula  == null : getClave().equals(cedula));
+
+    public boolean idIgualContrasenna() {
+        return (getClave() == null ? cedula == null : getClave().equals(cedula));
     }
-    
-    
-    
+
 }

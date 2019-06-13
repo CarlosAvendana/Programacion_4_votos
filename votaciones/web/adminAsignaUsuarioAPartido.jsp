@@ -25,24 +25,33 @@
                         <thead>
                             <tr>
                                 <td>
-                                    <button class="bnt">Generar Reportes</button>   
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
                                 </td>
                                 <td>
-                                    <button class="bnt">Cargar Usuario</button>   
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGestionVotacion.jsp'">Gestionar Dias Votacion</button>   
+                                </td>
+
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminReporte.jsp'">Reportes</button>   
                                 </td>
                                 <td>
-                                    <button class="bnt">Gestionar Dias Votacion</button>   
+                                    <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
-                                    <form name='formOut' action='ServicioLogout'method='POST'>
-                                        <input class='btn' type='submit' value='LogOut' name='cerrar' >
+                                    <form name='formxml' action="servicioXML" method='POST'>
+                                        <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
+                                    </form>  
+                                </td>
+                                <td>
+                                    <form name='formOut' action="ServicioLogout" method='POST'>
+                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
                                     </form>
                                 </td>
                             </tr>
                         </thead>
                     </table>
                 </section>
-                <section id="secTablaAgregarFuncionario">
+                <section id="secAF">
                     <form id="formP">
                         <table class="tablaDatos">
                             <caption>
@@ -72,7 +81,7 @@
                                                size="15" autocomplete="off"/>
                                     </td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td>
                                         <strong>
@@ -82,20 +91,20 @@
                                         <input type="file" id="fotoUsuario" name="fotoUsuario" />
                                     </td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td>
                                         <button type="button">
                                             Agregar
                                         </button>
-                                        </td>
+                                    </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </form>
                 </section>
-                <section>                    
+                <section id="secTU">                    
                     <table id="tablaUsuarios" class="tablaDatos">
                         <thead>
                         <caption style='color: white; background-color: lightseagreen;'>
@@ -111,10 +120,8 @@
 
                     </table>              
                 </section>
-
-                <section>                    
+                <section id="secTP">                    
                     <table id="tablaPartidos" class="tablaDatos">
-
                     </table>              
                 </section>
             </div>

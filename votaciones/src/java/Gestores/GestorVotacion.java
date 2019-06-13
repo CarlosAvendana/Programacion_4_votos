@@ -1,4 +1,3 @@
-
 package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
@@ -11,15 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+public class GestorVotacion implements Serializable {
 
-public class GestorVotacion implements Serializable{
-     private static GestorVotacion instancia = null;
+    private static GestorVotacion instancia = null;
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
             = "SELECT id, fecha_inicio,fecha_apertura, fecha_final, fecha_cierre, estado "
             + "FROM votacion WHERE id=? ";
-
 
     private static final String CMD_LISTAR
             = "SELECT id, fecha_inicio,fecha_apertura, fecha_final, fecha_cierre, estado "
@@ -72,7 +70,7 @@ public class GestorVotacion implements Serializable{
                                 rs.getDate("fecha_apertura"),
                                 rs.getDate("fecha_cierre"),
                                 rs.getDate("fecha_final"),
-                                rs.getInt("estado")   
+                                rs.getInt("estado")
                         );
                     }
                 }
@@ -83,14 +81,12 @@ public class GestorVotacion implements Serializable{
         }
         return r;
     }
-    
-    
-    
-    public boolean actualizar(Votacion u){
-         boolean exito = false;
+
+    public boolean actualizar(Votacion u) {
+        boolean exito = false;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
-                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion SET fecha_inicio=?, fecha_apertura=?, fecha_cierre=?, fecha_final=?, estado =? Where id='" + u.getId()+ "'");
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion SET fecha_inicio=?, fecha_apertura=?, fecha_cierre=?, fecha_final=?, estado =? Where id='" + u.getId() + "'");
                 stm.clearParameters();
                 stm.setInt(1, u.getId());
                 stm.setDate(2, u.getFechaInicio());
@@ -109,6 +105,6 @@ public class GestorVotacion implements Serializable{
                     ex.getMessage());
         }
         return exito;
-        
-    }    
+
+    }
 }

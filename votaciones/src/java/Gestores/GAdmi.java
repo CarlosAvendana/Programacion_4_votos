@@ -1,4 +1,3 @@
-
 package Gestores;
 
 import Modelo.Administrador;
@@ -12,9 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+public class GAdmi implements Serializable {
 
-public class GAdmi   implements Serializable {
-    
     private static GAdmi instancia = null;
     private DBManager db = null;
 
@@ -145,7 +143,7 @@ public class GAdmi   implements Serializable {
         try (Connection cnx = db.getConnection(BASE_DATOS, LOGIN, PASSWORD);
                 Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
 
-   String cedula,nombre,apellido1,apellido2, usuario;
+            String cedula, nombre, apellido1, apellido2, usuario;
             while (rs.next()) {
                 cedula = rs.getString("cedula");
                 nombre = rs.getString("nombre");
@@ -163,11 +161,11 @@ public class GAdmi   implements Serializable {
         StringBuilder r = new StringBuilder();
         List<Administrador> registros = obtenerLista2();
         registros.forEach((registro) -> {
-            if (registro.getUsuario()== null ? id == null : registro.getUsuario().equals(id)) {
+            if (registro.getUsuario() == null ? id == null : registro.getUsuario().equals(id)) {
                 r.append(registro.toStringHTML());
             }
         });
         return r.toString();
     }
-    
+
 }

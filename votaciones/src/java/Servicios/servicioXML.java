@@ -29,13 +29,13 @@ public class servicioXML extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             GestorXML u = GestorXML.obtenerInstancia();
             u.xmlToBD();
-            response.sendRedirect("adminGeneral.jsp");   
-        }catch (InstantiationException
+            response.sendRedirect("adminGeneral.jsp");
+        } catch (InstantiationException
                 | ClassNotFoundException
                 | IllegalAccessException ex) {
             System.err.printf("Error: %s", ex.getMessage());

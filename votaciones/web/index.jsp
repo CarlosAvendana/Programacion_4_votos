@@ -34,19 +34,19 @@
                     </p>
                 </section>
                 <section class ="loging">
-                        <h1>Seleccione si desea acceder como Administrador o como Usuario</h1>
-                        <table width="65%" cellpadding="8">
-                            <tr>
-                                <td>
-                                   <button class='bnt' role="link" onclick="window.location = 'loginA.jsp'">Administrador</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button class='bnt' role="link" onclick="window.location = 'loginU.jsp'">Usuario</button>
-                                </td>
-                            </tr>
-                        </table>
+                    <h1>Seleccione si desea acceder como Administrador o como Usuario</h1>
+                    <table width="65%" cellpadding="8">
+                        <tr>
+                            <td>
+                                <button class='bnt' role="link" onclick="window.location = 'loginA.jsp'">Administrador</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class='bnt' role="link" onclick="window.location = 'loginU.jsp'">Usuario</button>
+                            </td>
+                        </tr>
+                    </table>
                 </section>
             </section>
         </div>

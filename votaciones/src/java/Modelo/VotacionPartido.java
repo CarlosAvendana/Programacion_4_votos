@@ -11,8 +11,8 @@ import java.io.Serializable;
  *
  * @author demil
  */
-public class VotacionPartido implements Serializable{
-    
+public class VotacionPartido implements Serializable {
+
     private Votacion votId;
     private Partido partSiglas;
     private Usuario cedCandidato;
@@ -28,7 +28,7 @@ public class VotacionPartido implements Serializable{
     }
 
     public VotacionPartido() {
-        this(null,null,null,null,0);
+        this(null, null, null, null, 0);
     }
 
     @Override
@@ -36,58 +36,44 @@ public class VotacionPartido implements Serializable{
         return "VotacionPartido{" + "votId=" + votId + ", partSiglas=" + partSiglas + ", cedCandidato=" + cedCandidato + ", fotoCandidato=" + fotoCandidato + ", votosObtenidos=" + votosObtenidos + '}';
     }
 
-    
-    
     public Votacion getVotId() {
         return votId;
     }
 
-    
     public void setVotId(Votacion votId) {
         this.votId = votId;
     }
 
-    
     public Partido getPartSiglas() {
         return partSiglas;
     }
 
-    
     public void setPartSiglas(Partido partSiglas) {
         this.partSiglas = partSiglas;
     }
 
-    
     public Usuario getCedCandidato() {
         return cedCandidato;
     }
 
-    
     public void setCedCandidato(Usuario cedCandidato) {
         this.cedCandidato = cedCandidato;
     }
 
-    
     public String getFotoCandidato() {
         return fotoCandidato;
     }
 
-    
     public void setFotoCandidato(String fotoCandidato) {
         this.fotoCandidato = fotoCandidato;
     }
 
-    
     public int getVotosObtenidos() {
         return votosObtenidos;
     }
 
-    
     public void setVotosObtenidos(int votosObtenidos) {
         this.votosObtenidos = votosObtenidos;
     }
-    
-    
-    
-    
+
 }

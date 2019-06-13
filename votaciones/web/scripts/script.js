@@ -1,9 +1,9 @@
 function init() {
     console.log("Aplicación inicializada..");
 }
-function asignaUsuariosAPartido(){
-    solicitarDatosListarUsuarios("ServicioListarUsuario","tablaUsuarios");
-    solicitarDatosListarPartidos("ServicioListarPartidos","tablaPartidos");
+function asignaUsuariosAPartido() {
+    solicitarDatosListarUsuarios("ServicioListarUsuario", "tablaUsuarios");
+    solicitarDatosListarPartidos("ServicioListarPartidos", "tablaPartidos");
 }
 function solicitarDatosListarUsuarios(origen, tabla) {
     fetch(origen).then(
@@ -13,7 +13,7 @@ function solicitarDatosListarUsuarios(origen, tabla) {
     ).then(
             (datosJSON) => {
         cargarTablaUsuarios(tabla, datosJSON);
-    console.log(datosJSON);
+        console.log(datosJSON);
     }
     );
 }
@@ -28,7 +28,7 @@ function cargarTablaUsuarios(tabla, datos) {
             nuevaCelda.innerText = datos.usuarios[i].cedula;
             nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.usuarios[i].apellido1;
-           nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.usuarios[i].apellido2;
             nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.usuarios[i].nombre;
@@ -44,7 +44,7 @@ function solicitarDatosListarPartidos(origen, tabla) {
     ).then(
             (datosJSON) => {
         cargarTablaPartidos(tabla, datosJSON);
-    console.log(datosJSON);
+        console.log(datosJSON);
     }
     );
 }
@@ -60,9 +60,9 @@ function cargarTablaPartidos(tabla, datos) {
             nuevaCelda.innerText = datos.partidos[i].siglas;
             nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.partidos[i].nombre;
-           nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.partidos[i].observaciones;
-          
+
         }
     }
 }

@@ -35,7 +35,7 @@ public class ServicioImagenPartido extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServicioImagenPartido</title>");            
+            out.println("<title>Servlet ServicioImagenPartido</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServicioImagenPartido at " + request.getContextPath() + "</h1>");

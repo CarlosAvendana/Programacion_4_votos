@@ -1,4 +1,3 @@
-
 package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
@@ -15,7 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestorUsuario implements Serializable{
+public class GestorUsuario implements Serializable {
+
     private static GestorUsuario instancia = null;
     private final GestorBaseDeDatos bd;
 
@@ -30,9 +30,9 @@ public class GestorUsuario implements Serializable{
     private static final String CMD_LISTAR
             = "SELECT cedula, apellido1 ,apellido2, nombre, clave ,activo "
             + "FROM usuario ORDER BY apellido1; ";
-    
-private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, nombre "
-        + "FROM usuario ORDER BY apellido1; ";
+
+    private static final String CMD_LISTAR2 = "SELECT cedula, apellido1, apellido2, nombre "
+            + "FROM usuario ORDER BY apellido1; ";
 
     private static final String CMD_ACTUALIZAR
             = "UPDATE bd_votaciones.usuario "
@@ -66,7 +66,6 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
         return instancia;
     }
 
-
     public Usuario recuperar(String codigo) {
         Usuario r = null;
         try {
@@ -82,7 +81,7 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
                                 rs.getString("apellido2"),
                                 rs.getString("nombre"),
                                 rs.getString("clave"),
-                                rs.getInt("activo")   
+                                rs.getInt("activo")
                         );
                     }
                 }
@@ -93,7 +92,7 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
         }
         return r;
     }
-    
+
     public boolean verificarUsuario(String cedula, String clave) {
         boolean encontrado = false;
         try {
@@ -111,9 +110,9 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
         }
         return encontrado;
     }
-        
-    public boolean actualizar(Usuario u){
-         boolean exito = false;
+
+    public boolean actualizar(Usuario u) {
+        boolean exito = false;
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
                 PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.usuario SET cedula=?,apellido1=?, apellido2=?, nombre=? ,clave=?, activo =? Where cedula='" + u.getCedula() + "'");
@@ -135,9 +134,9 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
                     ex.getMessage());
         }
         return exito;
-        
-    }    
-   
+
+    }
+
     public List<Usuario> listarTodos() {
         List<Usuario> r = new ArrayList<>();
         try {
@@ -159,7 +158,7 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
         }
         return r;
     }
-    
+
 //    public String getTablaHTML() {
 //        StringBuilder r = new StringBuilder();
 //        List<Usuario> usuarios = listarTodos();
@@ -172,7 +171,4 @@ private static final String CMD_LISTAR2 ="SELECT cedula, apellido1, apellido2, n
 //        }
 //        return r.toString();
 //    }
-    
-    
-    
 }

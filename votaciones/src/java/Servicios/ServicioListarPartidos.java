@@ -1,4 +1,3 @@
-
 package Servicios;
 
 import Gestores.GestorPartido;
@@ -15,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 public class ServicioListarPartidos extends HttpServlet {
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,7 +36,7 @@ public class ServicioListarPartidos extends HttpServlet {
                 objPartido.put("siglas", p.getSiglas());
                 objPartido.put("nombre", p.getNombre());
                 objPartido.put("observaciones", p.getObservaciones());
-               
+
                 arrayPartidos.put(objPartido);
             }
             _partidosFinal.put("partidos", arrayPartidos);

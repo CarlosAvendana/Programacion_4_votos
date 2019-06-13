@@ -15,33 +15,31 @@ public class SLA extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
-        
-            
-            GAdmi gAdministradores = new GAdmi(getServletContext().getInitParameter("URL_servidor"));
-            boolean usuarioValido = false;
-            String usuario = request.getParameter("usuario");
-            String password = request.getParameter("password");
 
-            if (usuario != null && password != null) {
-                usuarioValido = gAdministradores.verificarUsuario(
-                        usuario, password);
-            }
+        GAdmi gAdministradores = new GAdmi(getServletContext().getInitParameter("URL_servidor"));
+        boolean usuarioValido = false;
+        String usuario = request.getParameter("usuario");
+        String password = request.getParameter("password");
 
-            if (usuarioValido) {
+        if (usuario != null && password != null) {
+            usuarioValido = gAdministradores.verificarUsuario(
+                    usuario, password);
+        }
 
-                HttpSession sesion = request.getSession(true);
-                sesion.setAttribute("usuario", usuario);
+        if (usuarioValido) {
 
-                sesion.setMaxInactiveInterval(60 * 3);
+            HttpSession sesion = request.getSession(true);
+            sesion.setAttribute("usuario", usuario);
 
-                response.sendRedirect("adminGeneral.jsp");
+            sesion.setMaxInactiveInterval(60 * 3);
 
-            } else {
+            response.sendRedirect("adminGeneral.jsp");
 
-                response.sendRedirect("loginError");
-            }
+        } else {
 
-        
+            response.sendRedirect("loginError");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -21,6 +21,37 @@
     <body>
         <div id="wrapper">
             <div id="contents">
+                <section id="botones">
+                    <table id="tablaButton">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGestionVotacion.jsp'">Gestionar Dias Votacion</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminAsignaUsuarioAPartido.jsp'">Crear Postulante</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminReporte.jsp'">Reportes</button>   
+                                </td>
+
+                                <td>
+                                    <form name='formxml' action="servicioXML" method='POST'>
+                                        <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
+                                    </form>  
+                                </td>
+                                <td >
+                                    <form  name='formOut' action="ServicioLogout" method='POST'>
+                                        <input class='btn' type="submit" value='LogOut' name='cerrar' />
+                                    </form>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </section>
                 <section id="crearP">
                     <form id="formP">
                         <table id="tablaFormulario">

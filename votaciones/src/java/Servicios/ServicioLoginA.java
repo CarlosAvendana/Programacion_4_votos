@@ -1,4 +1,3 @@
-
 package Servicios;
 
 import Gestores.GestorAdministrador;
@@ -12,16 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class ServicioLoginA extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-             GestorAdministrador gI = GestorAdministrador.obtenerInstancia();
+
+            GestorAdministrador gI = GestorAdministrador.obtenerInstancia();
 
             boolean administradorValido = false;
 
@@ -43,7 +40,7 @@ public class ServicioLoginA extends HttpServlet {
             } else {
                 response.sendRedirect("loginError.jsp");
             }
-        }catch (InstantiationException
+        } catch (InstantiationException
                 | ClassNotFoundException
                 | IllegalAccessException ex) {
             System.err.printf("Error: %s", ex.getMessage());

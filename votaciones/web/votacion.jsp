@@ -20,22 +20,22 @@
         <title>Votacion</title>
     </head>
     <body>
-          <div id="wrapper">
+        <div id="wrapper">
             <section class="datos">
                 <h1>Datos Personales</h1>
-                    <p>Cédula: <strong>${usuario.cedula}</strong></p>
-                    <p>Nombre: <strong>${usuario.nombre}</strong></p>
-                    <p>Primer apellido: <strong>${usuario.apellido1}</strong></p>
-                    <p>Segundo apellido: <strong>${usuario.apellido2}</strong></p>
+                <p>Cédula: <strong>${usuario.cedula}</strong></p>
+                <p>Nombre: <strong>${usuario.nombre}</strong></p>
+                <p>Primer apellido: <strong>${usuario.apellido1}</strong></p>
+                <p>Segundo apellido: <strong>${usuario.apellido2}</strong></p>
             </section>
             <section id  = "votacion">
                 <table id ="tablaVotacion">
-                    
+
                 </table>
             </section>
 
         </div>
-     
-        
+
+
     </body>
 </html>

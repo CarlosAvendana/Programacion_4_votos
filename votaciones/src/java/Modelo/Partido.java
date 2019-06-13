@@ -10,14 +10,13 @@ package Modelo;
 
 import java.io.Serializable;
 
+public class Partido implements Serializable {
 
-public class Partido implements Serializable  {
-
-    public Partido(String nombre, String siglas, String Observaciones,String bandera) {
+    public Partido(String nombre, String siglas, String Observaciones, String bandera) {
         this.nombre = nombre;
         this.siglas = siglas;
         this.observaciones = Observaciones;
-        this.bandera=bandera;
+        this.bandera = bandera;
     }
 
     public Partido(String siglas, String nombre, String observaciones) {
@@ -25,7 +24,7 @@ public class Partido implements Serializable  {
         this.nombre = nombre;
         this.observaciones = observaciones;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -57,10 +56,10 @@ public class Partido implements Serializable  {
     public void setBandera(String bandera) {
         this.bandera = bandera;
     }
-    
+
     private String siglas;
     private String nombre;
     private String observaciones;
     private String bandera;
-    
+
 }

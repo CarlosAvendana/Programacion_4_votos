@@ -36,7 +36,6 @@ public class GestorAdministrador implements Serializable {
             = "SELECT usuario FROM administrador "
             + "WHERE usuario=? AND clave=? ";
 
-  
     private GestorAdministrador() throws
             InstantiationException,
             ClassNotFoundException,
@@ -44,7 +43,7 @@ public class GestorAdministrador implements Serializable {
         bd = GestorBaseDeDatos.obtenerGestorBD(
                 GestorBaseDeDatos.GBD.MYSQL_SERVER,
                 GestorBaseDeDatos.SERVIDOR_POR_DEFECTO);
-       
+
     }
 
     public static GestorAdministrador obtenerInstancia() throws

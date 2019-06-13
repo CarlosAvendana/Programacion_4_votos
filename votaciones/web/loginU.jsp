@@ -14,15 +14,15 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-       <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
-       <link href="css/Color.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
+        <link href="css/Color.css" rel="stylesheet" type="text/css"/>
         <title>Login</title>
     </head>
     <body>
         <div id="wrapper">
             <section class ="container">
                 <section class="comentario"> 
-                   <h1> Bienvenido al Sistema de votacion</h1>
+                    <h1> Bienvenido al Sistema de votacion</h1>
                     <p>Sistema en el cual usted va a poder hacer votaciones si es un usuario del sistema y realizar reporte si es un investigador</p>
                     <p>EIF209  Programación 4  Proyecto #2</p>
                     <p>1er ciclo 2019</p>

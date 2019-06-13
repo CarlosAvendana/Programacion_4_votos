@@ -9,10 +9,10 @@
         <servlet-class>Servicios.ServicioLoginU</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>SLA</servlet-name>
         <servlet-class>Servicios.SLA</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>servicioXML</servlet-name>
         <servlet-class>Servicios.servicioXML</servlet-class>
     </servlet>
@@ -23,7 +23,10 @@
     <servlet>
         <servlet-name>ServicioImagenPartido</servlet-name>
         <servlet-class>Servicios.ServicioImagenPartido</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioVotacionPartido</servlet-name>
+        <servlet-class>Servicios.ServicioVotacionPartido</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
@@ -34,10 +37,10 @@
         <url-pattern>/ServicioLoginU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>SLA</servlet-name>
         <url-pattern>/SLA</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>servicioXML</servlet-name>
         <url-pattern>/servicioXML</url-pattern>
     </servlet-mapping>
@@ -48,7 +51,10 @@
     <servlet-mapping>
         <servlet-name>ServicioImagenPartido</servlet-name>
         <url-pattern>/ServicioImagenPartido</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioVotacionPartido</servlet-name>
+        <url-pattern>/ServicioVotacionPartido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

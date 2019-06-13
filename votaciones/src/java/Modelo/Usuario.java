@@ -91,5 +91,9 @@ public class Usuario  implements Serializable {
     
     public boolean idIgualContrasenna(){ 
         return (getClave() == null ?cedula  == null : getClave().equals(cedula));
-    }         
+    }      
+    
+    public String obtenerNombreCompleto(){
+    return String.format("%s %s %s",getNombre(),getApellido1(), getApellido2());
+    }
 }

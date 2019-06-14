@@ -56,8 +56,6 @@ public class ServicioCreaciondePartido extends HttpServlet {
             if (GestorPartido.validate(nombreArchivo)) {
                 try {
                     g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize(), part.getContentType());
-//                        g1.saveImage(nombreArchivo, part.getContentType(),
-//                                part.getInputStream(), (int) part.getSize());
                 } catch (Exception ex) {
                     response.sendRedirect("adminGeneral.jsp");
                     request.setAttribute("mensaje",

@@ -3,6 +3,7 @@ package Gestores;
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
 import Modelo.VotacionPartido;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GestorVotacionPartido implements Serializable {
 
@@ -30,9 +33,9 @@ public class GestorVotacionPartido implements Serializable {
             = "UPDATE bd_votaciones.votacion_partido "
             + "SET votacion_id=?,partido_siglas=?, cedula_candidato=?, foto_candidato=?,votos_obtenidos=? ";
 
-    private static final String CMD_AGREGAR = "INSERT INTO  "
-            + "(votacion_id, partido_siglas, cedula_candidato, foto_candidato, votos_obtenidos) "
-            + "VALUES(?, ?, ?, ?, ?); ";
+    private static final String CMD_AGREGAR = "INSERT INTO bd_votaciones.votacion_partido "
+            + "(votacion_id, partido_siglas, cedula_candidato, foto_candidato, tipo_imagen, votos_obtenidos) "
+            + "VALUES(?, ?, ?, ?, ?, ?); ";
 
     private static final String CONEXION
             = "jdbc:mysql://localhost/bd_votaciones";
@@ -57,6 +60,16 @@ public class GestorVotacionPartido implements Serializable {
         }
         return instancia;
     }
+    
+    public static boolean validate(final String fileName) {
+        Matcher matcher = PATTERN.matcher(fileName);
+        return matcher.matches();
+    }
+    
+    private static final String IMAGE_PATTERN
+            = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+    
+    private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
 
     public VotacionPartido recuperar(String codigo) throws InstantiationException, ClassNotFoundException, IllegalAccessException {
         VotacionPartido r = null;
@@ -114,7 +127,27 @@ public class GestorVotacionPartido implements Serializable {
         return r;
     }
 
-    public void agregar(VotacionPartido vp) {
+    public void agregar(int votTemp, String cedula, String siglas, InputStream in, int size, String contentType,int votos) throws SQLException, Exception {
+        try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+            PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
+            stm.clearParameters();
+            stm.setInt(1, votTemp);
+            stm.setString(2, siglas);
+            stm.setString(3, cedula);
+            stm.setBinaryStream(4, in, size);
+            stm.setString(5, contentType);
+            stm.setInt(6, votos);
+            int r = stm.executeUpdate();
+            if (r == 1) {
+                System.out.printf("Se agregó con éxito la imagen: '%s'..%n", siglas);
+            } else {
+                throw new Exception("No se pudo insertar la imagen seleccionada.");
+            }
+        }
+    }
+    
+    
+    public void agregar1(VotacionPartido vp) {
         try (Connection cnx = DriverManager.getConnection(
                 CONEXION, USUARIO, CLAVE);
                 PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR)) {

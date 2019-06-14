@@ -52,7 +52,7 @@
                     </table>
                 </section>
                 <section id="secAF">
-                    <form id="formP">
+                    <form id="formP"action="ServicioAgregarPostulante" method="POST" enctype="multipart/form-data" >
                         <table class="tablaDatos">
                             <caption>
                                 <strong>
@@ -91,15 +91,11 @@
                                         <input type="file" id="fotoUsuario" name="fotoUsuario" />
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td>
-                                        <button type="button">
-                                            Agregar
-                                        </button>
+                                <tr>                               
+                                    <td  colspan="2" align='center'>
+                                        <input class='bnt' type="submit" value='Crear' name='Crear'/>
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </form>

@@ -25,7 +25,7 @@ public class ListaVotacionPartido implements Serializable {
 
     public void agregar(GestorVotacionPartido gvp) {
         votacionPartidos.forEach((p) -> {
-            gvp.agregar(p);
+            gvp.agregar1(p);
         });
     }
 

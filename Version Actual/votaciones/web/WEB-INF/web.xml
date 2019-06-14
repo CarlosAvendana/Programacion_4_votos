@@ -25,13 +25,11 @@
         <servlet-class>Servicios.ServicioImagenPartido</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>ServicioCreaciondePartido</servlet-name>
         <servlet-class>Servicios.ServicioCreaciondePartido</servlet-class>
     </servlet>
-    
     <servlet>
-        <servlet-name>ServicioListarUsuarios</servlet-name>    
+        <servlet-name>ServicioListarUsuarios</servlet-name>
         <servlet-class>Servicios.ServicioListarUsuarios</servlet-class>
     </servlet>
     <servlet>
@@ -45,6 +43,10 @@
     <servlet>
         <servlet-name>ServicioListarUsuario</servlet-name>
         <servlet-class>Servicios.ServicioListarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioVotacion</servlet-name>
+        <servlet-class>Servicios.ServicioVotacion</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
@@ -89,7 +91,10 @@
     <servlet-mapping>
         <servlet-name>ServicioListarUsuario</servlet-name>
         <url-pattern>/ServicioListarUsuario</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioVotacion</servlet-name>
+        <url-pattern>/ServicioVotacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

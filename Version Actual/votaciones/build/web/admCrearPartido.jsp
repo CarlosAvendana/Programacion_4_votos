@@ -62,17 +62,6 @@
                             </caption> 
                             <tbody id="cuerpoForm">
                                 <tr>
-                                    <td >
-                                        <strong>
-                                            Bandera
-                                        </strong>
-                                        :&nbsp;
-                                    </td>
-                                    <td >
-                                        <input type="file" id="archivo" name="archivo" />
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td>
                                         <strong>
                                             Nombre del Partido
@@ -104,7 +93,18 @@
                                         :&nbsp;
                                     </td>
                                     <td>
-                                        <textarea  name="observaciones"  style="resize: none" rows="5" cols="40"></textarea>
+                                        <textarea type="text"  name="observaciones"  style="resize: none; width: 90%; height: 60px;" rows="5" cols="40"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <strong>
+                                            Bandera
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td >
+                                        <input type="file" id="archivo" name="archivo" />
                                     </td>
                                 </tr>
                                 <tr>                               

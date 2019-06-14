@@ -34,18 +34,16 @@ public class ServicioCreaciondePartido extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            GestorPartido g1 = GestorPartido.obtenerInstancia();
-            try {
+            throws ServletException, IOException, InstantiationException, ClassNotFoundException, IllegalAccessException {
+        GestorPartido g1 = GestorPartido.obtenerInstancia();
+        try {
 
-                String nombre = request.getParameter("nombre");
-                String siglas = request.getParameter("siglas");
-                String observaciones = request.getParameter("observaciones");
+            String nombre = request.getParameter("nombre");
+            String siglas = request.getParameter("siglas");
+            String observaciones = request.getParameter("observaciones");
 
-                for (Part part : request.getParts()) {
-
+            Part part = request.getPart("archivo");
+               
                     String campo = part.getName();
                     System.out.printf("Nombre del campo (formulario): '%s'%n", campo);
 
@@ -54,11 +52,10 @@ public class ServicioCreaciondePartido extends HttpServlet {
                     if (nombreArchivo.isEmpty()) {
                         request.setAttribute("mensaje",
                                 "Se omitió la selección del archivo.");
-                        break;
                     }
                     if (GestorPartido.validate(nombreArchivo)) {
                         try {
-                            g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize());
+                            g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize(),part.getContentType());
 //                        g1.saveImage(nombreArchivo, part.getContentType(),
 //                                part.getInputStream(), (int) part.getSize());
                         } catch (Exception ex) {
@@ -70,27 +67,13 @@ public class ServicioCreaciondePartido extends HttpServlet {
                         response.sendRedirect("adminGeneral.jsp");
                         request.setAttribute("mensaje",
                                 "El formato del archivo es incorrecto.");
-                        break;
                     }
-                }
-            } catch (IOException | ServletException ex) {
-                response.sendRedirect("adminGeneral.jsp");
-                request.setAttribute("mensaje",
-                        String.format("Ocurrió una excepción: '%s'", ex.getMessage()));
-            }
-
-            getServletContext().getRequestDispatcher("admCrearPartido.jsp").forward(request, response);
-
         } catch (IOException | ServletException ex) {
             response.sendRedirect("adminGeneral.jsp");
             request.setAttribute("mensaje",
                     String.format("Ocurrió una excepción: '%s'", ex.getMessage()));
-        } catch (InstantiationException
-                | ClassNotFoundException
-                | IllegalAccessException ex) {
-            response.sendRedirect("adminGeneral.jsp");
-            System.err.printf("Error: %s", ex.getMessage());
         }
+        getServletContext().getRequestDispatcher("admCrearPartido.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -105,7 +88,15 @@ public class ServicioCreaciondePartido extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ServicioCreaciondePartido.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServicioCreaciondePartido.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ServicioCreaciondePartido.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -119,7 +110,15 @@ public class ServicioCreaciondePartido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ServicioCreaciondePartido.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServicioCreaciondePartido.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ServicioCreaciondePartido.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

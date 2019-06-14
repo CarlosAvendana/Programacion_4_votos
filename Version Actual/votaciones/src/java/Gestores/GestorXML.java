@@ -50,7 +50,8 @@ public class GestorXML implements Serializable {
     private List<Usuario> cargarDatos() {
         List<Usuario> lista = new ArrayList<>();
         try {
-            File inputFile = new File("C:\\Users\\demil\\Documents\\votos\\Usuarios.xml");
+            String path = "C:\\Users\\demil\\Desktop\\votos\\Version Actual\\votaciones\\Usuarios.xml";
+            File inputFile = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);

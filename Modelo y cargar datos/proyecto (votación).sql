@@ -29,8 +29,9 @@ DROP TABLE IF EXISTS `bd_votaciones`.`partido` ;
 CREATE TABLE IF NOT EXISTS `bd_votaciones`.`partido` (
   `siglas` VARCHAR(12) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
-  `observaciones` TEXT NULL,
   `bandera` MEDIUMBLOB NULL,
+  `tipo_imagen` VARCHAR(45) NULL,
+  `observaciones` TEXT NULL,
   PRIMARY KEY (`siglas`))
 ENGINE = InnoDB;
 
@@ -51,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `bd_votaciones`.`votacion_partido` (
   `partido_siglas` VARCHAR(12) NOT NULL,
   `cedula_candidato` VARCHAR(12) NOT NULL,
   `foto_candidato` MEDIUMBLOB NULL,
+  `tipo_imagen` VARCHAR(45) NULL,
   `votos_obtenidos` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`votacion_id`, `partido_siglas`, `cedula_candidato`),
   INDEX `fk_votacion_partido_partido_idx` (`partido_siglas` ASC),

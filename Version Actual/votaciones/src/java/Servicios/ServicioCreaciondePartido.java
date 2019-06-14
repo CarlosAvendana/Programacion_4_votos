@@ -43,31 +43,31 @@ public class ServicioCreaciondePartido extends HttpServlet {
             String observaciones = request.getParameter("observaciones");
 
             Part part = request.getPart("archivo");
-               
-                    String campo = part.getName();
-                    System.out.printf("Nombre del campo (formulario): '%s'%n", campo);
 
-                    String nombreArchivo = part.getSubmittedFileName();
+            String campo = part.getName();
+            System.out.printf("Nombre del campo (formulario): '%s'%n", campo);
 
-                    if (nombreArchivo.isEmpty()) {
-                        request.setAttribute("mensaje",
-                                "Se omitió la selección del archivo.");
-                    }
-                    if (GestorPartido.validate(nombreArchivo)) {
-                        try {
-                            g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize(),part.getContentType());
+            String nombreArchivo = part.getSubmittedFileName();
+
+            if (nombreArchivo.isEmpty()) {
+                request.setAttribute("mensaje",
+                        "Se omitió la selección del archivo.");
+            }
+            if (GestorPartido.validate(nombreArchivo)) {
+                try {
+                    g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize(), part.getContentType());
 //                        g1.saveImage(nombreArchivo, part.getContentType(),
 //                                part.getInputStream(), (int) part.getSize());
-                        } catch (Exception ex) {
-                            response.sendRedirect("adminGeneral.jsp");
-                            request.setAttribute("mensaje",
-                                    String.format("Excepción: '%s'", ex.getMessage()));
-                        }
-                    } else {
-                        response.sendRedirect("adminGeneral.jsp");
-                        request.setAttribute("mensaje",
-                                "El formato del archivo es incorrecto.");
-                    }
+                } catch (Exception ex) {
+                    response.sendRedirect("adminGeneral.jsp");
+                    request.setAttribute("mensaje",
+                            String.format("Excepción: '%s'", ex.getMessage()));
+                }
+            } else {
+                response.sendRedirect("adminGeneral.jsp");
+                request.setAttribute("mensaje",
+                        "El formato del archivo es incorrecto.");
+            }
         } catch (IOException | ServletException ex) {
             response.sendRedirect("adminGeneral.jsp");
             request.setAttribute("mensaje",

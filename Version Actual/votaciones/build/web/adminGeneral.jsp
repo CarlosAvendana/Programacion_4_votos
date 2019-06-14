@@ -52,7 +52,7 @@
                     </table>
                 </section>
                 <section>
-                    <table id="tabla3" class="tablaDatos">
+                    <table id="tabla3" class="tablaDatos" style="margin: 0 auto; padding: 75px;">
                         <%=GAdmi2.obtenerInstancia().obtenerDatosHTML(request.getSession(true).getAttribute("usuario"))%>
                     </table>
                 </section>

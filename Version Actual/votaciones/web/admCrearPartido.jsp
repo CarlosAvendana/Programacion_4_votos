@@ -54,38 +54,62 @@
                 </section>
                 <section id="crearP">
                     <form id="formP"action="ServicioCreaciondePartido" method="POST" enctype="multipart/form-data">
-                        <table id="tablaFormulario" >
-                            <caption style="font-size: 20pt"><strong>Creación del Partido</strong></caption>
+                        <table id="tablaFormulario" class="tablaDatos" style="margin: 0 auto;">
+                           <caption style='color: white; background-color: lightseagreen;'>
+                                <strong>
+                                    Creacion de Partido
+                                </strong>
+                            </caption> 
                             <tbody id="cuerpoForm">
-                                <tr class="r" style="padding-bottom: 10%;">
-                                    <td class="c1"><strong>Bandera</strong>:&nbsp;</td>
-                                    <td class="c2">
+                                <tr>
+                                    <td >
+                                        <strong>
+                                            Bandera
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td >
                                         <input type="file" id="archivo" name="archivo" />
                                     </td>
                                 </tr>
-                                <tr class="r" style="border: 3px solid black; border-collapse: collapse">
-                                    <td class="c1"><strong>Nombre del Partido</strong>:&nbsp;</td>
-                                    <td class="c2">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Nombre del Partido
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td >
                                         <input type="text" id="campo1" name="nombre" 
                                                size="30" autocomplete="off"/>
                                     </td>
                                 </tr>
-                                <tr class="r" style="border: 3px solid black;">
-                                    <td class="c1"><strong>Siglas del Partido</strong>:&nbsp;</td>
-                                    <td class="c2">
+                                <tr>
+                                    <td >
+                                        <strong>
+                                            Siglas del Partido
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td >
                                         <input type="text" id="campo1" name="siglas" 
-                                               size="10" autocomplete="off"/>
+                                               size="30" autocomplete="off"/>
                                     </td>
                                 </tr>
-                                <tr class="r" style="border: 3px solid black">
-                                    <td class="c1"><strong>Observaciones</strong>:&nbsp;</td>
-                                    <td class="c2">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Observaciones
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td>
                                         <textarea  name="observaciones"  style="resize: none" rows="5" cols="40"></textarea>
                                     </td>
                                 </tr>
                                 <tr>                               
-                                    <td td alinf="center" >
-                                        <button type="submit">Crear</button>
+                                    <td  colspan="2" align='center'>
+                                        <input class='bnt' type="submit" value='Crear' name='Crear'/>
                                     </td>
                                 </tr>
                             </tbody>

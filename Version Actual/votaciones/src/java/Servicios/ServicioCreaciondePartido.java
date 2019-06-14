@@ -73,7 +73,7 @@ public class ServicioCreaciondePartido extends HttpServlet {
             request.setAttribute("mensaje",
                     String.format("Ocurrió una excepción: '%s'", ex.getMessage()));
         }
-        getServletContext().getRequestDispatcher("admCrearPartido.jsp").forward(request, response);
+        response.sendRedirect("adminGeneral.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

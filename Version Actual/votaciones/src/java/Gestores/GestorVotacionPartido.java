@@ -86,21 +86,20 @@ public class GestorVotacionPartido implements Serializable {
         }
         return r;
     }
-    
-    
-    public List<VotacionPartido> listarTodo() throws InstantiationException, ClassNotFoundException, IllegalAccessException{
-      List<VotacionPartido> r = new ArrayList<>();
-      GestorVotacion gv = GestorVotacion.obtenerInstancia();
-      GestorPartido gp = GestorPartido.obtenerInstancia();
-      GestorUsuario gu = GestorUsuario.obtenerInstancia();
-      
+
+    public List<VotacionPartido> listarTodo() throws InstantiationException, ClassNotFoundException, IllegalAccessException {
+        List<VotacionPartido> r = new ArrayList<>();
+        GestorVotacion gv = GestorVotacion.obtenerInstancia();
+        GestorPartido gp = GestorPartido.obtenerInstancia();
+        GestorUsuario gu = GestorUsuario.obtenerInstancia();
+
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                     Statement stm = cnx.createStatement();
                     ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
                 while (rs.next()) {
                     r.add(new VotacionPartido(
-                          gv.recuperar(rs.getInt("votacion_id")),
+                            gv.recuperar(rs.getInt("votacion_id")),
                             gp.recuperar(rs.getString("partido_siglas")),
                             gu.recuperar(rs.getString("cedula_candidato")),
                             rs.getString("foto_candidato"),
@@ -114,7 +113,7 @@ public class GestorVotacionPartido implements Serializable {
         }
         return r;
     }
-    
+
     public void agregar(VotacionPartido vp) {
         try (Connection cnx = DriverManager.getConnection(
                 CONEXION, USUARIO, CLAVE);
@@ -134,7 +133,5 @@ public class GestorVotacionPartido implements Serializable {
         }
 
     }
-
-
 
 }

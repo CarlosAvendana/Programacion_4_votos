@@ -67,9 +67,9 @@ function cargarTablaPartidos(tabla, datos) {
     }
 }
 
-function init2(){
+function init2() {
     console.log("Mostrando datos para votacion")
-    solicitarDatosVotacionPartido("ServicioVotacionPartido","datosVotacion");
+    solicitarDatosVotacionPartido("ServicioVotacionPartido", "datosVotacion");
 }
 
 function solicitarDatosVotacionPartido(origen, tabla) {
@@ -86,8 +86,8 @@ function solicitarDatosVotacionPartido(origen, tabla) {
 }
 
 
-function cargarTablaVotacionPartido(tabla, datos){
-        var refTabla = document.getElementById(tabla);
+function cargarTablaVotacionPartido(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
     if (refTabla) {
         for (var i = 0; i < datos.listVP.length; i++) {
             var nuevaFila = refTabla.insertRow(-1);
@@ -101,7 +101,7 @@ function cargarTablaVotacionPartido(tabla, datos){
             nuevaCelda = nuevaFila.insertCell(-1);
         }
     }
-    
+
 }
 
 

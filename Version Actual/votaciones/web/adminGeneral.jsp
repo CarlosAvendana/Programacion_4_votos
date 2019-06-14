@@ -40,13 +40,13 @@
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
-                                    <td >
+                                <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
                                 </td>
-                                
+
                             </tr>
                         </thead>
                     </table>

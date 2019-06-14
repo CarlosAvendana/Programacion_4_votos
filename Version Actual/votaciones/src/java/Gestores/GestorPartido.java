@@ -30,9 +30,9 @@ public class GestorPartido implements Serializable {
             = "SELECT siglas,nombre,observaciones "
             + "FROM partido ORDER BY siglas; ";
 
-    private static final String CMD_AGREGAR = "INSERT INTO partido "
-            + "(siglas, nombre, observaciones, bandera) "
-            + "VALUES(?, ?, ?, ?); ";
+    private static final String CMD_AGREGAR = "INSERT INTO bd_votaciones.partido "
+            + "(siglas, nombre, bandera,tipo_imagen, observaciones) "
+            + "VALUES(?, ?, ?, ?, ?); ";
 
     private GestorPartido() throws
             InstantiationException,
@@ -63,21 +63,21 @@ public class GestorPartido implements Serializable {
 
     private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
 
-    public void agregar(String nombre, String siglas, String observaciones, InputStream in, int size) {
-        boolean exito = false;
-        try {
-            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
-                PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
-                stm.clearParameters();
-                stm.setString(1, siglas);
-                stm.setString(2, nombre);
-                stm.setString(3, observaciones);
-                stm.setBinaryStream(4, in, size);
-                int r = stm.executeUpdate();
-                exito = (r == 1);
+    public void agregar(String nombre, String siglas, String observaciones, InputStream in, int size, String contentType) throws SQLException, Exception {
+        try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+            PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
+            stm.clearParameters();
+            stm.setString(1, siglas);
+            stm.setString(2, nombre);
+            stm.setBinaryStream(3, in, size);
+            stm.setString(4, contentType);
+            stm.setString(5, observaciones);
+            int r = stm.executeUpdate();
+            if (r == 1) {
+                System.out.printf("Se agregó con éxito la imagen: '%s'..%n", nombre);
+            } else {
+                throw new Exception("No se pudo insertar la imagen seleccionada.");
             }
-        } catch (Exception ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
 

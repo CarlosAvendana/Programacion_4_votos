@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="lista-usuarios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="usuario"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="usuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cédula"/>
+        <xs:element ref="apellido1"/>
+        <xs:element ref="apellido2"/>
+        <xs:element ref="nombre"/>
+        <xs:element ref="clave"/>
+        <xs:element ref="activo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cédula" type="xs:string"/>
+  <xs:element name="apellido1" type="xs:string"/>
+  <xs:element name="apellido2" type="xs:string"/>
+  <xs:element name="nombre" type="xs:string"/>
+  <xs:element name="clave" type="xs:string"/>
+  <xs:element name="activo" type="xs:int"/>
+</xs:schema>

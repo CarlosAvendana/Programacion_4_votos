@@ -1,4 +1,3 @@
-
 package Servicios;
 
 import Gestores.GestorVotacionPartido;
@@ -29,8 +28,8 @@ public class ServicioVotacionPartido extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         try (PrintWriter out = response.getWriter()) {    
-        List<VotacionPartido> listVP = null;
+        try (PrintWriter out = response.getWriter()) {
+            List<VotacionPartido> listVP = null;
             try {
                 listVP = GestorVotacionPartido.obtenerInstancia().listarTodo();
             } catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
@@ -44,7 +43,7 @@ public class ServicioVotacionPartido extends HttpServlet {
             for (VotacionPartido p : listVP) {
                 JSONObject pj = new JSONObject();
                 pj.put("Partido:", p.getPartSiglas().getNombre());
-                pj.put("Siglas: ",p.getPartSiglas().getSiglas());
+                pj.put("Siglas: ", p.getPartSiglas().getSiglas());
                 pj.put("Candidato", p.getCedCandidato().obtenerNombreCompleto());
                 a.put(pj);
             }
@@ -52,8 +51,6 @@ public class ServicioVotacionPartido extends HttpServlet {
             out.print(r);
         }
     }
-    
- 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

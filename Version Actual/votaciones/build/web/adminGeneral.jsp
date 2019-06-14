@@ -40,19 +40,19 @@
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
-                                    <td >
+                                <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
                                 </td>
-                                
+
                             </tr>
                         </thead>
                     </table>
                 </section>
                 <section>
-                    <table id="tabla3" class="tablaDatos">
+                    <table id="tabla3" class="tablaDatos" style="margin: 0 auto; padding: 75px;">
                         <%=GAdmi2.obtenerInstancia().obtenerDatosHTML(request.getSession(true).getAttribute("usuario"))%>
                     </table>
                 </section>

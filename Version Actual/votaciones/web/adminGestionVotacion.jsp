@@ -51,14 +51,18 @@
                         </thead>
                     </table>
                 </section>
-                <section id="secGestionVotacion">
+                <section id="secGestionVotacion" >
                     <form id="formNuevaVotacion">
-                        <table  class="tablaDatos">
+                        <table  class="tablaDatos" style="margin: 0 auto; padding: 75px;">
+                            <thead>
                             <caption style='color: white; background-color: lightseagreen;'>
                                 <strong>
                                     Nueva votacion
                                 </strong>
                             </caption> 
+
+                            </thead>
+
                             <tbody id="cuerpoForm">
                                 <tr>
                                     <td>

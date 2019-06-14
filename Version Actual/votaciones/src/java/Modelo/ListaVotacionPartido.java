@@ -1,4 +1,3 @@
-
 package Modelo;
 
 import Gestores.GestorVotacionPartido;
@@ -10,9 +9,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 @XmlRootElement(name = "lista-votacionPartido")
-public class ListaVotacionPartido implements Serializable{
+public class ListaVotacionPartido implements Serializable {
+
     @XmlElement(name = "votacionPartidos")
     private final List<VotacionPartido> votacionPartidos;
 
@@ -23,15 +22,18 @@ public class ListaVotacionPartido implements Serializable{
     public ListaVotacionPartido() {
         votacionPartidos = new ArrayList<>();
     }
-    
-    public void agregar(GestorVotacionPartido  gvp){
-        votacionPartidos.forEach((p)->{gvp.agregar(p);});
+
+    public void agregar(GestorVotacionPartido gvp) {
+        votacionPartidos.forEach((p) -> {
+            gvp.agregar(p);
+        });
     }
-    
-        @Override
+
+    @Override
     public String toString() {
         return toJSON().toString(7);
     }
+
     public JSONObject toJSON() {
         JSONArray a = new JSONArray();
         votacionPartidos.forEach((p) -> {
@@ -42,5 +44,5 @@ public class ListaVotacionPartido implements Serializable{
         r.put("lista-votacionPartido", a);
         return r;
     }
-    
+
 }

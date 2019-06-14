@@ -88,7 +88,7 @@ public class VotacionPartido implements Serializable {
         r.put("partido_siglas", getPartSiglas().getSiglas());
         r.put("cedula_candidato", getCedCandidato().getCedula());
         r.put("foto_candidato", getFotoCandidato());
-        r.put("votos_obtenidos",getVotosObtenidos());
+        r.put("votos_obtenidos", getVotosObtenidos());
         return r;
     }
 

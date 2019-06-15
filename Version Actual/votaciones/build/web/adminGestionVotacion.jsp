@@ -55,15 +55,25 @@
                     <form id="formNuevaVotacion">
                         <table  class="tablaDatos" style="margin: 0 auto; padding: 15px;">
                             <thead>
-                            <caption style='color: white; background-color: lightseagreen;'>
-                                <strong>
-                                    Nueva votacion
-                                </strong>
-                            </caption> 
-
+                                <tr>
+                                    <td align='center' style='color: white; background-color: lightseagreen;' colspan="2" >
+                                        <strong>Crear Nueva Votacion</strong>
+                                    </td>
+                                </tr>
                             </thead>
 
                             <tbody id="cuerpoForm">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Id
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <input type="text" autocomplete="off" size="15" id="Fid" 
+                                               name="id" placeholder="ID"/>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <strong>
@@ -75,7 +85,6 @@
                                         <input id='FechaInicio' type='date' name="FInicio"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <strong>
@@ -86,7 +95,6 @@
                                         <input id='FechaApertura' type='date' name="FApertura"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <strong>
@@ -97,7 +105,6 @@
                                         <input id='FechaFinal' type='date' name="FFinal"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <strong>
@@ -108,16 +115,7 @@
                                         <input id='FechaCierre' type='date' name="FCierre"/>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            Activo
-                                        </strong>
-                                    </td>
-                                    <td>          
-                                        <input id='activo' type='checkbox' name="check"/>
-                                    </td>
-                                </tr>
+
                                 <tr>
                                     <td colspan="2"  align='center'>
                                         <input class='bnt' type="submit" value='Crear' name='Crear'/>

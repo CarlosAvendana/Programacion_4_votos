@@ -53,7 +53,21 @@
                     </table>
                 </section>
                 <section>
-
+                    <table id="TablaReportes" class="tablaDatos" style="margin: 0 auto; padding: 15px;">
+                        <thead>                       
+                            <tr>
+                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
+                                    <strong>Tabla de Reportes</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>voto Id</th>
+                                <th>Siglas</th>
+                                <th>cedula Candidato</th>.
+                                <th>votos Obtenidos</th>
+                            </tr>
+                        </thead>
+                    </table>   
                 </section>
             </div>
         </div>

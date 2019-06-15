@@ -1,4 +1,3 @@
-
 package Servicios;
 
 import Gestores.GestorPartido;
@@ -21,7 +20,6 @@ import javax.websocket.Decoder;
 @MultipartConfig()
 public class ServicioCreaciondePartido extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InstantiationException, ClassNotFoundException, IllegalAccessException {
         GestorPartido g1 = GestorPartido.obtenerInstancia();

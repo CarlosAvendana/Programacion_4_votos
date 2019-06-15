@@ -1,10 +1,8 @@
-
 package Modelo;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlElement;
 import org.json.JSONObject;
-
 
 public class VotacionPartido implements Serializable {
 

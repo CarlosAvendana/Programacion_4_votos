@@ -3,8 +3,10 @@ package Gestores;
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
 import Modelo.Votacion;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -106,4 +108,24 @@ public class GestorVotacion implements Serializable {
         return exito;
 
     }
+
+    public void agregar(int id, String fechaInicio, String fechaApertura, String fechaCierre, String fechaFinal, int estado) throws SQLException, Exception {
+        try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+            PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
+            stm.clearParameters();
+            stm.setInt(1, id);
+            stm.setString(2, fechaInicio);
+            stm.setString(3, fechaApertura);
+            stm.setString(4, fechaCierre);
+            stm.setString(6, fechaFinal);
+            stm.setInt(7, 0);
+            int r = stm.executeUpdate();
+            if (r == 1) {
+                System.out.printf("Se agregó con éxito la votacion: '%s'..%n", id);
+            } else {
+                throw new Exception("No se agrego");
+            }
+        }
+    }
+
 }

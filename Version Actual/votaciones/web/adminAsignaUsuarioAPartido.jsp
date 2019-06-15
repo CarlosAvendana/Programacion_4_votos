@@ -54,11 +54,13 @@
                 <section id="secAF">
                     <form id="formP"action="ServicioAgregarPostulante" method="POST" enctype="multipart/form-data" >
                         <table class="tablaDatos">
-                            <caption>
-                                <strong>
-                                    Asignar un Usuario Al Partido
-                                </strong>
-                            </caption>
+                            <thead>
+                                <tr>
+                                    <td align='center' style='color: white; background-color: lightseagreen;' colspan="2" >
+                                        Asignar un Usuario Al Partido
+                                    </td>
+                                </tr>
+                            </thead>
                             <tbody id="cuerpoForm">
                                 <tr>
                                     <td>
@@ -102,31 +104,37 @@
                 </section>
                 <section id="secTU">                    
                     <table id="tablaUsuarios" class="tablaDatos">
-                        <thead>                       
-                        <caption style='color: white; background-color: lightseagreen;'>
-                            Tabla de usuarios
-                        </caption>
-                        <tr>
-                            <th>Cedula</th>
-                            <th>Apellido 1</th>
-                            <th>Apellido 2</th>
-                            <th>Nombre</th>
-                        </tr>
+                        <thead>   
+                            <tr>
+                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
+                                    <strong>
+                                        Tabla de usuarios  
+                                    </strong>    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Apellido 1</th>
+                                <th>Apellido 2</th>
+                                <th>Nombre</th>
+                            </tr>
                         </thead>
-
                     </table>              
                 </section>
                 <section id="secTP">                    
                     <table id="tablaPartidos" class="tablaDatos">
                         <thead>                       
-                        <caption style='color: white; background-color: lightseagreen;'>
-                            Tabla Partidos
-                        </caption>
-                        <tr>
-                            <th>Siglas</th>
-                            <th>Nombre</th>
-                            <th>Comentarios</th>
-                        </tr>
+                            <tr>
+                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
+                                    Tabla Partidos      
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Siglas</th>
+                                <th>Nombre</th>
+                                <th>Comentarios</th>
+                            </tr>
+                        </thead>
                     </table>              
                 </section>
             </div>

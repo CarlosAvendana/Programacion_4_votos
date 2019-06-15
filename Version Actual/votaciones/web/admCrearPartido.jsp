@@ -54,12 +54,14 @@
                 </section>
                 <section id="crearP">
                     <form id="formP"action="ServicioCreaciondePartido" method="POST" enctype="multipart/form-data">
-                        <table id="tablaFormulario" class="tablaDatos" style="margin: 0 auto; padding: 75px;">
-                           <caption style='color: white; background-color: lightseagreen;'>
-                                <strong>
-                                    Creacion de Partido
-                                </strong>
-                            </caption> 
+                        <table id="tablaFormulario" class="tablaDatos" style="margin: 0 auto; padding: 45px;">
+                            <thead>
+                                <tr>
+                                    <td align='center' style='color: white; background-color: lightseagreen;' colspan="2" >
+                                        <strong>Crear Partido</strong>
+                                    </td>
+                                </tr>
+                            </thead>                   
                             <tbody id="cuerpoForm">
                                 <tr>
                                     <td>

@@ -60,15 +60,15 @@ public class GestorVotacionPartido implements Serializable {
         }
         return instancia;
     }
-    
+
     public static boolean validate(final String fileName) {
         Matcher matcher = PATTERN.matcher(fileName);
         return matcher.matches();
     }
-    
+
     private static final String IMAGE_PATTERN
             = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
-    
+
     private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
 
     public VotacionPartido recuperar(String codigo) throws InstantiationException, ClassNotFoundException, IllegalAccessException {
@@ -127,7 +127,7 @@ public class GestorVotacionPartido implements Serializable {
         return r;
     }
 
-    public void agregar(int votTemp, String cedula, String siglas, InputStream in, int size, String contentType,int votos) throws SQLException, Exception {
+    public void agregar(int votTemp, String cedula, String siglas, InputStream in, int size, String contentType, int votos) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
             PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
             stm.clearParameters();
@@ -145,8 +145,7 @@ public class GestorVotacionPartido implements Serializable {
             }
         }
     }
-    
-    
+
     public void agregar1(VotacionPartido vp) {
         try (Connection cnx = DriverManager.getConnection(
                 CONEXION, USUARIO, CLAVE);

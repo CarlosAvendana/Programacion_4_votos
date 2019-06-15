@@ -53,6 +53,13 @@
                 </section>
                 <section>
                     <table id="tabla3" class="tablaDatos" style="margin: 0 auto; padding: 75px;">
+                        <thead>
+                            <tr>
+                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="2" >
+                                    <strong>Usuario</strong>
+                                </td>
+                            </tr>
+                        </thead>
                         <%=GAdmi2.obtenerInstancia().obtenerDatosHTML(request.getSession(true).getAttribute("usuario"))%>
                     </table>
                 </section>

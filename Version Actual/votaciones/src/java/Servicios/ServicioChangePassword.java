@@ -6,12 +6,12 @@
 //  Djenane Hernandez Rodriguez
 //  Diego Monterrey Benavides
 //Carlos Obando Avendaña
+//esta se encarga de registrar las fechas de las nuevas votaciones
 package Servicios;
 
 import Gestores.GestorUsuario;
 import Modelo.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +21,6 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ServicioChangePassword", urlPatterns = {"/ServicioChangePassword"})
 public class ServicioChangePassword extends HttpServlet {
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

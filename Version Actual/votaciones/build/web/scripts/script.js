@@ -4,7 +4,75 @@ function init() {
 function asignaUsuariosAPartido() {
     solicitarDatosListarUsuarios("ServicioListarUsuario", "tablaUsuarios");
     solicitarDatosListarPartidos("ServicioListarPartidos", "tablaPartidos");
+    solicitarDatosListarFechas("ServicioTablaVotacion", "tablaFechas");
 }
+
+function init1(){
+    solicitarDatosListarFechas1("ServicioTablaVotacion2", "tablaFechas");
+}
+
+function cargarTablaFechas1(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.fechas.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].id;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].fecha_inicio;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].fecha_final;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].estado;
+        }
+    }
+}
+
+
+function solicitarDatosListarFechas1(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaFechas1(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
+
+function cargarTablaFechas(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.fechas.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].id;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].fecha_inicio;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.fechas[i].fecha_final;
+        }
+    }
+}
+
+function solicitarDatosListarFechas(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaFechas(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
 function solicitarDatosListarUsuarios(origen, tabla) {
     fetch(origen).then(
             (resultados) => {

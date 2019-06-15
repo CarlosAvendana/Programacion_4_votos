@@ -48,6 +48,14 @@
         <servlet-name>ServicioVotacion</servlet-name>
         <servlet-class>Servicios.ServicioVotacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServicioTablaVotacion</servlet-name>
+        <servlet-class>Servicios.ServicioTablaVotacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioTablaVotacion2</servlet-name>
+        <servlet-class>Servicios.ServicioTablaVotacion2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
         <url-pattern>/ServicioLoginI</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>ServicioVotacion</servlet-name>
         <url-pattern>/ServicioVotacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioTablaVotacion</servlet-name>
+        <url-pattern>/ServicioTablaVotacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioTablaVotacion2</servlet-name>
+        <url-pattern>/ServicioTablaVotacion2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

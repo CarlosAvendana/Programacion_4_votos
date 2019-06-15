@@ -12,23 +12,22 @@ import javax.servlet.http.HttpSession;
 
 public class ServicioVotacion extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws InstantiationException, ClassNotFoundException, IllegalAccessException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws InstantiationException, ClassNotFoundException, IllegalAccessException, IOException {
 
         GestorVotacion GVotacion = GestorVotacion.obtenerInstancia();
         HttpSession sesion = request.getSession(true);
 
-        String id = request.getParameter("Fid");
         String dateI = request.getParameter("FInicio");
         String dateA = request.getParameter("FApertura");
         String dateF = request.getParameter("FFinal");
         String dateC = request.getParameter("FCierre");
 
         try {
-            GVotacion.agregar(Integer.parseInt(id), dateI, dateA, dateF, dateC, 0);
+            GVotacion.agregar(dateI, dateA, dateF, dateC, 0);
         } catch (Exception ex) {
             Logger.getLogger(ServicioVotacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        response.sendRedirect("adminGestionVotacion.jsp");
     }
 
     @Override

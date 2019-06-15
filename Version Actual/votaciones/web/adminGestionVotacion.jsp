@@ -72,7 +72,7 @@
 
                                     </td>
                                     <td>
-                                        <input id='FechaInicio' type='date' />
+                                        <input id='FechaInicio' type='date' name="FInicio"/>
                                     </td>
                                 </tr>
 
@@ -83,7 +83,7 @@
                                         </strong>
                                     </td>
                                     <td>         
-                                        <input id='FechaApertura' type='date' />
+                                        <input id='FechaApertura' type='date' name="FApertura"/>
                                     </td>
                                 </tr>
 
@@ -94,7 +94,7 @@
                                         </strong>
                                     </td>
                                     <td>         
-                                        <input id='FechaFinal' type='date' />
+                                        <input id='FechaFinal' type='date' name="FFinal"/>
                                     </td>
                                 </tr>
 
@@ -105,7 +105,7 @@
                                         </strong>
                                     </td>
                                     <td>         
-                                        <input id='FechaCierre' type='date' />
+                                        <input id='FechaCierre' type='date' name="FCierre"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -115,7 +115,7 @@
                                         </strong>
                                     </td>
                                     <td>          
-                                        <input id='activo' type='checkbox' />
+                                        <input id='activo' type='checkbox' name="check"/>
                                     </td>
                                 </tr>
                                 <tr>

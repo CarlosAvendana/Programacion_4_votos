@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 
@@ -20,6 +21,7 @@ public class ServicioAgregarPostulante extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InstantiationException, ClassNotFoundException, IllegalAccessException {
         GestorVotacionPartido gP=GestorVotacionPartido.obtenerInstancia();
+        HttpSession sesion = request.getSession(true);
         try {
             int votTemp= 1;
             String cedula = request.getParameter("campo1");

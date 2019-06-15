@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.websocket.Decoder;
 
@@ -36,6 +37,7 @@ public class ServicioCreaciondePartido extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InstantiationException, ClassNotFoundException, IllegalAccessException {
         GestorPartido g1 = GestorPartido.obtenerInstancia();
+        HttpSession sesion = request.getSession(true);
         try {
 
             String nombre = request.getParameter("nombre");

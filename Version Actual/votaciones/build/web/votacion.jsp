@@ -29,7 +29,7 @@
                 <p>Segundo apellido: <strong>${usuario.apellido2}</strong></p>
             </section>
             <section id  = "votacion">
-                <table id ="tablaVotacion">
+                <table id ="tablaVotacion" style="margin: 0 auto; padding: 15px;">
 
                 </table>
             </section>

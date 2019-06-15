@@ -27,21 +27,21 @@
                 //Validacion.validacion(request, response);
             %>
             <form name="form" action="ServicioChangePassword" method="POST">
-                <section class="container">
+                <section class="container"  style="text-align: center" style="margin: 0 auto; padding: 75px;">
                     <h1 style="text-align: center">Cambio de Contraseña</h1>
                     <p style="text-align: center">
                         Al ser este  primer ingreso se requiere un cambio de contraseña
                     </p>
-                    <table class="changePassword" style="text-align: center">
-                        <tr>          
-                            <td style="text-align: center"><input type="password" size="30" id="oldPassword" 
+                    <table class="changePassword"  style="text-align: center" style="margin: 0 auto; padding: 75px;">
+                        <tr >          
+                            <td  style="text-align: center" style="margin:  auto; padding: 75px;"><input type="password" size="30" id="oldPassword" 
                                                                   name="oldPassword" placeholder=" Ingrese su conraseña anterior" /></td>
                         </tr>
                         <tr>  
-                            <td style="text-align: center"><input type="password" size="30" id="newPassword" 
+                            <td  style="text-align: center" style="margin: auto; padding: 75px;"><input type="password" size="30" id="newPassword" 
                                                                   name="newPassword" placeholder="Ingrese su nueva contraseña" /></td>
-                        </tr>
-                        <td align="center" colspan="2">
+                        </tr  style="text-align: center" style="margin: 0 auto; padding: 75px;">
+                        <td  style="text-align: center" style="margin: 0 auto; padding: 75px;" colspan="2" >
                             <button type="submit">Ingresar</button>
                         </td>
                     </table>

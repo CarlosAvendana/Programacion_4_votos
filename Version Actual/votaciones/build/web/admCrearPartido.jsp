@@ -22,7 +22,7 @@
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">
-                    <table id="tablaButton">
+                    <table id="tablaButton"style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
                                 <td>
@@ -54,7 +54,7 @@
                 </section>
                 <section id="crearP">
                     <form id="formP"action="ServicioCreaciondePartido" method="POST" enctype="multipart/form-data">
-                        <table id="tablaFormulario" class="tablaDatos" style="margin: 0 auto;">
+                        <table id="tablaFormulario" class="tablaDatos" style="margin: 0 auto; padding: 75px;">
                            <caption style='color: white; background-color: lightseagreen;'>
                                 <strong>
                                     Creacion de Partido

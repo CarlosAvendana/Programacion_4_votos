@@ -2,7 +2,6 @@ package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
-import Modelo.Usuario;
 import Modelo.Votacion;
 import java.io.Serializable;
 import java.sql.Connection;

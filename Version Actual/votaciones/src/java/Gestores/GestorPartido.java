@@ -3,9 +3,7 @@ package Gestores;
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
 import Modelo.Partido;
-
 import java.io.InputStream;
-
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

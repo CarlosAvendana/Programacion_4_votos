@@ -22,7 +22,7 @@
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">
-                    <table id="tablaButton">
+                    <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
                                 <td>

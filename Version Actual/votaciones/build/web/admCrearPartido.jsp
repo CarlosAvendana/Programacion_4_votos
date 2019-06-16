@@ -9,6 +9,7 @@
 //  Carlos Obando Avendaña
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -117,6 +118,18 @@
                             </tbody>
                         </table>
                     </form>
+                </section>
+                <section style="margin: 0 auto;">
+                    <%String codigo = request.getParameter("mensaje");
+                                if (codigo != null) {
+                                    if (codigo.equals("1")) {
+                                        out.println("<p style='color : red;'>Partido ya existe </p>");
+                                    }
+                                    if (codigo.equals("0")) {
+                                        out.println("<p style='color : green;'>Se agrego con exito</p>");
+                                    }
+                                }
+                            %>
                 </section>
             </div>
         </div>

@@ -41,25 +41,27 @@ public class ServicioCreaciondePartido extends HttpServlet {
                 request.setAttribute("mensaje",
                         "Se omitió la selección del archivo.");
             }
-            if (GestorPartido.validate(nombreArchivo)) {
-                try {
-                    g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize(), part.getContentType());
-                } catch (Exception ex) {
-                    response.sendRedirect("adminGeneral.jsp");
-                    request.setAttribute("mensaje",
-                            String.format("Excepción: '%s'", ex.getMessage()));
-                }
+            if (g1.verificarPartido(siglas, nombre)) {
+                response.sendRedirect("admCrearPartido.jsp?mensaje=1");
             } else {
-                response.sendRedirect("adminGeneral.jsp");
-                request.setAttribute("mensaje",
-                        "El formato del archivo es incorrecto.");
+                if (GestorPartido.validate(nombreArchivo)) {
+                    try {
+                        g1.agregar(nombre, siglas, observaciones, part.getInputStream(), (int) part.getSize(), part.getContentType());
+                    } catch (Exception ex) {
+                        request.setAttribute("mensaje",
+                                String.format("Excepción: '%s'", ex.getMessage()));
+                    }
+                } else {
+                    request.setAttribute("mensaje",
+                            "El formato del archivo es incorrecto.");
+                }
+                response.sendRedirect("admCrearPartido.jsp?mensaje=0");
             }
         } catch (IOException | ServletException ex) {
-            response.sendRedirect("adminGeneral.jsp");
             request.setAttribute("mensaje",
                     String.format("Ocurrió una excepción: '%s'", ex.getMessage()));
         }
-        response.sendRedirect("adminGeneral.jsp");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

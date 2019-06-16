@@ -45,11 +45,17 @@ public class GestorVotacionPartido implements Serializable {
             + "VALUES(?, ?, ?, ?, ?, ?); ";
 
     //--------------------Para cargar Imagen--------------------------------
+    
+    private static final String IMAGE_PATTERN
+            = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+
+    private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);   
+    
       private static final String CMD_GET_IMAGE_LIST
-            = "SELECT siglas, cedula_candidato FROM bd_votacion.votacion_partido ORDER BY cedula_candidato; ";
+            = "SELECT partido_siglas, cedula_candidato FROM bd_votacion.votacion_partido ORDER BY cedula_candidato; ";
     
       private static final String CMD_GET_IMAGE
-            = "SELECT votacion_id, partido_siglas, cedula_candidato, tipo_imagen, votos_obtenidos FROM bd_votaciones WHERE cedula_candidato=?; ";
+            = "SELECT votacion_id, partido_siglas, cedula_candidato, tipo_imagen, votos_obtenidos FROM bd_votaciones WHERE partido_siglas=?; ";
   
  //------------FIN -------Para cargar Imagen--------------------------------
       
@@ -82,15 +88,6 @@ public class GestorVotacionPartido implements Serializable {
         return instancia;
     }
 
-    public static boolean validate(final String fileName) {
-        Matcher matcher = PATTERN.matcher(fileName);
-        return matcher.matches();
-    }
-
-    private static final String IMAGE_PATTERN
-            = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
-
-    private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
 
     public VotacionPartido recuperar(String codigo) throws InstantiationException, ClassNotFoundException, IllegalAccessException {
         VotacionPartido r = null;
@@ -267,11 +264,6 @@ public class GestorVotacionPartido implements Serializable {
         return r.toString();
     }
 
-    public static String getGallery(GestorPartido instance, int imagesPerRow) {
-        return instance.getGallery(imagesPerRow);
-    }
-
-    
     private List<Object[]> imageList() {
         System.out.println("Obteniendo la lista de imágenes..");
         List<Object[]> r = new ArrayList<>();
@@ -281,8 +273,8 @@ public class GestorVotacionPartido implements Serializable {
                     ResultSet rs = stm.executeQuery(CMD_GET_IMAGE_LIST)) {
                 while (rs.next()) {
                     Object[] item = new Object[2];
-                    item[0] = rs.getString("siglas");
-                     item[1] = rs.getString("cedula_candidato");
+                    item[0] = rs.getString("partido_siglas");
+                    item[1] = rs.getString("cedula_candidato");
                     r.add(item);
                 }
             }
@@ -291,31 +283,25 @@ public class GestorVotacionPartido implements Serializable {
         }
         return r;
     }
-    
-    
-      public void loadImage(HttpServletResponse response, int imageId) throws IOException, SQLException {
+
+    public void loadImage(HttpServletResponse response, String imageId) throws IOException, SQLException {
+        //va a recoger la imagen por el id que en  este caso son las siglas
         try (OutputStream out = response.getOutputStream();
                 Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
                 PreparedStatement stm = cnx.prepareCall(CMD_GET_IMAGE)) {
-            stm.setInt(1, imageId);
+            stm.setString(1, imageId);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
                 response.setContentType(rs.getString("tipo_imagen"));
                 IOUtilities.copy(rs.getBinaryStream(3), out);
             }
         }
-        
+
     }
-    
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    
+           
+    public static boolean validate(final String fileName) {
+        Matcher matcher = PATTERN.matcher(fileName);
+        return matcher.matches();
+    }
     
 }

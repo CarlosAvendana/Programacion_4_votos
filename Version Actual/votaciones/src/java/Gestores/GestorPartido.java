@@ -148,8 +148,6 @@ public class GestorPartido implements Serializable {
         return r;
     }
 
-    String getGallery(int imagesPerRow) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
 }

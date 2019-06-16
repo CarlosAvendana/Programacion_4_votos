@@ -32,6 +32,10 @@ public class GestorPartido implements Serializable {
             + "(siglas, nombre, bandera,tipo_imagen, observaciones) "
             + "VALUES(?, ?, ?, ?, ?); ";
 
+    private static final String CMD_VERIFICAR
+            = "SELECT siglas,nombre FROM bd_votaciones.partido "
+            + "WHERE siglas=? AND nombre=? ";
+    
     private GestorPartido() throws
             InstantiationException,
             ClassNotFoundException,
@@ -78,6 +82,25 @@ public class GestorPartido implements Serializable {
             }
         }
     }
+    
+    public boolean verificarPartido(String siglas, String nombre) {
+        boolean encontrado = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
+                stm.clearParameters();
+                stm.setString(1, siglas);
+                stm.setString(2, nombre);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return encontrado;
+    }
+    
 
     public Partido recuperar(String nombre) {
         Partido r = null;

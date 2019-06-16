@@ -145,7 +145,7 @@ function cargarTablaPartidos(tabla, datos) {
 //dtos votacion partido
 function init2() {
     console.log("Mostrando datos para votacion")
-    solicitarDatosVotacionPartido("ServicioVotacionPartido", "datosVotacion");
+    solicitarDatosVotacionPartido("ServicioVotacionPartido", "votacion");
 }
 //solicitar datos votacion partido
 function solicitarDatosVotacionPartido(origen, tabla) {
@@ -165,15 +165,15 @@ function solicitarDatosVotacionPartido(origen, tabla) {
 function cargarTablaVotacionPartido(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
-        for (var i = 0; i < datos.listVP.length; i++) {
+        for (var i = 0; i < datos.votaciones.length; i++) {
             var nuevaFila = refTabla.insertRow(-1);
             var nuevaCelda;
             nuevaCelda = nuevaFila.insertCell(-1);
-            nuevaCelda.innerText = datos.listVP[i].Partido;
-            nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.listVP[i].Siglas;
             nuevaCelda = nuevaFila.insertCell(-1);
-            nuevaCelda.innerText = datos.listVP[i].Cadidato;
+            nuevaCelda.innerText = datos.listVP[i].Nombre;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.listVP[i].Candidato;
             nuevaCelda = nuevaFila.insertCell(-1);
         }
     }
@@ -239,4 +239,7 @@ function cargarDatos(datos) {
         });
     }
 }
+
+
+
 

@@ -101,4 +101,10 @@ public class Usuario implements Serializable {
     public String obtenerNombreCompleto() {
         return String.format("%s %s %s", getNombre(), getApellido1(), getApellido2());
     }
+
+
+    
+    public String getNombreCompleto() {
+        return String.format("%s %s %s", getNombre(), getApellido1(), getApellido2());
+    }
 }

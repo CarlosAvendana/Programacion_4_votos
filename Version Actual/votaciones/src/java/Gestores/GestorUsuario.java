@@ -178,6 +178,8 @@ public class GestorUsuario implements Serializable {
         return r;
     }
 
+    
+  
 //    public String getTablaHTML() {
 //        StringBuilder r = new StringBuilder();
 //        List<Usuario> usuarios = listarTodos();

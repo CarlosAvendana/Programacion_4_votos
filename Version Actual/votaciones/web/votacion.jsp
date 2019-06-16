@@ -21,7 +21,6 @@
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
         <title>Votacion</title>
     </head>
-    <jsp:useBean id ="g1" class ="Gestores.GestorVotacionPartido" scope="application"></jsp:useBean>
     <body onload="init2()">
         <div id="wrapper">
             <section class="datos">
@@ -32,7 +31,7 @@
                 <p>Segundo apellido: <strong>${usuario.apellido2}</strong></p>
             </section>
             <section id  = "votacion">
-                ${g1.getGallery(3)}
+                
             </section>
 
         </div>

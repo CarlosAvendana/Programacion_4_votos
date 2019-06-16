@@ -4,6 +4,7 @@ import Gestores.GestorVotacionPartido;
 import Modelo.VotacionPartido;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,30 +17,16 @@ import org.json.JSONObject;
 
 public class ServicioVotacionPartido extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<VotacionPartido> listVP = null;
-            try {
-                listVP = GestorVotacionPartido.obtenerInstancia().listarTodo();
-            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
-                Logger.getLogger(ServicioVotacionPartido.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println(listVP);
 
-            JSONObject r = new JSONObject();
-            JSONArray a = new JSONArray();
-//incluir código para cargar las imagenes, tanto de la bandera como del candidato
-            for (VotacionPartido p : listVP) {
-                JSONObject pj = new JSONObject();
-                pj.put("Partido:", p.getPartSiglas().getNombre());
-                pj.put("Siglas: ", p.getPartSiglas().getSiglas());
-                pj.put("Candidato", p.getCedCandidato().obtenerNombreCompleto());
-                a.put(pj);
+            GestorVotacionPartido g1 = (GestorVotacionPartido) getServletContext().getAttribute("g1");
+            try {
+                g1.loadImage(response, request.getParameter("siglas"));
+            } catch (SQLException ex) {
+                System.err.printf("Excepción: '%s'%n", ex.getMessage());
             }
-            r.put("listVP", a);
-            out.print(r);
         }
     }
 

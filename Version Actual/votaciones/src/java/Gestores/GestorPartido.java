@@ -230,4 +230,6 @@ public class GestorPartido implements Serializable {
         return r;
     }
 
+
+
 }

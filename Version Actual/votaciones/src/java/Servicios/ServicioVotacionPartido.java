@@ -16,13 +16,12 @@ import org.json.JSONObject;
 
 public class ServicioVotacionPartido extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)           throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             List<VotacionPartido> listVP = null;
             try {
-                listVP = GestorVotacionPartido.obtenerInstancia().listarTodo();
+                listVP = GestorVotacionPartido.obtenerInstancia().listarTodo(); //cambiar por el listar en específico
             } catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
                 Logger.getLogger(ServicioVotacionPartido.class.getName()).log(Level.SEVERE, null, ex);
             }

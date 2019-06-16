@@ -29,11 +29,11 @@ public class GestorVotacionPartido implements Serializable {
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT votacion_id,partido_siglas, cedula_candidato, foto_candidato,votos_obtenidos "
+            = "SELECT votacion_id,partido_siglas, cedula_candidato,votos_obtenidos "
             + "FROM votacion_partido WHERE votacion_id=? ";
 
     private static final String CMD_LISTAR
-            = "SELECT votacion_id,partido_siglas, cedula_candidato, foto_candidato,votos_obtenidos"
+            = "SELECT votacion_id, partido_siglas, cedula_candidato, votos_obtenidos "
             + "FROM votacion_partido ORDER BY votacion_id; ";
 
     private static final String CMD_ACTUALIZAR
@@ -161,7 +161,6 @@ public class GestorVotacionPartido implements Serializable {
                                 gv.recuperar(rs.getInt("votacion_id")),
                                 gp.recuperar(rs.getString("partido_siglas")),
                                 gu.recuperar(rs.getString("cedula_candidato")),
-                                rs.getString("foto_candidato"),
                                 rs.getInt("votos_obtenidos")
                         );
                     }
@@ -189,7 +188,6 @@ public class GestorVotacionPartido implements Serializable {
                             gv.recuperar(rs.getInt("votacion_id")),
                             gp.recuperar(rs.getString("partido_siglas")),
                             gu.recuperar(rs.getString("cedula_candidato")),
-                            rs.getString("foto_candidato"),
                             rs.getInt("votos_obtenidos")
                     ));
                 }
@@ -258,7 +256,6 @@ public class GestorVotacionPartido implements Serializable {
                             gv.recuperar(rs.getInt("votacion_id")),
                             gp.recuperar(rs.getString("partido_siglas")),
                             gu.recuperar(rs.getString("cedula_candidato")),
-                            rs.getString("foto_candidato"),
                             rs.getInt("votos_obtenidos")
                     ));
                     }

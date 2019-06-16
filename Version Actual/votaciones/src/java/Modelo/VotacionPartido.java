@@ -12,16 +12,15 @@ public class VotacionPartido implements Serializable {
     private String fotoCandidato;
     private int votosObtenidos;
 
-    public VotacionPartido(Votacion votId, Partido partSiglas, Usuario cedCandidato, String fotoCandidato, int votosObtenidos) {
+    public VotacionPartido(Votacion votId, Partido partSiglas, Usuario cedCandidato,  int votosObtenidos) {
         this.votId = votId;
         this.partSiglas = partSiglas;
         this.cedCandidato = cedCandidato;
-        this.fotoCandidato = fotoCandidato;
         this.votosObtenidos = votosObtenidos;
     }
 
     public VotacionPartido() {
-        this(null, null, null, null, 0);
+        this(null, null, null, 0);
     }
 
 //    @Override
@@ -78,7 +77,6 @@ public class VotacionPartido implements Serializable {
         r.put("id_votacion", getVotId().getId());
         r.put("partido_siglas", getPartSiglas().getSiglas());
         r.put("cedula_candidato", getCedCandidato().getCedula());
-        r.put("foto_candidato", getFotoCandidato());
         r.put("votos_obtenidos", getVotosObtenidos());
         return r;
     }

@@ -18,7 +18,7 @@ public class GestorUsuario implements Serializable {
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT cedula,apellido1,apellido2,nombre,clave,activo "
+            = "SELECT cedula, apellido1, apellido2, nombre, clave, activo  "
             + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR

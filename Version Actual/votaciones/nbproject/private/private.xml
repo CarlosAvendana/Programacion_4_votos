@@ -5,20 +5,14 @@
             <url>web/adminGestionVotacion.jsp</url>
             <bookmark id="3">
                 <name/>
-                <line>73</line>
+                <line>66</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/web/XMLDatos.jsp</file>
-
-            <file>file:/home/djnane/Escritorio/votos/Version%20Actual/votaciones/web/votacion.jsp</file>
-            <file>file:/home/djnane/Escritorio/votos/Version%20Actual/votaciones/web/scripts/script.js</file>
-            <file>file:/home/djnane/Escritorio/votos/Version%20Actual/votaciones/src/java/Servicios/ServicioVotacionPartido.java</file>
-
+            <file>file:/home/djnane/Escritorio/votos/Version%20Actual/votaciones/src/java/Gestores/GestorPartido.java</file>
         </group>
     </open-files>
 </project-private>

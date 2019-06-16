@@ -31,6 +31,9 @@
                 <p>Segundo apellido: <strong>${usuario.apellido2}</strong></p>
             </section>
             <section id  = "votacion">
+                <table id="votaciones">
+                    
+                </table>
                 
             </section>
 

@@ -22,9 +22,7 @@
         <title>General Administrator</title>
     </head>
     <body>
-        <%
-            Validacion.validacion(request, response);
-        %>
+        
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">
@@ -33,6 +31,9 @@
                             <tr>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'admEditarAsignacionUsuario.jsp'">Editar Usuario Partido</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admActivarFechaVotacion.jsp'">Activar Fecha</button>   
                                 </td>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'admEditarPartido.jsp'">Editar Partido</button>   
@@ -60,8 +61,6 @@
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
-                                </td>
-
                             </tr>
                         </thead>
                     </table>

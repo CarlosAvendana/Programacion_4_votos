@@ -19,15 +19,22 @@
         <title>Asigna Usuario a Partido</title>
     </head>
     <body  onload="asignaUsuariosAPartido();">
-        <%
-            Validacion.validacion(request, response);
-        %>
+       
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
+                                 <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admEditarAsignacionUsuario.jsp'">Editar Usuario Partido</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admActivarFechaVotacion.jsp'">Activar Fecha</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admEditarPartido.jsp'">Editar Partido</button>   
+                                </td>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
                                 </td>
@@ -44,13 +51,13 @@
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
+                                    <button class='bnt' role="link" onclick="window.location = 'XMLDatos.jsp'">Cargar Usuarios XML</button>
+                                </td>
                                 <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
-                                </td>
-
                             </tr>
                         </thead>
                     </table>

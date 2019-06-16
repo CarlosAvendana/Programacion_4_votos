@@ -62,6 +62,23 @@ public class GestorVotacion implements Serializable {
         }
         return instancia;
     }
+    
+    public boolean actualizarE(int o, int s) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion SET estado=? Where id='" + s + "'");
+                stm.clearParameters();
+                stm.setInt(1, o);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
 
     //verifica si exsite esa fecha de votacion
      public boolean verificarVotacion(int id) {

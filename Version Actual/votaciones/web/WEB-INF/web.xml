@@ -68,6 +68,10 @@
         <servlet-name>ServicioCargar</servlet-name>
         <servlet-class>Servicios.ServicioCargar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServicioTablaVotacion3</servlet-name>
+        <servlet-class>Servicios.ServicioTablaVotacion3</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
         <url-pattern>/ServicioLoginI</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>ServicioCargar</servlet-name>
         <url-pattern>/ServicioCargar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioTablaVotacion3</servlet-name>
+        <url-pattern>/ServicioTablaVotacion3</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -21,12 +21,15 @@
     <body>
         <div id="wrapper">
             <div id="contents">
-                <section id="botones">
+            <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGestionVotacion.jsp'">Gestionar Dias Votacion</button>   
                                 </td>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminAsignaUsuarioAPartido.jsp'">Crear Postulante</button>   
@@ -38,15 +41,13 @@
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
-                                    <form name='formxml' action="servicioXML" method='POST'>
-                                        <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
-                                    </form>  
-                                </td>
                                 <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
+                                </td>
+
                             </tr>
                         </thead>
                     </table>
@@ -67,7 +68,6 @@
                                         <strong>
                                             Fecha de Inicio
                                         </strong>
-
                                     </td>
                                     <td>
                                         <input id='FechaInicio' type='date' name="FInicio"/>
@@ -103,7 +103,6 @@
                                         <input id='FechaCierre' type='date' name="FCierre"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td colspan="2"  align='center'>
                                         <input class='bnt' type="submit" value='Crear' name='Crear'/>

@@ -34,20 +34,20 @@
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminAsignaUsuarioAPartido.jsp'">Crear Postulante</button>   
                                 </td>
-
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminReporte.jsp'">Reportes</button>   
+                                </td>
                                 <td>
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
-                                    <form name='formxml' action="servicioXML" method='POST'>
-                                        <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
-                                    </form>  
-                                </td>
                                 <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
+                                </td>
+
                             </tr>
                         </thead>
                     </table>

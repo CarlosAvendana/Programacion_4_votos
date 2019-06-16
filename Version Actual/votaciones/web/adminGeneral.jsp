@@ -23,10 +23,13 @@
     <body>
         <div id="wrapper">
             <div id="contents">
-                <section id="botones">
+   <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
+                                </td>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminGestionVotacion.jsp'">Gestionar Dias Votacion</button>   
                                 </td>

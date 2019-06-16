@@ -20,8 +20,8 @@
     <body  onload="asignaUsuariosAPartido();">
         <div id="wrapper">
             <div id="contents">
-                <section id="botones">
-                    <table id="tablaButton"style="margin: 0 auto; padding: 15px;">
+   <section id="botones">
+                    <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
                                 <td>
@@ -30,7 +30,9 @@
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminGestionVotacion.jsp'">Gestionar Dias Votacion</button>   
                                 </td>
-
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'adminAsignaUsuarioAPartido.jsp'">Crear Postulante</button>   
+                                </td>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminReporte.jsp'">Reportes</button>   
                                 </td>
@@ -38,15 +40,13 @@
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
-                                    <form name='formxml' action="servicioXML" method='POST'>
-                                        <input class='bnt' type="submit" value='Cargar Usuarios' name='Cargar Usuarios'/>
-                                    </form>  
-                                </td>
                                 <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
+                                </td>
+
                             </tr>
                         </thead>
                     </table>

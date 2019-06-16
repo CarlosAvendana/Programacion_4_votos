@@ -1,8 +1,15 @@
 package Servicios;
+//  SLA.java
+//  EIF209 - Programacion 4 -Proeycto #2
+//  Abril 2019
+//
+//  Autores:
+//  Djenane Hernandez Rodriguez
+//  Diego Monterrey Benavides
+//  Carlos Obando Avendaña
 
 import Gestores.GAdmi;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,9 +41,9 @@ public class SLA extends HttpServlet {
             sesion.setMaxInactiveInterval(60 * 3);
 
             response.sendRedirect("adminGeneral.jsp");
-        }else {
-                response.sendRedirect("loginError.jsp");
-            }
+        } else {
+            response.sendRedirect("loginError.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

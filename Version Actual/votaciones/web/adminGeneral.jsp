@@ -23,7 +23,7 @@
     <body>
         <div id="wrapper">
             <div id="contents">
-   <section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>

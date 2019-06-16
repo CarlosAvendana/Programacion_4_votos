@@ -59,8 +59,7 @@ public class GestorVotacion implements Serializable {
         return instancia;
     }
 
-    
-     public List<Votacion> listarTodos() {
+    public List<Votacion> listarTodos() {
         List<Votacion> r = new ArrayList<>();
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
@@ -69,11 +68,11 @@ public class GestorVotacion implements Serializable {
                 while (rs.next()) {
                     r.add(new Votacion(
                             rs.getInt("id"),
-                                rs.getDate("fecha_inicio"),
-                                rs.getDate("fecha_apertura"),
-                                rs.getDate("fecha_cierre"),
-                                rs.getDate("fecha_final"),
-                                rs.getInt("estado")
+                            rs.getDate("fecha_inicio"),
+                            rs.getDate("fecha_apertura"),
+                            rs.getDate("fecha_cierre"),
+                            rs.getDate("fecha_final"),
+                            rs.getInt("estado")
                     ));
                 }
             }
@@ -83,9 +82,7 @@ public class GestorVotacion implements Serializable {
         }
         return r;
     }
-    
-    
-    
+
     public Votacion recuperar(int codigo) {
         Votacion r = null;
         try {
@@ -147,7 +144,7 @@ public class GestorVotacion implements Serializable {
             stm.setString(2, fechaApertura);
             stm.setString(3, fechaCierre);
             stm.setString(4, fechaFinal);
-            stm.setInt(5,0);
+            stm.setInt(5, 0);
             int r = stm.executeUpdate();
             if (r == 1) {
                 System.out.printf("Se agregó con éxito la votacion: '%s'..%n", fechaInicio);

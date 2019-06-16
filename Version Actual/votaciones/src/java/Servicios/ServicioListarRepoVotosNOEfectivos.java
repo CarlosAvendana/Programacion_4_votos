@@ -1,12 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servicios;
+//  ServicioListarRepoVotosNOEfectivos.java
+//  EIF209 - Programacion 4 -Proeycto #2
+//  Abril 2019
+//
+//  Autores:
+//  Djenane Hernandez Rodriguez
+//  Diego Monterrey Benavides
+//  Carlos Obando Avendaña
 
-import Gestores.GestorVotacion;
-import Modelo.Votacion;
+import Gestores.GestorReportes;
+import Modelo.Reporte;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -19,46 +22,32 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- *
- * @author demil
- */
-public class ServicioTablaVotacion2 extends HttpServlet {
+public class ServicioListarRepoVotosNOEfectivos extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<Votacion> fechas = null;
+            List<Reporte> _reportes = null;
             try {
-                fechas = GestorVotacion.obtenerInstancia().listarTodos();
+                _reportes = GestorReportes.obtenerInstancia().listar_NOvotoEfectivo();
             } catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
                 Logger.getLogger(ServicioListarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(fechas);
+            System.out.println(_reportes);
 
-            JSONObject fechaFinal = new JSONObject();
-            JSONArray arrayFechas = new JSONArray();
+            JSONObject _reportesFinal = new JSONObject();
+            JSONArray arrayReportes = new JSONArray();
 
-            for (Votacion p : fechas) {
-                JSONObject objUsuario = new JSONObject();
-                objUsuario.put("id", p.getId());
-                objUsuario.put("fecha_inicio", p.getFechaInicio());
-                objUsuario.put("fecha_final", p.getFechaFinal());
-                objUsuario.put("estado", p.getEstado());
-                arrayFechas.put(objUsuario);
+            for (Reporte p : _reportes) {
+                JSONObject objReporte = new JSONObject();
+                objReporte.put("voto_NOefectivo", p.getVotoEfectuados());
+                objReporte.put("pocertanje", p.getPorcentanjeVotoEfectuado());
+
+                arrayReportes.put(objReporte);
             }
-            fechaFinal.put("fechas", arrayFechas);
-            out.print(fechaFinal);
+            _reportesFinal.put("votos_NOefectuados", arrayReportes);
+            out.print(_reportesFinal);
         }
     }
 

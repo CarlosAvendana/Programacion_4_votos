@@ -1,4 +1,12 @@
 package Modelo;
+//  Reporte.java
+//  EIF209 - Programacion 4 -Proeycto #2
+//  Abril 2019
+//
+//  Autores:
+//  Djenane Hernandez Rodriguez
+//  Diego Monterrey Benavides
+//  Carlos Obando Avendaña
 
 import java.io.Serializable;
 import org.json.JSONObject;
@@ -16,6 +24,40 @@ public class Reporte implements Serializable {
     float porcentajeVotosPartido;
     String nombreRepresentante;
     String declaratoria;
+
+    int votacion_id;
+    String partido_siglas;
+    String cedula_candidato;
+    int votos_obtenidos;
+
+    public Reporte(int c, float cc, String p, String n) {
+        votos_obtenidos = c;
+        porcentanjeVotoEfectuado = cc;
+        partido_siglas = p;
+        nombreRepresentante = n;
+    }
+
+    public Reporte(float x, int v) {
+        abstencionismo = v;
+        pocerntajeAbstencionismo = x;
+
+    }
+
+    public Reporte(int ve, float por) {
+        this.votoEfectuados = ve;
+        this.porcentanjeVotoEfectuado = por;
+    }
+
+    public Reporte(int votacion_id, String partido_siglas, String cedula_candidato, int votos_obtenidos) {
+        this.votacion_id = votacion_id;
+        this.partido_siglas = partido_siglas;
+        this.cedula_candidato = cedula_candidato;
+        this.votos_obtenidos = votos_obtenidos;
+    }
+
+    public Reporte(int vr) {
+        this.votantesRegistrados = vr;
+    }
 
     public Reporte(int votantesRegistrados, int votoEfectuados, float porcentanjeVotoEfectuado, int abstencionismo, float pocerntajeAbstencionismo, int votosObtenidosPartido, float porcentajeVotosPartido, String nombreRepresentante, String declaratoria) {
         this.votantesRegistrados = votantesRegistrados;
@@ -103,7 +145,7 @@ public class Reporte implements Serializable {
 
     @Override
     public String toString() {
-        return toJSON().toString(9);
+        return toJSON().toString(13);
     }
 
     public JSONObject toJSON() {
@@ -120,7 +162,45 @@ public class Reporte implements Serializable {
         r.put("porcentajeVotosPartido", this.getPorcentajeVotosPartido());
         r.put("nombreRepresentante", this.getNombreRepresentante());
         r.put("declaratoria", this.getDeclaratoria());
+
+        r.put("votacion_id", this.getVotacion_id());
+        r.put("partido_siglas", this.getPartido_siglas());
+        r.put("cedula_candidato", this.getCedula_candidato());
+        r.put("votos_obtenidos", this.getVotos_obtenidos());
+
         return r;
+    }
+
+    public int getVotacion_id() {
+        return votacion_id;
+    }
+
+    public void setVotacion_id(int votacion_id) {
+        this.votacion_id = votacion_id;
+    }
+
+    public String getPartido_siglas() {
+        return partido_siglas;
+    }
+
+    public void setPartido_siglas(String partido_siglas) {
+        this.partido_siglas = partido_siglas;
+    }
+
+    public String getCedula_candidato() {
+        return cedula_candidato;
+    }
+
+    public void setCedula_candidato(String cedula_candidato) {
+        this.cedula_candidato = cedula_candidato;
+    }
+
+    public int getVotos_obtenidos() {
+        return votos_obtenidos;
+    }
+
+    public void setVotos_obtenidos(int votos_obtenidos) {
+        this.votos_obtenidos = votos_obtenidos;
     }
 
 }

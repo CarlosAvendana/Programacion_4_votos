@@ -21,7 +21,7 @@
     <body>
         <div id="wrapper">
             <div id="contents">
-            <section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
@@ -110,6 +110,22 @@
                             </tbody>
                         </table>
                     </form>
+                </section>
+                <section  >
+
+                    <p>
+                        <%String codigo = request.getParameter("mensaje");
+                            if (codigo != null) {
+                                if (codigo.equals("1")) {
+                                    out.println("<p align='center' style='color : red; margin: 0 auto; padding: 15 px;'>Se registraron las fechas de votacion </p>");
+                                }
+                                if (codigo.equals("0")) {
+                                    out.println("<p align='center' style='color : green; margin: 0 auto; padding: 15 px;'>No se agregaron las fechas de votacion!</p>");
+                                }
+                            }
+                        %>
+                    </p>
+
                 </section>
             </div>
         </div>

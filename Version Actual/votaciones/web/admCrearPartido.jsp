@@ -22,7 +22,7 @@
     <body>
         <div id="wrapper">
             <div id="contents">
-<section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
@@ -119,17 +119,17 @@
                         </table>
                     </form>
                 </section>
-                <section style="margin: 0 auto;">
+                <section  style="margin: 0 auto; padding: 15px;" >
                     <%String codigo = request.getParameter("mensaje");
-                                if (codigo != null) {
-                                    if (codigo.equals("1")) {
-                                        out.println("<p style='color : red;'>Partido ya existe </p>");
-                                    }
-                                    if (codigo.equals("0")) {
-                                        out.println("<p style='color : green;'>Se agrego con exito</p>");
-                                    }
-                                }
-                            %>
+                        if (codigo != null) {
+                            if (codigo.equals("1")) {
+                                out.println("<p style='color : green;'>Se agrego con exito</p>");
+                            }
+                            if (codigo.equals("0")) {
+                                out.println("<p style='color : red;'>No se pudo crear verifique las fechas</p>");
+                            }
+                        }
+                    %>
                 </section>
             </div>
         </div>

@@ -20,7 +20,7 @@
     <body  onload="asignaUsuariosAPartido();">
         <div id="wrapper">
             <div id="contents">
-   <section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
@@ -46,14 +46,13 @@
                                     </form>
                                 </td>
                                 </td>
-
                             </tr>
                         </thead>
                     </table>
                 </section>
                 <section id="secAF">
                     <form id="formP"action="ServicioAgregarPostulante" method="POST" enctype="multipart/form-data" >
-                        <table class="tablaDatos">
+                        <table class="tablaDatos" style="margin: 0 auto; padding: 15px;">
                             <thead>
                                 <tr>
                                     <td align='center' style='color: white; background-color: lightseagreen;' colspan="2" >
@@ -101,9 +100,26 @@
                             </tbody>
                         </table>
                     </form>
+
+                </section>
+                <section id="secTF"  align='center'style="margin: 0 auto; padding: 15px;">                    
+                    <table id="tablaFechas" class="tablaDatos"style='margin: 0 auto; padding: 15px;' >
+                        <thead>                       
+                            <tr>
+                                <td  align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
+                                    Tabla Fechas      
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Fecha Inicial</th>
+                                <th>Fecha Final</th>
+                            </tr>
+                        </thead>
+                    </table>              
                 </section>
                 <section id="secTU">                    
-                    <table id="tablaUsuarios" class="tablaDatos">
+                    <table id="tablaUsuarios" class="tablaDatos" style='margin: 0 auto; padding: 15px;'>
                         <thead>   
                             <tr>
                                 <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
@@ -119,10 +135,10 @@
                                 <th>Nombre</th>
                             </tr>
                         </thead>
-                    </table>              
+                    </table> 
                 </section>
                 <section id="secTP">                    
-                    <table id="tablaPartidos" class="tablaDatos">
+                    <table id="tablaPartidos" class="tablaDatos" style="margin: 0 auto; padding: 15px;">
                         <thead>                       
                             <tr>
                                 <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
@@ -135,23 +151,9 @@
                                 <th>Comentarios</th>
                             </tr>
                         </thead>
-                    </table>              
-                </section>
-                <section id="secTF">                    
-                    <table id="tablaFechas" class="tablaDatos">
-                        <thead>                       
-                            <tr>
-                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
-                                    Tabla Fechas      
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Id</th>
-                                <th>Fecha Inicial</th>
-                                <th>Fecha Final</th>
-                            </tr>
-                        </thead>
-                    </table>              
+                    </table>
+
+
                 </section>
             </div>
         </div>

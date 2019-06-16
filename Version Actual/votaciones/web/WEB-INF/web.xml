@@ -56,6 +56,26 @@
         <servlet-name>ServicioTablaVotacion2</servlet-name>
         <servlet-class>Servicios.ServicioTablaVotacion2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServicioListarReportes</servlet-name>
+        <servlet-class>Servicios.ServicioListarReportes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarRepoVotantesRegistrados</servlet-name>
+        <servlet-class>Servicios.ServicioListarRepoVotantesRegistrados</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarRepoVotosEfectivos</servlet-name>
+        <servlet-class>Servicios.ServicioListarRepoVotosEfectivos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarRepoVotosNOEfectivos</servlet-name>
+        <servlet-class>Servicios.ServicioListarRepoVotosNOEfectivos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioListarRepoCandidatos</servlet-name>
+        <servlet-class>Servicios.ServicioListarRepoCandidatos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
         <url-pattern>/ServicioLoginI</url-pattern>
@@ -111,6 +131,26 @@
     <servlet-mapping>
         <servlet-name>ServicioTablaVotacion2</servlet-name>
         <url-pattern>/ServicioTablaVotacion2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarReportes</servlet-name>
+        <url-pattern>/ServicioListarReportes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarRepoVotantesRegistrados</servlet-name>
+        <url-pattern>/ServicioListarRepoVotantesRegistrados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarRepoVotosEfectivos</servlet-name>
+        <url-pattern>/ServicioListarRepoVotosEfectivos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarRepoVotosNOEfectivos</servlet-name>
+        <url-pattern>/ServicioListarRepoVotosNOEfectivos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioListarRepoCandidatos</servlet-name>
+        <url-pattern>/ServicioListarRepoCandidatos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,11 +6,9 @@ function asignaUsuariosAPartido() {
     solicitarDatosListarPartidos("ServicioListarPartidos", "tablaPartidos");
     solicitarDatosListarFechas("ServicioTablaVotacion", "tablaFechas");
 }
-
-function init1(){
+function init1() {
     solicitarDatosListarFechas1("ServicioTablaVotacion2", "tablaFechas");
 }
-
 function cargarTablaFechas1(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -28,8 +26,6 @@ function cargarTablaFechas1(tabla, datos) {
         }
     }
 }
-
-
 function solicitarDatosListarFechas1(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -42,8 +38,6 @@ function solicitarDatosListarFechas1(origen, tabla) {
     }
     );
 }
-
-
 function cargarTablaFechas(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -59,7 +53,6 @@ function cargarTablaFechas(tabla, datos) {
         }
     }
 }
-
 function solicitarDatosListarFechas(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -72,7 +65,6 @@ function solicitarDatosListarFechas(origen, tabla) {
     }
     );
 }
-
 function solicitarDatosListarUsuarios(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -103,7 +95,6 @@ function cargarTablaUsuarios(tabla, datos) {
         }
     }
 }
-
 function solicitarDatosListarPartidos(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -116,7 +107,6 @@ function solicitarDatosListarPartidos(origen, tabla) {
     }
     );
 }
-
 function cargarTablaPartidos(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -134,12 +124,10 @@ function cargarTablaPartidos(tabla, datos) {
         }
     }
 }
-
 function init2() {
     console.log("Mostrando datos para votacion")
     solicitarDatosVotacionPartido("ServicioVotacionPartido", "datosVotacion");
 }
-
 function solicitarDatosVotacionPartido(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -152,8 +140,6 @@ function solicitarDatosVotacionPartido(origen, tabla) {
     }
     );
 }
-
-
 function cargarTablaVotacionPartido(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -172,4 +158,161 @@ function cargarTablaVotacionPartido(tabla, datos) {
 
 }
 
+function initReporte() {
+    solicitarDartosReporte1("ServicioListarReportes", "TablaReportes");
+    solicitarDartosReporte2("ServicioListarRepoVotantesRegistrados", "tablaBotantesRegistrados");
+    solicitarDartosReporte3("ServicioListarRepoVotosEfectivos", "votoEfectuadoTabla");
+    solicitarDartosReporte4("ServicioListarRepoVotosNOEfectivos", "votoNOEfectuados");
+    solicitarDartosReporte5("ServicioListarRepoCandidatos", "TC");
+}
 
+function solicitarDartosReporte1(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaReporte1(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
+function cargarTablaReporte1(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.reportes.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.reportes[i].votacion_id;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.reportes[i].partido_siglas;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.reportes[i].cedula_candidato;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.reportes[i].votos_obtenidos;
+
+        }
+    }
+
+}
+
+function solicitarDartosReporte2(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaReporte2(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
+function cargarTablaReporte2(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.votantes_registradosR.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.votantes_registradosR[i].vt;
+
+        }
+    }
+
+}
+
+function solicitarDartosReporte3(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaReporte3(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
+function cargarTablaReporte3(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.votos_efectuados.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.votos_efectuados[i].voto_efectivo;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.votos_efectuados[i].pocertanje;
+        }
+    }
+
+}
+
+function solicitarDartosReporte4(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaReporte4(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
+function cargarTablaReporte4(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.votos_NOefectuados.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.votos_NOefectuados[i].voto_NOefectivo;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.votos_NOefectuados[i].pocertanje;
+
+
+        }
+    }
+
+}
+
+
+function solicitarDartosReporte5(origen, tabla) {
+    fetch(origen).then(
+            (resultados) => {
+        return resultados.json();
+    }
+    ).then(
+            (datosJSON) => {
+        cargarTablaReporte5(tabla, datosJSON);
+        console.log(datosJSON);
+    }
+    );
+}
+
+function cargarTablaReporte5(tabla, datos) {
+    var refTabla = document.getElementById(tabla);
+    if (refTabla) {
+        for (var i = 0; i < datos.FINAL.length; i++) {
+            var nuevaFila = refTabla.insertRow(-1);
+            var nuevaCelda;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.FINAL[i].v1;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.FINAL[i].v2;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.FINAL[i].v3;
+            nuevaCelda = nuevaFila.insertCell(-1);
+            nuevaCelda.innerText = datos.FINAL[i].v4;
+        }
+    }
+
+}

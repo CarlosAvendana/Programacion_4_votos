@@ -23,10 +23,10 @@ INSERT INTO `bd_votaciones`.`votacion` (`id`, `fecha_inicio`, `fecha_apertura`, 
 INSERT INTO `bd_votaciones`.`votacion` (`id`, `fecha_inicio`, `fecha_apertura`, `fecha_cierre`, `fecha_final`, `estado`) VALUES ('3', '2018-09-04', '2018-09-04', '2018-10-04', '2018-10-04', '0');
 INSERT INTO `bd_votaciones`.`votacion` (`id`, `fecha_inicio`, `fecha_apertura`, `fecha_cierre`, `fecha_final`, `estado`) VALUES ('4', '2018-10-04', '2018-10-04', '2018-11-04', '2018-11-04', '1');
 
-INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('1', 'PAC', '2', '20');
-INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('2', 'PLN', '3', '10');
-INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('3', 'PFA', '4', '30');
-INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('4', 'PML', '5', '50');
+INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('1', 'PAC', '2', '3');
+INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('2', 'PLN', '3', '1');
+INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('3', 'PFA', '4', '1');
+INSERT INTO `bd_votaciones`.`votacion_partido` (`votacion_id`, `partido_siglas`, `cedula_candidato`, `votos_obtenidos`) VALUES ('4', 'PML', '5', '1');
 
 INSERT INTO `bd_votaciones`.`votacion_usuario` (`votacion_id`, `usuario_cedula`, `voto_completado`) VALUES ('1', '2', '1');
 INSERT INTO `bd_votaciones`.`votacion_usuario` (`votacion_id`, `usuario_cedula`, `voto_completado`) VALUES ('2', '3', '1');

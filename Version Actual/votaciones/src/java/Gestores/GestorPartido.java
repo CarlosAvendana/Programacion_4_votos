@@ -1,4 +1,12 @@
 package Gestores;
+//  GestorPartido.java
+//  EIF209 - Programacion 4 -Proeycto #2
+//  Abril 2019
+//
+//  Autores:
+//  Djenane Hernandez Rodriguez
+//  Diego Monterrey Benavides
+//  Carlos Obando Avendaña
 
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
@@ -35,7 +43,7 @@ public class GestorPartido implements Serializable {
     private static final String CMD_VERIFICAR
             = "SELECT siglas,nombre FROM bd_votaciones.partido "
             + "WHERE siglas=? AND nombre=? ";
-    
+
     private GestorPartido() throws
             InstantiationException,
             ClassNotFoundException,
@@ -82,7 +90,7 @@ public class GestorPartido implements Serializable {
             }
         }
     }
-    
+
     public boolean verificarPartido(String siglas, String nombre) {
         boolean encontrado = false;
         try {
@@ -100,7 +108,6 @@ public class GestorPartido implements Serializable {
         }
         return encontrado;
     }
-    
 
     public Partido recuperar(String nombre) {
         Partido r = null;

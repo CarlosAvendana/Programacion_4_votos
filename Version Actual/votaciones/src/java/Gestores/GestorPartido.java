@@ -21,8 +21,8 @@ public class GestorPartido implements Serializable {
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT siglas,nombre,observaciones,bandera "
-            + "FROM partido WHERE nombre=? ";
+            = "SELECT siglas, nombre, observaciones  "
+            + "FROM bd_votaciones.partido WHERE siglas=? ";
 
     private static final String CMD_LISTAR
             = "SELECT siglas,nombre,observaciones "
@@ -192,26 +192,25 @@ public class GestorPartido implements Serializable {
 //metodo que no se ocupa la momento
     public Partido recuperar(String nombre) {
         Partido r = null;
-//        try {
-//            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
-//                    PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR)) {
-//                stm.clearParameters();
-//                stm.setString(1, nombre);
-//                try (ResultSet rs = stm.executeQuery()) {
-//                    if (rs.next()) {
-//                        r = new Partido(
-//                                rs.getString("siglas"),
-//                                rs.getString("nombre"),
-//                                rs.getString("observaciones"),
-//                                rs.getObject("bandera", int.class)
-//                        );
-//                    }
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            System.err.printf("Excepción: '%s'%n",
-//                    ex.getMessage());
-//        }
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR)) {
+                stm.clearParameters();
+                stm.setString(1, nombre);
+                try (ResultSet rs = stm.executeQuery()) {
+                    if (rs.next()) {
+                        r = new Partido(
+                                rs.getString("siglas"),
+                                rs.getString("nombre"),
+                                rs.getString("observaciones")
+                        );
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
         return r;
     }
 //listar los partidos

@@ -145,7 +145,7 @@ function cargarTablaPartidos(tabla, datos) {
 //dtos votacion partido
 function init2() {
     console.log("Mostrando datos para votacion")
-    solicitarDatosVotacionPartido("ServicioVotacionPartido", "votacion");
+    solicitarDatosVotacionPartido("ServicioVP", "votaciones");
 }
 //solicitar datos votacion partido
 function solicitarDatosVotacionPartido(origen, tabla) {

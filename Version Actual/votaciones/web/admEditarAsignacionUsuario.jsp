@@ -56,7 +56,7 @@
                     </table>
                 </section>
                 <section id="secAF">
-                    <form id="formP"action="ServicioAgregarPostulante" method="POST" enctype="multipart/form-data" >
+                    <form id="formP"action="ServicioEditarUP" method="POST" enctype="multipart/form-data">
                         <table class="tablaDatos">
                             <thead>
                                 <tr>
@@ -69,39 +69,37 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                            ID de Fecha
+                                            Siglas de partido para editar candidato
                                         </strong>
                                         :&nbsp;             
-                                        <input type="text" id="campo2" name="campo2" 
+                                        <input type="text" id="campo2" name="s" 
                                                size="5" autocomplete="off"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <strong>
-                                            Cedula del usuario
+                                            Nueva ID Fecha
                                         </strong>
                                         :&nbsp;             
-                                        <input type="text" id="campo1" name="campo1" 
-                                               size="15" autocomplete="off"/>
+                                        <input type="text" id="campo2" name="FN" 
+                                               size="5" autocomplete="off"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <strong>
-                                            Siglas del Partido
+                                            Nueva Cedula Usuario
                                         </strong>
-                                        :&nbsp;
-                                        <input type="text" id="campo3" name="campo3" 
+                                        :&nbsp;             
+                                        <input type="text" id="campo1" name="ced" 
                                                size="15" autocomplete="off"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <strong>
-                                            Foto del Usuario
+                                            Nueva foto del Candidato
                                         </strong>
                                         :&nbsp;                                
                                         <input type="file" id="fotoUsuario" name="fotoUsuario" />
@@ -181,3 +179,4 @@
         </div>
     </body>
 </html>
+

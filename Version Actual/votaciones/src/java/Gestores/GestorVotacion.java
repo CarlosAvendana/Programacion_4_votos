@@ -63,7 +63,7 @@ public class GestorVotacion implements Serializable {
         return instancia;
     }
 
-    
+    //verifica si exsite esa fecha de votacion
      public boolean verificarVotacion(int id) {
         boolean encontrado = false;
         try {
@@ -81,7 +81,7 @@ public class GestorVotacion implements Serializable {
         return encontrado;
     }
     
-    
+    //lista todas las votaciones
      public List<Votacion> listarTodos() {
         List<Votacion> r = new ArrayList<>();
         try {
@@ -107,7 +107,7 @@ public class GestorVotacion implements Serializable {
     }
     
     
-    
+    //recupera una votacion
     public Votacion recuperar(int codigo) {
         Votacion r = null;
         try {
@@ -134,7 +134,7 @@ public class GestorVotacion implements Serializable {
         }
         return r;
     }
-
+//actualiza las votaciones*
     public boolean actualizar(Votacion u) {
         boolean exito = false;
         try {
@@ -160,7 +160,7 @@ public class GestorVotacion implements Serializable {
         return exito;
 
     }
-
+//agrega una votacion nueva
     public void agregar(String fechaInicio, String fechaApertura, String fechaCierre, String fechaFinal, int estado) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
             PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);

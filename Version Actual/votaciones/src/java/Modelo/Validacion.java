@@ -22,10 +22,6 @@ public class Validacion implements Serializable {
         Usuario e = (Usuario) se.getAttribute("usuario");
         if (e == null) {
             request.getRequestDispatcher("loginError.jsp").forward(request, response);
-        } else {
-            if (e.idIgualContrasenna()) {
-                request.getRequestDispatcher("changePassword.jsp").forward(request, response);//bool si el usuario cambio la clave
-            }
-        }
+        } 
     }
 }

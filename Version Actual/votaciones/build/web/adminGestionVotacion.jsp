@@ -9,6 +9,7 @@
 //  Carlos Obando Avendaña
 --%>
 
+<%@page import="Modelo.Validacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,9 @@
         <title>Cargar Usuarios</title>
     </head>
     <body>
+        <%
+            Validacion.validacion(request, response);
+        %>
         <div id="wrapper">
             <div id="contents">
             <section id="botones">

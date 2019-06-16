@@ -67,7 +67,7 @@ public class GestorUsuario implements Serializable {
         }
         return instancia;
     }
-
+//recuperar usuario
     public Usuario recuperar(String codigo) {
         Usuario r = null;
         try {
@@ -94,7 +94,7 @@ public class GestorUsuario implements Serializable {
         }
         return r;
     }
-    
+    //verificar Usuario1
     public boolean verificarUsuario1(String cedula) {
         boolean encontrado = false;
         try {
@@ -111,7 +111,7 @@ public class GestorUsuario implements Serializable {
         }
         return encontrado;
     }
-
+//verifica si existe usuario en la BD
     public boolean verificarUsuario(String cedula, String clave) {
         boolean encontrado = false;
         try {
@@ -129,7 +129,7 @@ public class GestorUsuario implements Serializable {
         }
         return encontrado;
     }
-
+//actualiza el usuarios
     public boolean actualizar(Usuario u) {
         boolean exito = false;
         try {
@@ -155,7 +155,7 @@ public class GestorUsuario implements Serializable {
         return exito;
 
     }
-
+//lista todos los usuarios
     public List<Usuario> listarTodos() {
         List<Usuario> r = new ArrayList<>();
         try {

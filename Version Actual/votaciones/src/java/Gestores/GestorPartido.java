@@ -63,7 +63,7 @@ public class GestorPartido implements Serializable {
         }
         return instancia;
     }
-
+//valida la imagen
     public static boolean validate(final String fileName) {
         Matcher matcher = PATTERN.matcher(fileName);
         return matcher.matches();
@@ -74,7 +74,7 @@ public class GestorPartido implements Serializable {
 
     private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
     
-    
+    //actualiza las observaciones de partido
     public boolean actualizarO(String observaciones, String s) {
         boolean exito = false;
         try {  
@@ -92,7 +92,7 @@ public class GestorPartido implements Serializable {
          return exito;
     }
     
-    
+    //actualiza la bandera del partido
     public boolean actualizarB(String s,InputStream in, int size, String contentType) {
         boolean exito = false;
         try {  
@@ -110,7 +110,7 @@ public class GestorPartido implements Serializable {
         }
          return exito;
     }
-    
+    //actualiza el nombre del partido
     public boolean actualizarN(String nombre, String s) {
         boolean exito = false;
         try {  
@@ -127,7 +127,7 @@ public class GestorPartido implements Serializable {
         }
          return exito;
     }
-
+//agrega un nuevo partido con la foto
     public void agregar(String nombre, String siglas, String observaciones, InputStream in, int size, String contentType) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
             PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
@@ -145,7 +145,7 @@ public class GestorPartido implements Serializable {
             }
         }
     }
-    
+    //verifica si existe el partido solo por siglas
     public boolean verificarPartido1(String siglas) {
         boolean encontrado = false;
         try {
@@ -164,7 +164,7 @@ public class GestorPartido implements Serializable {
     }
     
     
-    
+    //verifica el partido por siglas y nombre
     public boolean verificarPartido(String siglas, String nombre) {
         boolean encontrado = false;
         try {
@@ -183,7 +183,7 @@ public class GestorPartido implements Serializable {
         return encontrado;
     }
     
-
+//metodo que no se ocupa la momento
     public Partido recuperar(String nombre) {
         Partido r = null;
 //        try {
@@ -208,7 +208,7 @@ public class GestorPartido implements Serializable {
 //        }
         return r;
     }
-
+//listar los partidos
     public List<Partido> listarTodos() {
         List<Partido> r = new ArrayList<>();
         try {

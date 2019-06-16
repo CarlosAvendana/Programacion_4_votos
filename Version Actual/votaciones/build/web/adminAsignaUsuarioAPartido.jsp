@@ -8,6 +8,7 @@
 //  Carlos Obando Avendaña
 --%>
 
+<%@page import="Modelo.Validacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,9 +19,12 @@
         <title>Asigna Usuario a Partido</title>
     </head>
     <body  onload="asignaUsuariosAPartido();">
+        <%
+            Validacion.validacion(request, response);
+        %>
         <div id="wrapper">
             <div id="contents">
-   <section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
@@ -163,16 +167,16 @@
                         </thead>
                     </table>              
                 </section>
-        <%String codigo = request.getParameter("mensaje");
-            if (codigo != null) {
-                if (codigo.equals("1")) {
-                    out.println("<p style='color : red;'>Votacion </p>");
-                }
-                if (codigo.equals("0")) {
-                    out.println("<p style='color : green;'>Se agrego con exito</p>");
-                }
-            }
-        %>
+                <%String codigo = request.getParameter("mensaje");
+                    if (codigo != null) {
+                        if (codigo.equals("1")) {
+                            out.println("<p style='color : red;'>Votacion </p>");
+                        }
+                        if (codigo.equals("0")) {
+                            out.println("<p style='color : green;'>Se agrego con exito</p>");
+                        }
+                    }
+                %>
             </div>
         </div>
     </body>

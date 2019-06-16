@@ -13,10 +13,6 @@
         <servlet-class>Servicios.SLA</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>servicioXML</servlet-name>
-        <servlet-class>Servicios.servicioXML</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ServicioLogout</servlet-name>
         <servlet-class>Servicios.ServicioLogout</servlet-class>
     </servlet>
@@ -60,6 +56,18 @@
         <servlet-name>ServicioEditarPartido</servlet-name>
         <servlet-class>Servicios.ServicioEditarPartido</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServicioEditarUP</servlet-name>
+        <servlet-class>Servicios.ServicioEditarUP</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioConsulta1</servlet-name>
+        <servlet-class>Servicios.ServicioConsulta1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioCargar</servlet-name>
+        <servlet-class>Servicios.ServicioCargar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
         <url-pattern>/ServicioLoginI</url-pattern>
@@ -71,10 +79,6 @@
     <servlet-mapping>
         <servlet-name>SLA</servlet-name>
         <url-pattern>/SLA</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>servicioXML</servlet-name>
-        <url-pattern>/servicioXML</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServicioLogout</servlet-name>
@@ -119,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>ServicioEditarPartido</servlet-name>
         <url-pattern>/ServicioEditarPartido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioEditarUP</servlet-name>
+        <url-pattern>/ServicioEditarUP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioConsulta1</servlet-name>
+        <url-pattern>/ServicioConsulta1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioCargar</servlet-name>
+        <url-pattern>/ServicioCargar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

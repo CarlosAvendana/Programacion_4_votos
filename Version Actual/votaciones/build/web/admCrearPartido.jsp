@@ -10,6 +10,7 @@
 --%>
 
 
+<%@page import="Modelo.Validacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,9 +21,12 @@
         <title>Creando partido político</title>
     </head>
     <body>
+        <%
+            Validacion.validacion(request, response);
+        %>
         <div id="wrapper">
             <div id="contents">
-<section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
@@ -121,15 +125,15 @@
                 </section>
                 <section style="margin: 0 auto;">
                     <%String codigo = request.getParameter("mensaje");
-                                if (codigo != null) {
-                                    if (codigo.equals("1")) {
-                                        out.println("<p style='color : red;'>Partido ya existe </p>");
-                                    }
-                                    if (codigo.equals("0")) {
-                                        out.println("<p style='color : green;'>Se agrego con exito</p>");
-                                    }
-                                }
-                            %>
+                        if (codigo != null) {
+                            if (codigo.equals("1")) {
+                                out.println("<p style='color : red;'>Partido ya existe </p>");
+                            }
+                            if (codigo.equals("0")) {
+                                out.println("<p style='color : green;'>Se agrego con exito</p>");
+                            }
+                        }
+                    %>
                 </section>
             </div>
         </div>

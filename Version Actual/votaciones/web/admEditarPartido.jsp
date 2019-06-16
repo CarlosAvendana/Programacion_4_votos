@@ -10,6 +10,7 @@
 --%>
 
 
+<%@page import="Modelo.Validacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,9 @@
         <title>Creando partido político</title>
     </head>
     <body onload="init5()">
+        <%
+            Validacion.validacion(request, response);
+        %>
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">

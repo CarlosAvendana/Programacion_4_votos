@@ -1,3 +1,4 @@
+<%@page import="Modelo.Validacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,6 +9,9 @@
         <title>JSP Page</title>
     </head>
     <body onload="init1();">
+        <%
+            Validacion.validacion(request, response);
+        %>
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">

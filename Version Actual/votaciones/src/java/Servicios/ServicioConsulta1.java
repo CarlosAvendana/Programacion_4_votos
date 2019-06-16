@@ -1,26 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Servicios;
 
-import Gestores.GestorXML;
+import Modelo.Usuario;
+import Modelo.Usuario1;
+import com.google.gson.Gson;
+
+import ejemplo.entidades.dao.IGestorUsuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class servicioXML extends HttpServlet {
+/**
+ *
+ * @author demil
+ */
+public class ServicioConsulta1 extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            GestorXML u = GestorXML.obtenerInstancia();
-            u.xmlToBD();
-            response.sendRedirect("adminGeneral.jsp");
-        } catch (InstantiationException
-                | ClassNotFoundException
-                | IllegalAccessException ex) {
-            System.err.printf("Error: %s", ex.getMessage());
+           IGestorUsuarios g = AdministradorGestor.obtenerInstancia().obtenerGestor();
+            List<Usuario1> usuarios = g.obtenerLista();
+            out.println(new Gson().toJson(usuarios));
         }
     }
 

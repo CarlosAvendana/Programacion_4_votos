@@ -28,6 +28,9 @@
                         <thead>
                             <tr>
                                 <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admEditarPartido.jsp'">Editar Partido</button>   
+                                </td>
+                                <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
                                 </td>
                                 <td>

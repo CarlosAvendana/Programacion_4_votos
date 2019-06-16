@@ -1,26 +1,29 @@
 <%-- 
-   //  adminAsignaUsuarioAPartido.jsp
+//  crearPartido.jsp
 //  EIF209 - Programacion 4 -Proeycto #2
-//  Abril 2019
+//  Junio 2019
+//
 //  Autores:
 //  Djenane Hernandez Rodriguez
 //  Diego Monterrey Benavides
 //  Carlos Obando Avendaña
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/Color.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="politics.ico" type="image/x-icon" />
         <script src="scripts/script.js" type="text/javascript"></script>
-        <title>Asigna Usuario a Partido</title>
+        <title>Creando partido político</title>
     </head>
-    <body  onload="asignaUsuariosAPartido();">
+    <body onload="init5()">
         <div id="wrapper">
             <div id="contents">
-   <section id="botones">
+                <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
@@ -51,56 +54,61 @@
                         </thead>
                     </table>
                 </section>
-                <section id="secAF">
-                    <form id="formP"action="ServicioAgregarPostulante" method="POST" enctype="multipart/form-data" >
-                        <table class="tablaDatos">
+                <section id="crearP">
+                    <form id="formP"action="ServicioEditarPartido" method="POST" enctype="multipart/form-data">
+                        <table id="tablaFormulario" class="tablaDatos" style="margin: 0 auto; padding: 45px;">
                             <thead>
                                 <tr>
                                     <td align='center' style='color: white; background-color: lightseagreen;' colspan="2" >
-                                        Asignar un Usuario Al Partido
+                                        <strong>Editar Partido</strong>
                                     </td>
                                 </tr>
-                            </thead>
+                            </thead>                   
                             <tbody id="cuerpoForm">
                                 <tr>
                                     <td>
                                         <strong>
-                                            ID de Fecha
-                                        </strong>
-                                        :&nbsp;             
-                                        <input type="text" id="campo2" name="campo2" 
-                                               size="5" autocomplete="off"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            Cedula del usuario
-                                        </strong>
-                                        :&nbsp;             
-                                        <input type="text" id="campo1" name="campo1" 
-                                               size="15" autocomplete="off"/>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            Siglas del Partido
+                                            Siglas del Partido a Editar
                                         </strong>
                                         :&nbsp;
-                                        <input type="text" id="campo3" name="campo3" 
-                                               size="15" autocomplete="off"/>
+                                    </td>
+                                    <td >
+                                        <input type="text" id="campo1" name="s" 
+                                               size="30" autocomplete="off"/>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <strong>
-                                            Foto del Usuario
+                                            Nuevo nombre del Partido
                                         </strong>
-                                        :&nbsp;                                
-                                        <input type="file" id="fotoUsuario" name="fotoUsuario" />
+                                        :&nbsp;
+                                    </td>
+                                    <td >
+                                        <input type="text" id="campo1" name="nombre" 
+                                               size="30" autocomplete="off"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            Observaciones
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td>
+                                        <textarea type="text"  name="observaciones"  style="resize: none; width: 90%; height: 60px;" rows="5" cols="40"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <strong>
+                                            Bandera
+                                        </strong>
+                                        :&nbsp;
+                                    </td>
+                                    <td >
+                                        <input type="file" id="archivo" name="archivo"/>
                                     </td>
                                 </tr>
                                 <tr>                               
@@ -111,25 +119,6 @@
                             </tbody>
                         </table>
                     </form>
-                </section>
-                <section id="secTU">                    
-                    <table id="tablaUsuarios" class="tablaDatos">
-                        <thead>   
-                            <tr>
-                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
-                                    <strong>
-                                        Tabla de usuarios  
-                                    </strong>    
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Cedula</th>
-                                <th>Apellido 1</th>
-                                <th>Apellido 2</th>
-                                <th>Nombre</th>
-                            </tr>
-                        </thead>
-                    </table>              
                 </section>
                 <section id="secTP">                    
                     <table id="tablaPartidos" class="tablaDatos">
@@ -147,32 +136,18 @@
                         </thead>
                     </table>              
                 </section>
-                <section id="secTF">                    
-                    <table id="tablaFechas" class="tablaDatos">
-                        <thead>                       
-                            <tr>
-                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
-                                    Tabla Fechas      
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Id</th>
-                                <th>Fecha Inicial</th>
-                                <th>Fecha Final</th>
-                            </tr>
-                        </thead>
-                    </table>              
+                <section style="margin: 0 auto;">
+                    <%String codigo = request.getParameter("mensaje");
+                                if (codigo != null) {
+                                    if (codigo.equals("1")) {
+                                        out.println("<p style='color : red;'>no se pudo editar </p>");
+                                    }
+                                    if (codigo.equals("0")) {
+                                        out.println("<p style='color : green;'>Se edito con exito</p>");
+                                    }
+                                }
+                            %>
                 </section>
-        <%String codigo = request.getParameter("mensaje");
-            if (codigo != null) {
-                if (codigo.equals("1")) {
-                    out.println("<p style='color : red;'>Votacion </p>");
-                }
-                if (codigo.equals("0")) {
-                    out.println("<p style='color : green;'>Se agrego con exito</p>");
-                }
-            }
-        %>
             </div>
         </div>
     </body>

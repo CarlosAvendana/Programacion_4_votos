@@ -56,6 +56,7 @@
                                     <th>Activo</th>
                                 </tr>
                             </thead>
+                            
                         </table>
                     </form>
                 </section>

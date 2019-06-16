@@ -65,6 +65,16 @@
                                 <tr>
                                     <td>
                                         <strong>
+                                            ID de Fecha
+                                        </strong>
+                                        :&nbsp;             
+                                        <input type="text" id="campo2" name="campo2" 
+                                               size="5" autocomplete="off"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
                                             Cedula del usuario
                                         </strong>
                                         :&nbsp;             
@@ -153,6 +163,16 @@
                         </thead>
                     </table>              
                 </section>
+        <%String codigo = request.getParameter("mensaje");
+            if (codigo != null) {
+                if (codigo.equals("1")) {
+                    out.println("<p style='color : red;'>Votacion </p>");
+                }
+                if (codigo.equals("0")) {
+                    out.println("<p style='color : green;'>Se agrego con exito</p>");
+                }
+            }
+        %>
             </div>
         </div>
     </body>

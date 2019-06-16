@@ -36,6 +36,15 @@ public class GestorPartido implements Serializable {
             = "SELECT siglas,nombre FROM bd_votaciones.partido "
             + "WHERE siglas=? AND nombre=? ";
     
+    private static final String CMD_VERIFICAR1
+            = "SELECT siglas FROM bd_votaciones.partido "
+            + "WHERE siglas=? ";
+    
+    private static final String CMD_ACTUALIZARS
+            = "UPDATE bd_votaciones.partido "
+            + "SET siglas=?"
+            + "WHERE siglas=?; ";
+    
     private GestorPartido() throws
             InstantiationException,
             ClassNotFoundException,
@@ -64,6 +73,60 @@ public class GestorPartido implements Serializable {
             = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
 
     private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
+    
+    
+    public boolean actualizarO(String observaciones, String s) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.partido SET observaciones=? Where siglas='" + s + "'");
+                stm.clearParameters();
+                stm.setString(1, observaciones);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
+    
+    
+    public boolean actualizarB(String s,InputStream in, int size, String contentType) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.partido SET bandera=?,tipo_imagen=? Where siglas='" + s + "'");
+                stm.clearParameters();
+                stm.setBinaryStream(1, in,size);
+                stm.setString(2, contentType);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
+    
+    public boolean actualizarN(String nombre, String s) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.partido SET nombre=? Where siglas='" + s + "'");
+                stm.clearParameters();
+                stm.setString(1, nombre);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
 
     public void agregar(String nombre, String siglas, String observaciones, InputStream in, int size, String contentType) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
@@ -82,6 +145,25 @@ public class GestorPartido implements Serializable {
             }
         }
     }
+    
+    public boolean verificarPartido1(String siglas) {
+        boolean encontrado = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR1)) {
+                stm.clearParameters();
+                stm.setString(1, siglas);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return encontrado;
+    }
+    
+    
     
     public boolean verificarPartido(String siglas, String nombre) {
         boolean encontrado = false;

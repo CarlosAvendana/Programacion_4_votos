@@ -30,6 +30,10 @@ public class GestorVotacion implements Serializable {
     private static final String CMD_ACTUALIZAR
             = "UPDATE bd_votaciones.votacion "
             + "SET id=?, fecha_inicio=?,fecha_apertura=?, fecha_final=?, fecha_cierre=?, estado=? ";
+    
+    private static final String CMD_VERIFICAR
+            = "SELECT id FROM votacion "
+            + "WHERE id=? ";
 
     private static final String CMD_AGREGAR = "INSERT INTO bd_votaciones.votacion "
             + "(fecha_inicio, fecha_apertura, fecha_final, fecha_cierre, estado) "
@@ -59,6 +63,24 @@ public class GestorVotacion implements Serializable {
         return instancia;
     }
 
+    
+     public boolean verificarVotacion(int id) {
+        boolean encontrado = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
+                stm.clearParameters();
+                stm.setInt(1, id);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return encontrado;
+    }
+    
     
      public List<Votacion> listarTodos() {
         List<Votacion> r = new ArrayList<>();

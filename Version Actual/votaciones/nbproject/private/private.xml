@@ -12,12 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/notch/Documents/GitHub/votos/Version%20Actual/votaciones/web/admActivarFechaVotacion.jsp</file>
-
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/web/adminGeneral.jsp</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/src/java/Servicios/ServicioEditarPartido.java</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/web/adminAsignaUsuarioAPartido.jsp</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/web/admEditarPartido.jsp</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/web/scripts/script.js</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/src/java/Gestores/GestorPartido.java</file>
             <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/web/admCrearPartido.jsp</file>
             <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/src/java/Servicios/ServicioCreaciondePartido.java</file>
-
         </group>
     </open-files>
 </project-private>

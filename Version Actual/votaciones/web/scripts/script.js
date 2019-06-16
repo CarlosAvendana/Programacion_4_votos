@@ -10,6 +10,9 @@ function asignaUsuariosAPartido() {
 function init1(){
     solicitarDatosListarFechas1("ServicioTablaVotacion2", "tablaFechas");
 }
+function init5(){
+    solicitarDatosListarPartidos("ServicioListarPartidos", "tablaPartidos");
+}
 
 function cargarTablaFechas1(tabla, datos) {
     var refTabla = document.getElementById(tabla);
@@ -23,8 +26,10 @@ function cargarTablaFechas1(tabla, datos) {
             nuevaCelda.innerText = datos.fechas[i].fecha_inicio;
             nuevaCelda = nuevaFila.insertCell(-1);
             nuevaCelda.innerText = datos.fechas[i].fecha_final;
+            var b = datos.fechas[i].estado;
             nuevaCelda = nuevaFila.insertCell(-1);
-            nuevaCelda.innerText = datos.fechas[i].estado;
+            nuevaCelda.setAttribute("class", b === 1 ? "especial" : "especial1");
+            nuevaCelda.innerHTML = b ? "&#10004;" : "&#10006;";
         }
     }
 }

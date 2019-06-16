@@ -34,8 +34,9 @@ public class SLA extends HttpServlet {
             sesion.setMaxInactiveInterval(60 * 3);
 
             response.sendRedirect("adminGeneral.jsp");
-        }
-
+        }else {
+                response.sendRedirect("loginError.jsp");
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

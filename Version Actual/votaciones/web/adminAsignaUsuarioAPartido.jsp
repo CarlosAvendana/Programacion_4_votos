@@ -137,6 +137,22 @@
                         </thead>
                     </table>              
                 </section>
+                <section id="secTF">                    
+                    <table id="tablaFechas" class="tablaDatos">
+                        <thead>                       
+                            <tr>
+                                <td align='center' style='color: white; background-color: lightseagreen;' colspan="4" >
+                                    Tabla Fechas      
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Fecha Inicial</th>
+                                <th>Fecha Final</th>
+                            </tr>
+                        </thead>
+                    </table>              
+                </section>
             </div>
         </div>
     </body>

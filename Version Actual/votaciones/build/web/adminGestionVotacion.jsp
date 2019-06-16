@@ -52,7 +52,7 @@
                     </table>
                 </section>
                 <section id="secGestionVotacion">
-                    <form id="formNuevaVotacion">
+                    <form id="formNuevaVotacion" action="ServicioVotacion" method="POST">
                         <table  class="tablaDatos" style="margin: 0 auto; padding: 15px;">
                             <thead>
                                 <tr>
@@ -61,19 +61,7 @@
                                     </td>
                                 </tr>
                             </thead>
-
                             <tbody id="cuerpoForm">
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            Id
-                                        </strong>
-                                    </td>
-                                    <td>
-                                        <input type="text" autocomplete="off" size="15" id="Fid" 
-                                               name="id" placeholder="ID"/>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td>
                                         <strong>
@@ -98,7 +86,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                            Fecha Final
+                                            Fecha de Cierre
                                         </strong>
                                     </td>
                                     <td>         
@@ -108,7 +96,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                            Fecha de Cierre
+                                            Fecha Final
                                         </strong>
                                     </td>
                                     <td>         

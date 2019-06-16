@@ -10,6 +10,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestorVotacion implements Serializable {
 
@@ -21,16 +24,16 @@ public class GestorVotacion implements Serializable {
             + "FROM votacion WHERE id=? ";
 
     private static final String CMD_LISTAR
-            = "SELECT id, fecha_inicio,fecha_apertura, fecha_final, fecha_cierre, estado "
+            = "SELECT id, fecha_inicio, fecha_apertura, fecha_final, fecha_cierre, estado "
             + "FROM votacion ORDER BY id; ";
 
     private static final String CMD_ACTUALIZAR
             = "UPDATE bd_votaciones.votacion "
             + "SET id=?, fecha_inicio=?,fecha_apertura=?, fecha_final=?, fecha_cierre=?, estado=? ";
 
-    private static final String CMD_AGREGAR = "INSERT INTO votacion "
-            + "(id, fecha_inicio, fecha_apertura, fecha_final, fecha_cierre, estado) "
-            + "VALUES(?, ?, ?, ?, ?, ?); ";
+    private static final String CMD_AGREGAR = "INSERT INTO bd_votaciones.votacion "
+            + "(fecha_inicio, fecha_apertura, fecha_final, fecha_cierre, estado) "
+            + "VALUES(?, ?, ?, ?, ?); ";
 
     private static final String CONEXION
             = "jdbc:mysql://localhost/bd_votaciones";
@@ -56,6 +59,33 @@ public class GestorVotacion implements Serializable {
         return instancia;
     }
 
+    
+     public List<Votacion> listarTodos() {
+        List<Votacion> r = new ArrayList<>();
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    Statement stm = cnx.createStatement();
+                    ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
+                while (rs.next()) {
+                    r.add(new Votacion(
+                            rs.getInt("id"),
+                                rs.getDate("fecha_inicio"),
+                                rs.getDate("fecha_apertura"),
+                                rs.getDate("fecha_cierre"),
+                                rs.getDate("fecha_final"),
+                                rs.getInt("estado")
+                    ));
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return r;
+    }
+    
+    
+    
     public Votacion recuperar(int codigo) {
         Votacion r = null;
         try {
@@ -109,19 +139,18 @@ public class GestorVotacion implements Serializable {
 
     }
 
-    public void agregar(int id, String fechaInicio, String fechaApertura, String fechaCierre, String fechaFinal, int estado) throws SQLException, Exception {
+    public void agregar(String fechaInicio, String fechaApertura, String fechaCierre, String fechaFinal, int estado) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
             PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
             stm.clearParameters();
-            stm.setInt(1, id);
-            stm.setString(2, fechaInicio);
-            stm.setString(3, fechaApertura);
-            stm.setString(4, fechaCierre);
-            stm.setString(6, fechaFinal);
-            stm.setInt(7, 0);
+            stm.setString(1, fechaInicio);
+            stm.setString(2, fechaApertura);
+            stm.setString(3, fechaCierre);
+            stm.setString(4, fechaFinal);
+            stm.setInt(5,0);
             int r = stm.executeUpdate();
             if (r == 1) {
-                System.out.printf("Se agregó con éxito la votacion: '%s'..%n", id);
+                System.out.printf("Se agregó con éxito la votacion: '%s'..%n", fechaInicio);
             } else {
                 throw new Exception("No se agrego");
             }

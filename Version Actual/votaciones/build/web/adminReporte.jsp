@@ -50,17 +50,18 @@
                                 <td>
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
-
+<<<<<<< HEAD
+=======
                                 <td>
                                     <button class='bnt' role="link" onclick="window.location = 'XMLDatos.jsp'">Cargar Usuarios XML</button>
                                 </td>
-
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
                                 <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
-
+<<<<<<< HEAD
                             </tr>
                         </thead>
                     </table>
@@ -141,7 +142,8 @@
                                 <th>Porcentaje</th>
                                 <th>Nombre Partido</th>
                                 <th>Candidato</th>
-
+=======
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
                             </tr>
                         </thead>
                     </table>

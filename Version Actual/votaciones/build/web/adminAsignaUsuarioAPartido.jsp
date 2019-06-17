@@ -58,7 +58,10 @@
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
-
+<<<<<<< HEAD
+                                </td>
+=======
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
                             </tr>
                         </thead>
                     </table>

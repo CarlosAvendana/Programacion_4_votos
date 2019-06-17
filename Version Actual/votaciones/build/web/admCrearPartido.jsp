@@ -134,12 +134,17 @@
                     <%String codigo = request.getParameter("mensaje");
                         if (codigo != null) {
                             if (codigo.equals("1")) {
-
+<<<<<<< HEAD
                                 out.println("<p style='color : green;'>Se agrego con exito</p>");
                             }
                             if (codigo.equals("0")) {
                                 out.println("<p style='color : red;'>No se pudo crear verifique las fechas</p>");
-
+=======
+                                out.println("<p style='color : red;'>Partido ya existe </p>");
+                            }
+                            if (codigo.equals("0")) {
+                                out.println("<p style='color : green;'>Se agrego con exito</p>");
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
                             }
                         }
                     %>

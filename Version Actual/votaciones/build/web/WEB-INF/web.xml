@@ -53,7 +53,7 @@
         <servlet-class>Servicios.ServicioTablaVotacion2</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
+
         <servlet-name>ServicioListarReportes</servlet-name>
         <servlet-class>Servicios.ServicioListarReportes</servlet-class>
     </servlet>
@@ -72,7 +72,8 @@
     <servlet>
         <servlet-name>ServicioListarRepoCandidatos</servlet-name>
         <servlet-class>Servicios.ServicioListarRepoCandidatos</servlet-class>
-=======
+    </servlet>
+<servlet>
         <servlet-name>ServicioEditarPartido</servlet-name>
         <servlet-class>Servicios.ServicioEditarPartido</servlet-class>
     </servlet>
@@ -95,7 +96,6 @@
     <servlet>
         <servlet-name>ServicioVP</servlet-name>
         <servlet-class>Servicios.ServicioVP</servlet-class>
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
@@ -150,7 +150,6 @@
         <url-pattern>/ServicioTablaVotacion2</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>ServicioListarReportes</servlet-name>
         <url-pattern>/ServicioListarReportes</url-pattern>
     </servlet-mapping>
@@ -169,7 +168,8 @@
     <servlet-mapping>
         <servlet-name>ServicioListarRepoCandidatos</servlet-name>
         <url-pattern>/ServicioListarRepoCandidatos</url-pattern>
-=======
+    </servlet-mapping>    
+<servlet-mapping>
         <servlet-name>ServicioEditarPartido</servlet-name>
         <url-pattern>/ServicioEditarPartido</url-pattern>
     </servlet-mapping>
@@ -192,7 +192,6 @@
     <servlet-mapping>
         <servlet-name>ServicioVP</servlet-name>
         <url-pattern>/ServicioVP</url-pattern>
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -7,11 +7,11 @@ function asignaUsuariosAPartido() {
     solicitarDatosListarPartidos("ServicioListarPartidos", "tablaPartidos");
     solicitarDatosListarFechas("ServicioTablaVotacion", "tablaFechas");
 }
-<<<<<<< HEAD
+
 function init1() {
     solicitarDatosListarFechas1("ServicioTablaVotacion2", "tablaFechas");
 }
-=======
+
 //llamada para la tbla de fechas
 function init1(){
     solicitarDatosListarFechas1("ServicioTablaVotacion2", "tablaFechas");
@@ -21,7 +21,7 @@ function init5(){
     solicitarDatosListarPartidos("ServicioListarPartidos", "tablaPartidos");
 }
 //cargar las tablas de fechas
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function cargarTablaFechas1(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -41,11 +41,10 @@ function cargarTablaFechas1(tabla, datos) {
         }
     }
 }
-<<<<<<< HEAD
-=======
+
 
 //solocitar los datos de fechas
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function solicitarDatosListarFechas1(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -58,11 +57,10 @@ function solicitarDatosListarFechas1(origen, tabla) {
     }
     );
 }
-<<<<<<< HEAD
-=======
+
 
 //cargar las tablas de fechas
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function cargarTablaFechas(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -78,10 +76,9 @@ function cargarTablaFechas(tabla, datos) {
         }
     }
 }
-<<<<<<< HEAD
-=======
+
 //solicitar la lista de fechas
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function solicitarDatosListarFechas(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -94,10 +91,9 @@ function solicitarDatosListarFechas(origen, tabla) {
     }
     );
 }
-<<<<<<< HEAD
-=======
+
 //solicitar lista de usuarios
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function solicitarDatosListarUsuarios(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -129,10 +125,9 @@ function cargarTablaUsuarios(tabla, datos) {
         }
     }
 }
-<<<<<<< HEAD
-=======
+
 //lista de partidos
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function solicitarDatosListarPartidos(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -145,10 +140,9 @@ function solicitarDatosListarPartidos(origen, tabla) {
     }
     );
 }
-<<<<<<< HEAD
-=======
+
 //cargar partidos
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function cargarTablaPartidos(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {
@@ -166,18 +160,16 @@ function cargarTablaPartidos(tabla, datos) {
         }
     }
 }
-<<<<<<< HEAD
-=======
+
 //dtos votacion partido
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function init2() {
     console.log("Mostrando datos para votacion")
     solicitarDatosVotacionPartido("ServicioVP", "votaciones");
 }
-<<<<<<< HEAD
-=======
+
 //solicitar datos votacion partido
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function solicitarDatosVotacionPartido(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -190,11 +182,9 @@ function solicitarDatosVotacionPartido(origen, tabla) {
     }
     );
 }
-<<<<<<< HEAD
-=======
 
 //tabla votacion partido
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
 function cargarTablaVotacionPartido(tabla, datos) {
     var refTabla = document.getElementById(tabla);
     if (refTabla) {

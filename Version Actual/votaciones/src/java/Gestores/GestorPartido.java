@@ -43,9 +43,9 @@ public class GestorPartido implements Serializable {
     private static final String CMD_VERIFICAR
             = "SELECT siglas,nombre FROM bd_votaciones.partido "
             + "WHERE siglas=? AND nombre=? ";
-<<<<<<< HEAD
 
-=======
+
+
     
     private static final String CMD_VERIFICAR1
             = "SELECT siglas FROM bd_votaciones.partido "
@@ -62,7 +62,7 @@ public class GestorPartido implements Serializable {
             + "SET siglas=?"
             + "WHERE siglas=?; ";
     
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
     private GestorPartido() throws
             InstantiationException,
             ClassNotFoundException,
@@ -163,9 +163,7 @@ public class GestorPartido implements Serializable {
             }
         }
     }
-<<<<<<< HEAD
 
-=======
     //verifica si existe el partido solo por siglas
     public boolean verificarPartido1(String siglas) {
         boolean encontrado = false;
@@ -186,7 +184,7 @@ public class GestorPartido implements Serializable {
     
     
     //verifica el partido por siglas y nombre
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
     public boolean verificarPartido(String siglas, String nombre) {
         boolean encontrado = false;
         try {
@@ -204,12 +202,10 @@ public class GestorPartido implements Serializable {
         }
         return encontrado;
     }
-<<<<<<< HEAD
 
-=======
     
 //metodo que no se ocupa la momento
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
     public Partido recuperar(String nombre) {
         Partido r = null;
         try {

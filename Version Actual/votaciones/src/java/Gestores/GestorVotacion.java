@@ -80,9 +80,9 @@ public class GestorVotacion implements Serializable {
          return exito;
     }
 
-<<<<<<< HEAD
-    public List<Votacion> listarTodos() {
-=======
+
+    
+
     //verifica si exsite esa fecha de votacion
      public boolean verificarVotacion(int id) {
         boolean encontrado = false;
@@ -103,7 +103,6 @@ public class GestorVotacion implements Serializable {
     
     //lista todas las votaciones
      public List<Votacion> listarTodos() {
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
         List<Votacion> r = new ArrayList<>();
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
@@ -126,13 +125,13 @@ public class GestorVotacion implements Serializable {
         }
         return r;
     }
-<<<<<<< HEAD
 
-=======
+
+
     
     
     //recupera una votacion
->>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
+
     public Votacion recuperar(int codigo) {
         Votacion r = null;
         try {

@@ -42,6 +42,9 @@ function cargarTablaFechas1(tabla, datos) {
     }
 }
 
+
+//solocitar los datos de fechas
+
 function solicitarDatosListarFechas1(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -54,6 +57,9 @@ function solicitarDatosListarFechas1(origen, tabla) {
     }
     );
 }
+
+
+//cargar las tablas de fechas
 
 function cargarTablaFechas(tabla, datos) {
     var refTabla = document.getElementById(tabla);
@@ -71,6 +77,8 @@ function cargarTablaFechas(tabla, datos) {
     }
 }
 
+//solicitar la lista de fechas
+
 function solicitarDatosListarFechas(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -83,6 +91,8 @@ function solicitarDatosListarFechas(origen, tabla) {
     }
     );
 }
+
+//solicitar lista de usuarios
 
 function solicitarDatosListarUsuarios(origen, tabla) {
     fetch(origen).then(
@@ -116,6 +126,8 @@ function cargarTablaUsuarios(tabla, datos) {
     }
 }
 
+//lista de partidos
+
 function solicitarDatosListarPartidos(origen, tabla) {
     fetch(origen).then(
             (resultados) => {
@@ -128,6 +140,8 @@ function solicitarDatosListarPartidos(origen, tabla) {
     }
     );
 }
+
+//cargar partidos
 
 function cargarTablaPartidos(tabla, datos) {
     var refTabla = document.getElementById(tabla);
@@ -147,10 +161,14 @@ function cargarTablaPartidos(tabla, datos) {
     }
 }
 
+//dtos votacion partido
+
 function init2() {
     console.log("Mostrando datos para votacion")
     solicitarDatosVotacionPartido("ServicioVP", "votaciones");
 }
+
+//solicitar datos votacion partido
 
 function solicitarDatosVotacionPartido(origen, tabla) {
     fetch(origen).then(
@@ -164,6 +182,8 @@ function solicitarDatosVotacionPartido(origen, tabla) {
     }
     );
 }
+
+//tabla votacion partido
 
 function cargarTablaVotacionPartido(tabla, datos) {
     var refTabla = document.getElementById(tabla);

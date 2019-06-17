@@ -15,7 +15,13 @@
         <group/>
 =======
         <group>
+
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/src/java/Modelo/VotacionPartido.java</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/src/java/Gestores/GestorPartido.java</file>
+            <file>file:/C:/Users/demil/Desktop/votos/Version%20Actual/votaciones/src/java/Gestores/GestorVotacionPartido.java</file>
+
             <file>file:/home/djnane/Escritorio/votos/Version%20Actual/votaciones/src/java/Gestores/GestorPartido.java</file>
+
         </group>
 >>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
     </open-files>

@@ -11,6 +11,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="votacionPartido" uri="/WEB-INF/tlds/votacionPartido" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,13 +31,12 @@
                 <p>Segundo apellido: <strong>${usuario.apellido2}</strong></p>
             </section>
             <section id  = "votacion">
-                <table id ="tablaVotacion" style="margin: 0 auto; padding: 15px;">
-
+                <table id="votaciones">
+                    
                 </table>
+                
             </section>
 
         </div>
-
-
     </body>
 </html>

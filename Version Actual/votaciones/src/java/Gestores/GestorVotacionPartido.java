@@ -2,8 +2,11 @@ package Gestores;
 
 import GestorSQL.GestorBaseDeDatos;
 import Modelo.Credenciales;
+import Modelo.IOUtilities;
 import Modelo.VotacionPartido;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,9 +15,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class GestorVotacionPartido implements Serializable {
 
@@ -22,11 +29,11 @@ public class GestorVotacionPartido implements Serializable {
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT votacion_id,partido_siglas, cedula_candidato, foto_candidato,votos_obtenidos "
+            = "SELECT votacion_id,partido_siglas, cedula_candidato,votos_obtenidos "
             + "FROM votacion_partido WHERE votacion_id=? ";
 
     private static final String CMD_LISTAR
-            = "SELECT votacion_id,partido_siglas, cedula_candidato, foto_candidato,votos_obtenidos"
+            = "SELECT votacion_id, partido_siglas, cedula_candidato, votos_obtenidos "
             + "FROM votacion_partido ORDER BY votacion_id; ";
 
     private static final String CMD_ACTUALIZAR
@@ -37,6 +44,26 @@ public class GestorVotacionPartido implements Serializable {
             + "(votacion_id, partido_siglas, cedula_candidato, foto_candidato, tipo_imagen, votos_obtenidos) "
             + "VALUES(?, ?, ?, ?, ?, ?); ";
 
+    //--------------------Para cargar Imagen--------------------------------
+    
+    private static final String IMAGE_PATTERN
+            = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+
+    private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);   
+    
+      private static final String CMD_GET_IMAGE_LIST
+            = "SELECT partido_siglas, cedula_candidato FROM bd_votacion.votacion_partido ORDER BY cedula_candidato; ";
+    
+      private static final String CMD_GET_IMAGE
+            = "SELECT votacion_id, partido_siglas, cedula_candidato, tipo_imagen, votos_obtenidos FROM bd_votaciones WHERE partido_siglas=?; ";
+  
+ //------------FIN -------Para cargar Imagen--------------------------------
+      
+   
+    
+    
+    
+    
     private static final String CONEXION
             = "jdbc:mysql://localhost/bd_votaciones";
     private static final String USUARIO = "root";
@@ -61,16 +88,63 @@ public class GestorVotacionPartido implements Serializable {
         return instancia;
     }
 
-    public static boolean validate(final String fileName) {
-        Matcher matcher = PATTERN.matcher(fileName);
-        return matcher.matches();
+    //actualizar nuevo votacion partido
+    public boolean actualizarI(int id, String s) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion_partido SET votacion_id=? Where partido_siglas='" + s + "'");
+                stm.clearParameters();
+                stm.setInt(1, id);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
     }
-
-    private static final String IMAGE_PATTERN
-            = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
-
-    private static final Pattern PATTERN = Pattern.compile(IMAGE_PATTERN);
-
+    
+    //actualizar votacion partido con foto
+    public boolean actualizarB(String s,InputStream in, int size, String contentType) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion_partido SET foto_candidato=?,tipo_imagen=? Where partido_siglas='" + s + "'");
+                stm.clearParameters();
+                stm.setBinaryStream(1, in,size);
+                stm.setString(2, contentType);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
+    
+    //actualizar cedula de votacion partido
+    public boolean actualizarC(String nombre, String s) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion_partido SET cedula_candidato=? Where partido_siglas='" + s + "'");
+                stm.clearParameters();
+                stm.setString(1, nombre);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
+    
+    
+//recuperarvotacion partido
     public VotacionPartido recuperar(String codigo) throws InstantiationException, ClassNotFoundException, IllegalAccessException {
         VotacionPartido r = null;
         try {
@@ -87,7 +161,6 @@ public class GestorVotacionPartido implements Serializable {
                                 gv.recuperar(rs.getInt("votacion_id")),
                                 gp.recuperar(rs.getString("partido_siglas")),
                                 gu.recuperar(rs.getString("cedula_candidato")),
-                                rs.getString("foto_candidato"),
                                 rs.getInt("votos_obtenidos")
                         );
                     }
@@ -99,7 +172,7 @@ public class GestorVotacionPartido implements Serializable {
         }
         return r;
     }
-
+//listar las votacion partido
     public List<VotacionPartido> listarTodo() throws InstantiationException, ClassNotFoundException, IllegalAccessException {
         List<VotacionPartido> r = new ArrayList<>();
         GestorVotacion gv = GestorVotacion.obtenerInstancia();
@@ -115,7 +188,6 @@ public class GestorVotacionPartido implements Serializable {
                             gv.recuperar(rs.getInt("votacion_id")),
                             gp.recuperar(rs.getString("partido_siglas")),
                             gu.recuperar(rs.getString("cedula_candidato")),
-                            rs.getString("foto_candidato"),
                             rs.getInt("votos_obtenidos")
                     ));
                 }
@@ -126,7 +198,7 @@ public class GestorVotacionPartido implements Serializable {
         }
         return r;
     }
-
+//agregar una votacion partido
     public void agregar(int votTemp, String cedula, String siglas, InputStream in, int size, String contentType, int votos) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
             PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);
@@ -145,7 +217,7 @@ public class GestorVotacionPartido implements Serializable {
             }
         }
     }
-
+//otro agregar partido
     public void agregar1(VotacionPartido vp) {
         try (Connection cnx = DriverManager.getConnection(
                 CONEXION, USUARIO, CLAVE);
@@ -165,5 +237,124 @@ public class GestorVotacionPartido implements Serializable {
         }
 
     }
+    
+    //-------------------------------------------
+    //listar votacion partido
+    public List<VotacionPartido> listarVotacion(int id) throws InstantiationException, ClassNotFoundException, IllegalAccessException{  //Se listaran  por x votación
+              List<VotacionPartido> r = new ArrayList<>();
+        GestorVotacion gv = GestorVotacion.obtenerInstancia();
+        GestorPartido gp = GestorPartido.obtenerInstancia();
+        GestorUsuario gu = GestorUsuario.obtenerInstancia();
 
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    Statement stm = cnx.createStatement();
+                    ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
+                while (rs.next()) {
+                    if (rs.getInt("votacion_id")==id){
+                    r.add(new VotacionPartido(
+                            gv.recuperar(rs.getInt("votacion_id")),
+                            gp.recuperar(rs.getString("partido_siglas")),
+                            gu.recuperar(rs.getString("cedula_candidato")),
+                            rs.getInt("votos_obtenidos")
+                    ));
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return r;
+    
+    
+    }
+
+    //--------------------------------Edicion para la votacion partido--------------------------
+    
+    
+    //lista de imagenes
+          public String getImageList() {
+        System.out.println("Convirtiendo la lista de banderas....");
+        JSONArray r = new JSONArray();
+        List<Object[]> items = imageList();
+        for (Object[] item : items) {
+            JSONObject e = new JSONObject();
+            e.put("siglas", item[0]);
+            e.put("cedula_candidato", item[1]);
+            e.put("nombre_candidato", item[2]);
+            r.put(e);
+        }
+        return r.toString();
+    }
+
+    //ejemplo gallery
+      public String getGallery(int imagesPerRow) {
+        System.out.printf("Construyendo tabla con %d banderas por fila..%n", imagesPerRow);
+
+        StringBuilder r = new StringBuilder();
+        r.append("<table class=\"tablaBandera\">");
+        r.append("<tr>");
+        int k = 0;
+        List<Object[]> items = imageList();
+        Iterator<Object[]> i = items.iterator();
+        while (i.hasNext()) {
+            Object[] item = i.next();
+            System.out.printf("Cargando imagen: %d (%s)%n", item[0]);
+            r.append("<td class=\"thumb\">");
+            //solo genera html en el servelet se cargan las imagenes
+            r.append(String.format("<p><img alt=\"%s\" src=\"ServicioVotacionPartido?siglas=%d\" /></p> ", item[1], item[0]));
+            r.append(String.format("<p>%s</p>", item[1]));
+                 r.append(String.format("<p>%s</p>", item[2])); 
+            r.append("</td>");
+            k++;
+            if (((k % imagesPerRow) == 0) && i.hasNext()) {
+                r.append("</tr>\n<tr>");
+            }
+        }
+        r.append("</tr>");
+        r.append("</table>");
+        return r.toString();
+    }
+//lista de objetos imagenes
+    private List<Object[]> imageList() {
+        System.out.println("Obteniendo la lista de imágenes..");
+        List<Object[]> r = new ArrayList<>();
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    Statement stm = cnx.createStatement();
+                    ResultSet rs = stm.executeQuery(CMD_GET_IMAGE_LIST)) {
+                while (rs.next()) {
+                    Object[] item = new Object[2];
+                    item[0] = rs.getString("partido_siglas");
+                    item[1] = rs.getString("cedula_candidato");
+                    r.add(item);
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex);
+        }
+        return r;
+    }
+//cargar una imagen
+    public void loadImage(HttpServletResponse response, String imageId) throws IOException, SQLException {
+        //va a recoger la imagen por el id que en  este caso son las siglas
+        try (OutputStream out = response.getOutputStream();
+                Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                PreparedStatement stm = cnx.prepareCall(CMD_GET_IMAGE)) {
+            stm.setString(1, imageId);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                response.setContentType(rs.getString("tipo_imagen"));
+                IOUtilities.copy(rs.getBinaryStream(3), out);
+            }
+        }
+
+    }
+           //validar el tipo de imagen
+    public static boolean validate(final String fileName) {
+        Matcher matcher = PATTERN.matcher(fileName);
+        return matcher.matches();
+    }
+    
 }

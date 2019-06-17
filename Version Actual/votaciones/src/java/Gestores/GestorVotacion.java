@@ -30,6 +30,10 @@ public class GestorVotacion implements Serializable {
     private static final String CMD_ACTUALIZAR
             = "UPDATE bd_votaciones.votacion "
             + "SET id=?, fecha_inicio=?,fecha_apertura=?, fecha_final=?, fecha_cierre=?, estado=? ";
+    
+    private static final String CMD_VERIFICAR
+            = "SELECT id FROM votacion "
+            + "WHERE id=? ";
 
     private static final String CMD_AGREGAR = "INSERT INTO bd_votaciones.votacion "
             + "(fecha_inicio, fecha_apertura, fecha_final, fecha_cierre, estado) "
@@ -58,8 +62,48 @@ public class GestorVotacion implements Serializable {
         }
         return instancia;
     }
+    
+    public boolean actualizarE(int o, int s) {
+        boolean exito = false;
+        try {  
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
+                PreparedStatement stm = cnx.prepareStatement("UPDATE bd_votaciones.votacion SET estado=? Where id='" + s + "'");
+                stm.clearParameters();
+                stm.setInt(1, o);
+                int r = stm.executeUpdate();
+                exito = (r==1);
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+         return exito;
+    }
 
+<<<<<<< HEAD
     public List<Votacion> listarTodos() {
+=======
+    //verifica si exsite esa fecha de votacion
+     public boolean verificarVotacion(int id) {
+        boolean encontrado = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR)) {
+                stm.clearParameters();
+                stm.setInt(1, id);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return encontrado;
+    }
+    
+    //lista todas las votaciones
+     public List<Votacion> listarTodos() {
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
         List<Votacion> r = new ArrayList<>();
         try {
             try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
@@ -82,7 +126,13 @@ public class GestorVotacion implements Serializable {
         }
         return r;
     }
+<<<<<<< HEAD
 
+=======
+    
+    
+    //recupera una votacion
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
     public Votacion recuperar(int codigo) {
         Votacion r = null;
         try {
@@ -109,7 +159,7 @@ public class GestorVotacion implements Serializable {
         }
         return r;
     }
-
+//actualiza las votaciones*
     public boolean actualizar(Votacion u) {
         boolean exito = false;
         try {
@@ -135,7 +185,7 @@ public class GestorVotacion implements Serializable {
         return exito;
 
     }
-
+//agrega una votacion nueva
     public void agregar(String fechaInicio, String fechaApertura, String fechaCierre, String fechaFinal, int estado) throws SQLException, Exception {
         try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE)) {
             PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR);

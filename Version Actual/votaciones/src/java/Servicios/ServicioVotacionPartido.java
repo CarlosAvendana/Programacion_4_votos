@@ -4,6 +4,7 @@ import Gestores.GestorVotacionPartido;
 import Modelo.VotacionPartido;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,34 +17,33 @@ import org.json.JSONObject;
 
 public class ServicioVotacionPartido extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<VotacionPartido> listVP = null;
-            try {
-                listVP = GestorVotacionPartido.obtenerInstancia().listarTodo();
-            } catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
-                Logger.getLogger(ServicioVotacionPartido.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println(listVP);
 
+               List<VotacionPartido> productos= null;
+               try{
+                    productos= GestorVotacionPartido.obtenerInstancia().listarTodo();
+               }catch (InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
+                Logger.getLogger(ServicioListarPartidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               System.out.println(productos);
             JSONObject r = new JSONObject();
             JSONArray a = new JSONArray();
-//incluir código para cargar las imagenes, tanto de la bandera como del candidato
-            for (VotacionPartido p : listVP) {
-                JSONObject pj = new JSONObject();
-                pj.put("Partido:", p.getPartSiglas().getNombre());
-                pj.put("Siglas: ", p.getPartSiglas().getSiglas());
-                pj.put("Candidato", p.getCedCandidato().obtenerNombreCompleto());
-                a.put(pj);
+            for (VotacionPartido p : productos) {
+                JSONObject g = new JSONObject();
+                g.put("Siglas", p.getPartSiglas().getSiglas());
+                g.put("Nombre", p.getPartSiglas().getNombre());
+                g.put("Candidato", p.getCedCandidato().getNombreCompleto());
+                a.put(g);
             }
-            r.put("listVP", a);
+            r.put("votaciones", a);
             out.print(r);
-        }
-    }
+     
+    }}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+ // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

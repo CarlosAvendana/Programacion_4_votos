@@ -19,13 +19,9 @@ public class Validacion implements Serializable {
 
     public static void validacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession se = request.getSession(true);
-        Usuario e = (Usuario) se.getAttribute("usuario");
+        Administrador e = (Administrador) se.getAttribute("usuario");
         if (e == null) {
             request.getRequestDispatcher("loginError.jsp").forward(request, response);
-        } else {
-            if (e.idIgualContrasenna()) {
-                request.getRequestDispatcher("changePassword.jsp").forward(request, response);//bool si el usuario cambio la clave
-            }
-        }
+        } 
     }
 }

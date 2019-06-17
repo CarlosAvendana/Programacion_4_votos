@@ -55,7 +55,7 @@ public class GestorAdministrador implements Serializable {
         }
         return instancia;
     }
-
+//obtener Lista la lita de adminitradores
     public List<Administrador> obtenerLista() throws SQLException {
 
         List<Administrador> lista = new ArrayList<>();
@@ -77,7 +77,7 @@ public class GestorAdministrador implements Serializable {
         }
         return lista;
     }
-
+//recuperar un admintrador
     public Administrador recuperar(String codigo) {
         Administrador r = null;
         try {
@@ -104,7 +104,7 @@ public class GestorAdministrador implements Serializable {
         }
         return r;
     }
-
+//verificar en la DB si exite el adm
     public boolean verificarAdministrador(String usuario, String clave) {
         boolean encontrado = false;
         try {
@@ -122,7 +122,7 @@ public class GestorAdministrador implements Serializable {
         }
         return encontrado;
     }
-
+//obtencion de los datos en html
     public String obtenerDatosHTML(Object objeto) throws SQLException {
         String id = (String) objeto;
         StringBuilder r = new StringBuilder();

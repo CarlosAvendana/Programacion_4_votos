@@ -1,5 +1,8 @@
 package Servicios;
 
+import Gestores.GestorPartido;
+import Gestores.GestorUsuario;
+import Gestores.GestorVotacion;
 import Gestores.GestorVotacionPartido;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -20,11 +23,15 @@ public class ServicioAgregarPostulante extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InstantiationException, ClassNotFoundException, IllegalAccessException {
         GestorVotacionPartido gP = GestorVotacionPartido.obtenerInstancia();
+        GestorVotacion gV = GestorVotacion.obtenerInstancia();
+        GestorUsuario gU = GestorUsuario.obtenerInstancia();
+        GestorPartido gPa = GestorPartido.obtenerInstancia();
         HttpSession sesion = request.getSession(true);
         try {
-            int votTemp = 1;
+            String id = request.getParameter("campo2");
             String cedula = request.getParameter("campo1");
             String siglas = request.getParameter("campo3");
+            int idI = Integer.parseInt(id);
             int votosObt = 0;
             Part part = request.getPart("fotoUsuario");
 
@@ -37,26 +44,33 @@ public class ServicioAgregarPostulante extends HttpServlet {
                 request.setAttribute("mensaje",
                         "Se omitió la selección del archivo.");
             }
-            if (GestorVotacionPartido.validate(nombreArchivo)) {
-                try {
-                    gP.agregar(votTemp, cedula, siglas, part.getInputStream(), (int) part.getSize(), part.getContentType(), votosObt);
-                } catch (Exception ex) {
+            if (!(gV.verificarVotacion(idI))) {//verificar fecha
+                response.sendRedirect("adminAsignaUsuarioAPartido.jsp?mensaje=1");
+            } else if (!(gU.verificarUsuario1(cedula))) {//verificar usuario
+                response.sendRedirect("adminAsignaUsuarioAPartido.jsp?mensaje=2");
+            } else if (!(gPa.verificarPartido1(siglas))) {//verificar partido
+                response.sendRedirect("adminAsignaUsuarioAPartido.jsp?mensaje=3");
+            } else {
+                if (GestorVotacionPartido.validate(nombreArchivo)) {
+                    try {
+                        gP.agregar(idI, cedula, siglas, part.getInputStream(), (int) part.getSize(), part.getContentType(), votosObt);
+                    } catch (Exception ex) {
+                        response.sendRedirect("adminGeneral.jsp");
+                        request.setAttribute("mensaje",
+                                String.format("Excepción: '%s'", ex.getMessage()));
+                    }
+                } else {
                     response.sendRedirect("adminGeneral.jsp");
                     request.setAttribute("mensaje",
-                            String.format("Excepción: '%s'", ex.getMessage()));
+                            "El formato del archivo es incorrecto.");
                 }
-            } else {
-                response.sendRedirect("adminGeneral.jsp");
-                request.setAttribute("mensaje",
-                        "El formato del archivo es incorrecto.");
+                response.sendRedirect("adminAsignaUsuarioAPartido.jsp?mensaje=0");
             }
         } catch (IOException | ServletException ex) {
             response.sendRedirect("adminGeneral.jsp");
             request.setAttribute("mensaje",
                     String.format("Ocurrió una excepción: '%s'", ex.getMessage()));
         }
-        response.sendRedirect("adminGeneral.jsp");
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

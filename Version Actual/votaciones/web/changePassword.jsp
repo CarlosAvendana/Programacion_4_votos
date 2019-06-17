@@ -40,7 +40,7 @@
                         <tr>  
                             <td  style="text-align: center" style="margin: auto; padding: 75px;"><input type="password" size="30" id="newPassword" 
                                                                                                         name="newPassword" placeholder="Ingrese su nueva contraseña" /></td>
-                        </tr  style="text-align: center" style="margin: 0 auto; padding: 75px;">
+                        </tr
                         <td  style="text-align: center" style="margin: 0 auto; padding: 75px;" colspan="2" >
                             <button type="submit">Ingresar</button>
                         </td>
@@ -48,6 +48,5 @@
                 </section>
             </form>
         </div>
-    </section>
 </body>
 </html>

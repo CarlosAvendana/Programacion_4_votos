@@ -10,6 +10,7 @@
 --%>
 
 
+<%@page import="Modelo.Validacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,12 +21,22 @@
         <title>Creando partido político</title>
     </head>
     <body>
+        
         <div id="wrapper">
             <div id="contents">
                 <section id="botones">
                     <table id="tablaButton" style="margin: 0 auto; padding: 15px;">
                         <thead>
                             <tr>
+                                 <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admEditarAsignacionUsuario.jsp'">Editar Usuario Partido</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admActivarFechaVotacion.jsp'">Activar Fecha</button>   
+                                </td>
+                                <td>
+                                    <button class="bnt"  role="link" onclick="window.location = 'admEditarPartido.jsp'">Editar Partido</button>   
+                                </td>
                                 <td>
                                     <button class="bnt"  role="link" onclick="window.location = 'adminGeneral.jsp'">Principal</button>   
                                 </td>
@@ -42,13 +53,13 @@
                                     <button class='bnt' role="link" onclick="window.location = 'admCrearPartido.jsp'">Crear Partido</button>
                                 </td>
                                 <td>
+                                    <button class='bnt' role="link" onclick="window.location = 'XMLDatos.jsp'">Cargar Usuarios XML</button>
+                                </td>
                                 <td >
                                     <form name='formOut' action="ServicioLogout" method='POST'>
                                         <input  class='bnt' type="submit" value='LogOut' name='cerrar'/>
                                     </form>
                                 </td>
-                                </td>
-
                             </tr>
                         </thead>
                     </table>
@@ -123,10 +134,12 @@
                     <%String codigo = request.getParameter("mensaje");
                         if (codigo != null) {
                             if (codigo.equals("1")) {
+
                                 out.println("<p style='color : green;'>Se agrego con exito</p>");
                             }
                             if (codigo.equals("0")) {
                                 out.println("<p style='color : red;'>No se pudo crear verifique las fechas</p>");
+
                             }
                         }
                     %>

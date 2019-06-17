@@ -13,10 +13,6 @@
         <servlet-class>Servicios.SLA</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>servicioXML</servlet-name>
-        <servlet-class>Servicios.servicioXML</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ServicioLogout</servlet-name>
         <servlet-class>Servicios.ServicioLogout</servlet-class>
     </servlet>
@@ -57,6 +53,7 @@
         <servlet-class>Servicios.ServicioTablaVotacion2</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>ServicioListarReportes</servlet-name>
         <servlet-class>Servicios.ServicioListarReportes</servlet-class>
     </servlet>
@@ -75,6 +72,30 @@
     <servlet>
         <servlet-name>ServicioListarRepoCandidatos</servlet-name>
         <servlet-class>Servicios.ServicioListarRepoCandidatos</servlet-class>
+=======
+        <servlet-name>ServicioEditarPartido</servlet-name>
+        <servlet-class>Servicios.ServicioEditarPartido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioEditarUP</servlet-name>
+        <servlet-class>Servicios.ServicioEditarUP</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioConsulta1</servlet-name>
+        <servlet-class>Servicios.ServicioConsulta1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioCargar</servlet-name>
+        <servlet-class>Servicios.ServicioCargar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioTablaVotacion3</servlet-name>
+        <servlet-class>Servicios.ServicioTablaVotacion3</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServicioVP</servlet-name>
+        <servlet-class>Servicios.ServicioVP</servlet-class>
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioLoginI</servlet-name>
@@ -87,10 +108,6 @@
     <servlet-mapping>
         <servlet-name>SLA</servlet-name>
         <url-pattern>/SLA</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>servicioXML</servlet-name>
-        <url-pattern>/servicioXML</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServicioLogout</servlet-name>
@@ -133,6 +150,7 @@
         <url-pattern>/ServicioTablaVotacion2</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>ServicioListarReportes</servlet-name>
         <url-pattern>/ServicioListarReportes</url-pattern>
     </servlet-mapping>
@@ -151,6 +169,30 @@
     <servlet-mapping>
         <servlet-name>ServicioListarRepoCandidatos</servlet-name>
         <url-pattern>/ServicioListarRepoCandidatos</url-pattern>
+=======
+        <servlet-name>ServicioEditarPartido</servlet-name>
+        <url-pattern>/ServicioEditarPartido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioEditarUP</servlet-name>
+        <url-pattern>/ServicioEditarUP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioConsulta1</servlet-name>
+        <url-pattern>/ServicioConsulta1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioCargar</servlet-name>
+        <url-pattern>/ServicioCargar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioTablaVotacion3</servlet-name>
+        <url-pattern>/ServicioTablaVotacion3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioVP</servlet-name>
+        <url-pattern>/ServicioVP</url-pattern>
+>>>>>>> 7e0aa29b62cfa6cc90a7360f49bc77cabb276932
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -18,12 +18,16 @@ public class GestorUsuario implements Serializable {
     private final GestorBaseDeDatos bd;
 
     private static final String CMD_RECUPERAR
-            = "SELECT cedula,apellido1,apellido2,nombre,clave,activo "
+            = "SELECT cedula, apellido1, apellido2, nombre, clave, activo  "
             + "FROM usuario WHERE cedula=? ";
 
     private static final String CMD_VERIFICAR
             = "SELECT cedula FROM usuario "
             + "WHERE cedula=? AND clave=? ";
+    
+    private static final String CMD_VERIFICAR1
+            = "SELECT cedula FROM usuario "
+            + "WHERE cedula=? ";
 
     private static final String CMD_LISTAR
             = "SELECT cedula, apellido1 ,apellido2, nombre, clave ,activo "
@@ -63,7 +67,7 @@ public class GestorUsuario implements Serializable {
         }
         return instancia;
     }
-
+//recuperar usuario
     public Usuario recuperar(String codigo) {
         Usuario r = null;
         try {
@@ -90,7 +94,24 @@ public class GestorUsuario implements Serializable {
         }
         return r;
     }
-
+    //verificar Usuario1
+    public boolean verificarUsuario1(String cedula) {
+        boolean encontrado = false;
+        try {
+            try (Connection cnx = bd.obtenerConexion(Credenciales.BASE_DATOS, Credenciales.USUARIO, Credenciales.CLAVE);
+                    PreparedStatement stm = cnx.prepareStatement(CMD_VERIFICAR1)) {
+                stm.clearParameters();
+                stm.setString(1, cedula);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n",
+                    ex.getMessage());
+        }
+        return encontrado;
+    }
+//verifica si existe usuario en la BD
     public boolean verificarUsuario(String cedula, String clave) {
         boolean encontrado = false;
         try {
@@ -108,7 +129,7 @@ public class GestorUsuario implements Serializable {
         }
         return encontrado;
     }
-
+//actualiza el usuarios
     public boolean actualizar(Usuario u) {
         boolean exito = false;
         try {
@@ -134,7 +155,7 @@ public class GestorUsuario implements Serializable {
         return exito;
 
     }
-
+//lista todos los usuarios
     public List<Usuario> listarTodos() {
         List<Usuario> r = new ArrayList<>();
         try {
@@ -157,6 +178,8 @@ public class GestorUsuario implements Serializable {
         return r;
     }
 
+    
+  
 //    public String getTablaHTML() {
 //        StringBuilder r = new StringBuilder();
 //        List<Usuario> usuarios = listarTodos();
